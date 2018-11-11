@@ -16,7 +16,7 @@
 </style>
 <body style="background: #333;">
   <div style="text-align: center;">
-    <svg width="960" height="1260" font-family="sans-serif" font-size="10" style="margin: 0 auto;"></svg>
+    <svg width="1200" height="1000" font-family="sans-serif" font-size="10" style="margin: 0 auto;"></svg>
   </div> 
 
   <div id="tooltip" style="opacity: 0;">
@@ -32,15 +32,38 @@
 let svg = d3.select("svg"),
     width = +svg.attr("width"),
     height = +svg.attr("height")
-    baseRadius = 300;
+    baseRadius = 350;
 
 let colors = d3.schemeCategory20;
 
 let base = svg.append('g')
     .attr('class','base-group')
-    .attr('transform',`translate(${(width / 2)}, ${(height / 2)})`);
+    .attr('transform',`translate(${(width / 2)}, ${(height / 2) - 40})`);
 
 let tooltip = d3.select("#tooltip");
+
+const circleSizes = [
+  {
+    hours: 500,
+    radius: 3
+  },
+  {
+    hours: 100,
+    radius: 2
+  },
+  {
+    hours: 50,
+    radius: 1
+  },
+  {
+    hours: 10,
+    radius: 0.5
+  },
+  {
+    hours: 1,
+    radius: 0.5
+  }
+];
 
 d3.csv("nasa.csv", function(d, i, columns) {
   return {
@@ -54,30 +77,44 @@ d3.csv("nasa.csv", function(d, i, columns) {
   /* theta is the letter for angle in math */
   let theta = (2 * Math.PI) / data.length;
   let startAngle = -1 * Math.PI / 2;
+  const distBetween = 6;
 
   for(let i = 0; i < data.length; i++) {
     let d = data[i];
-    let count = Math.ceil(d.hours / 100);
-    let newData = [];
-    let angle = startAngle + (i * theta);
+    d.newData = [];
 
-    if(count === 0) {
-      newData.push({
+    let angle = startAngle + (i * theta);
+    let hours = d.hours;
+    let dist = baseRadius;
+
+    if(hours === 0) {
+      d.newData.push({
         angle,
-        radius: baseRadius,
+        dist: dist,
+        radius: 1.5,
+        circleHours: 0,
         ...d
       });
     } else {
-      for(let j = 0; j < count; j++) {
-        newData.push({
-          angle,
-          radius: baseRadius + (j * 6),
-          ...d
-        });
+      for(let cs of circleSizes) {
+        if(hours >= cs.hours) {
+          let count = Math.floor(hours / cs.hours);
+
+          for(let j = 0; j < count; j++) {
+            d.newData.push({
+              angle,
+              dist: dist + (j * distBetween),
+              radius: cs.radius,
+              circleHours: cs.hours,
+              ...d
+            });
+          }
+
+          hours -= count * cs.hours;
+          dist += count * distBetween;
+        }
       }
     }
-
-    d.newData = newData;
   }
 
   base.append('circle')
@@ -102,13 +139,13 @@ d3.csv("nasa.csv", function(d, i, columns) {
     .append('circle')
     /* cosine * radius of base circle  */
     .attr('cx', (d, i) => {
-      return Math.cos(d.angle) * d.radius;
+      return Math.cos(d.angle) * d.dist;
     })
     /* sine * radius of base circle  */
     .attr('cy', (d, i) => {
-      return Math.sin(d.angle) * d.radius;
+      return Math.sin(d.angle) * d.dist;
     })
-    .attr('r', 3)
+    .attr('r', (d) => d.radius)
     .attr('fill', (d) => (d.hours > 0) ? colors[d.group] : '#333')
     .attr('stroke', (d) => colors[d.group])
     .attr('stroke-width', 1)
