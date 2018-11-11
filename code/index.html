@@ -1,0 +1,265 @@
+<!-- <!DOCTYPE html> -->
+<meta charset="utf-8">
+<head>
+  <title>Force layout (x axis)</title>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+</head>
+
+<style>
+* {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+h1 {
+    margin-bottom: 0px;
+}
+h2 {
+    font-size: 1em;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+.container {
+    margin: 0 auto;
+    max-width: 1200px;
+    text-align: center;
+}
+.title {
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+.flex {
+    display: flex;
+    width: 100%;
+    height: 350px;
+}
+.flex .col {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .flex .col {
+        min-width: 100%;
+    }
+}
+</style>
+
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Strangest Souvenir</h1>
+            <h2>
+                Data is Beautiful Challenge &mdash; October 2018<br />
+                by Tiffany France | <a href="https://redd.it/99foe4">data set</a>
+            </h2>
+        </div>
+        <div class="flex">
+            <div class="col environment">
+                <h2>&mdash; ENVIRONMENT &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col religious">
+                <h2>&mdash; RELIGIOUS &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col alcohol-drugs">
+                <h2>&mdash; ALCOHOL/DRUGS &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="col animal">
+                <h2>&mdash; ANIMALS &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col injury">
+                <h2>&mdash; INJURIES &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col music">
+                <h2>&mdash; MUSIC &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="col clothing">
+                <h2>&mdash; CLOTHING &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col person">
+                <h2>&mdash; PEOPLE &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col food">
+                <h2>&mdash; FOOD &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="col sexual">
+                <h2>&mdash; SEXUAL &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col weapon">
+                <h2>&mdash; WEAPON &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col crime">
+                <h2>&mdash; CRIME &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="col experience">
+                <h2>&mdash; EXPERIENCE &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+            <div class="col local">
+                <h2>&mdash; LOCAL &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="col souvenir">
+                <h2>&mdash; SOUVENIR &mdash;</h2>
+                <svg width="100%" height="200">
+                  <g transform="translate(50, 100)"></g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+
+  <script>
+    d3.csv("data.csv", (error, data) => {
+
+        // var colors = d3.schemeCategory20;
+        var colors = ['#B42F90','#16B1AC','#FF0909','#6985DD','#0BE304','#9A303D','#979883','#FF09D3','#FF7C09','#EFE71F','#7FA25A','#7A57C7','#804C13','#C2C757','#1F52EF'];
+        var result = d3.nest()
+            .key(function(d) { return d.category; })
+            .entries(data);
+
+        for (var i = 0; i < result.length; i++) {
+            var cat = result[i].key.toLowerCase();
+            var color = colors[i];
+            var items = [];
+
+            for (var j = 0; j < result[i].values.length; j++) {
+                items.push(result[i].values[j].item);
+            }
+
+            buildChart(cat,color,items);  
+        }
+    });
+
+    function buildChart(cat,color,items) {
+        // console.log(items)
+        var div = d3.select("." + cat).append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 0);
+
+        var width = +d3.select('.' + cat + ' svg').style('width').slice(0, -2),
+            height = 300;
+
+        var xScale = d3.scaleLinear().domain([0, 1]).range([0, (width-100)]);
+
+        var numNodes = items.length;
+        var nodes = d3.range(numNodes).map(function(d, i) {
+          return {
+            //this radius is how far apart the nodes are
+            radius: 11,
+            //this dictates where the value lands on x-axis
+            value: Math.random(),
+            item: items[i]
+          }
+        });
+
+        var simulation = d3.forceSimulation(nodes)
+          .force('charge', d3.forceManyBody().strength(5))
+          .force('x', d3.forceX().x(function(d) {
+            return xScale(d.value);
+          }))
+          .force('y', d3.forceY().y(function(d) {
+            return 0;
+          }))
+          .force('collision', d3.forceCollide().radius(function(d) {
+            return d.radius;
+          }))
+          .on('tick', ticked);
+
+        //https://github.com/d3/d3-selection/issues/86
+        function ticked() {
+          var u = d3.select('.' + cat + ' svg g')
+            .selectAll('circle')
+            .data(nodes);
+
+          u.enter()
+            .append('circle')
+            .attr('r', '10px')
+            .style('fill', function(d) {
+                return color;
+            })
+            .style('opacity', 0.8)
+            .merge(u)
+            .attr('cx', function(d) {
+                return d.x;
+            })
+            .attr('cy', function(d) {
+                return d.y;
+            })
+            .on("mouseover", function(d) {
+                d3.select(this)
+                    .style('opacity', 1);
+
+                div.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+
+                div.html(d.item)
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+                })
+            .on("mouseout", function(d) {
+                d3.select(this)
+                    .style('opacity', 0.8);
+
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+                })
+
+          u.exit().remove();
+        }
+    }
+  </script>
+</body>
+</html>
