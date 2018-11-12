@@ -26,6 +26,8 @@ let colors = [
 
 let tooltip = d3.select("#tooltip");
 
+let totalHours = 0;
+
 const circleSizes = [
   {
     hours: 250,
@@ -68,22 +70,25 @@ d3.csv("nasa.csv", function(d, i, columns) {
   
   for (var i = 0; i < years.length; i++) {
     var count = 0;
+    var hours = 0;
     
     for (var j = 0; j < data.length; j++) { 
-        if(data[j].year === years[i]) count++;
+        if(data[j].year === years[i]) {
+          count++;
+          hours += data[j].hours;
+          totalHours += data[j].hours;
+        }
     }
 
     yearCount.push({
       year: +years[i],
-      count: count
+      count: count,
+      color: colors[i],
+      hours: hours,
     })
   }
 
-  // svg.append('text')
-  //   .text(yearCount[0].year)
-  //   .attr('x', 500)
-  //   .attr('y', 500)
-  //   .style('fill', 'white');
+  $('#flightTime').html(totalHours.toLocaleString());
 
   buildBurst(data);
   
@@ -219,19 +224,18 @@ function buildBurst(data) {
         .duration(500)
         .style('opacity', 0);
     })
-
 }
 
 function buildLine(data, years) {
-  var margin = {top: 20, right: 20, bottom: 30, left: 20},
-      width = 1460 - margin.left - margin.right,
-      height = 250 - margin.top - margin.bottom;
+  var margin = {top: 60, right: 20, bottom: 30, left: 60},
+      width = 300 - margin.left - margin.right,
+      height = 920 - margin.top - margin.bottom;
 
-  var x = d3.scaleBand()
-            .range([0, width])
+  var y = d3.scaleBand()
+            .range([height, 0])
             .padding(0.1);
-  var y = d3.scaleLinear()
-            .range([height, 0]);
+  var x = d3.scaleLinear()
+            .range([0, width]);
             
   var svg = d3.select("#bar svg")
       .attr("width", width + margin.left + margin.right)
@@ -240,31 +244,63 @@ function buildLine(data, years) {
       .attr("transform", 
             "translate(" + margin.left + "," + margin.top + ")");
 
-    x.domain(d3.range(1958, 2011));
-    y.domain([0, d3.max(data, function(d) { return d.count; })]);
+    y.domain(d3.range(1958, 2011));
+    x.domain([0, d3.max(data, function(d) { return d.count; })]);
 
     // append the rectangles for the bar chart
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")
         .attr("class", "bar")
-        .attr("x", function(d) { return x(d.year); })
-        .attr("width", x.bandwidth())
-        .attr("y", function(d) { return y(d.count); })
-        .attr("height", function(d) { return height - y(d.count); });
+        // .attr("x", function(d) { return x(d.year); })
+        // .attr("width", x.bandwidth())
+        // .attr("y", function(d) { return y(d.count); })
+        // .attr("height", function(d) { return height - y(d.count); })
+        .attr("width", function(d) {return x(d.count); } )
+        .attr("y", function(d) { return y(d.year); })
+        .attr("height", y.bandwidth())
+        .attr('fill', (d) => d.color)
+        .on('mouseover', function(d) {
+          $('.group').hide();
+
+          let groupClass = `.group-${d.year}`;
+
+          $(groupClass).show();
+          $('#flightTime').text(d.hours.toLocaleString());
+        })
+        .on('mouseout', function(d) {
+          $('.group').show();
+          $('#flightTime').text(totalHours.toLocaleString());
+        });
         
     svg.selectAll("text")
         .data(data)
       .enter().append('text')
         .text(function(d) { return d.count;})
-        .attr("x", function(d) { return x(d.year) + 11; })
-        .attr("y", function(d) { return y(d.count) + 15; })
+        .attr("y", function(d) { return y(d.year) + 11; })
+        .attr("x", function(d) { return x(d.count) + 15; })
         .style("text-anchor", "middle")
         .style("fill", "white")
         .attr('font-size', '10px');
 
     // add the x Axis
+    // svg.append("g")
+    //     .attr("transform", "translate(0," + height + ")")
+    //     .call(d3.axisBottom(x).tickValues(years).tickSizeOuter(0));
+
+    // add the y Axis
     svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x).tickValues(years).tickSizeOuter(0));
+        .call(d3.axisLeft(y).tickValues(years).tickSizeOuter(0));
+
+    svg.append('text')
+      .text('year')
+      .attr('x',-33)
+      .attr('y',-5)
+      .style('font-size', '10px');
+
+    svg.append('text')
+      .text('# of astronauts selected')
+      .attr('x',3)
+      .attr('y',-5)
+      .style('font-size', '10px');
 }
