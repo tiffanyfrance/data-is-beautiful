@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700i|Roboto" rel="stylesheet">
+<style>
+    * {
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .tick line {
+      visibility: hidden;
+    }
+
+</style>
+<body>
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script>
+
+var margin = {top: 250, right: 10, bottom: 250, left: 10},
+    width = 1400 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+d3.csv("nasa.csv", function(error, data) {
+    
+    var svg = d3.select("body").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var x = d3.scaleLinear()
+        .domain([1958, 2010])
+        .range([0, width]);
+
+    var xAxis = d3.axisBottom()
+        .scale(x);
+
+    var unique = [...new Set(data.map(data => data['Selection Year']))];
+
+    let years = Array.from(unique);
+
+    xAxis.tickValues(years).tickSizeOuter(0).tickFormat(d3.format("d"));
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.selectAll('circle')
+        .data(data)
+        .enter()
+        .append('circle')
+        .attr('cx', (d) => {
+          return x(d['Selection Year']);
+        })
+        .attr('cy', 0)
+        .attr('r', 3)
+        .attr('fill', 'red');
+
+    for (var i = 0; i < years.length; i++) {
+        var count = 0;
+        
+        for (var j = 0; j < data.length; j++) { 
+            if(data[j]['Selection Year'] === years[i]) count++;
+        }
+
+        svg.append('text')
+            .text(`(${count})`)
+            .attr('x', (d) => {
+              return x(years[i]);
+            })
+            .attr('y', 30)
+            .style("text-anchor", "middle")
+            .attr('font-size', '10px');
+    }
+
+});
+
+</script>
