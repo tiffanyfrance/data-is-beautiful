@@ -1,4 +1,7 @@
-
+/* Astronauts in Space
+ * Author: Tiffany France
+ *
+*/
 
 // let colors = d3.schemeCategory20;
 let colors = [
@@ -27,6 +30,8 @@ let colors = [
 let tooltip = d3.select("#tooltip");
 
 let totalHours = 0;
+
+var selectedGroup = null;
 
 const circleSizes = [
   {
@@ -59,9 +64,6 @@ d3.csv("nasa.csv", function(d, i, columns) {
     year: d['Selection Year'],
   }
 }, function(error, data) {
-  console.log(data);
-
-
   var yearCount = [];
 
   var unique = [...new Set(data.map(data => data.year))];
@@ -165,19 +167,6 @@ function buildBurst(data) {
     .append('g')
     .attr('class', (d) => `group group-${d.year}`);
 
-  // astronaut
-  //   .append('text')
-  //   .text((d) => d.year)
-  //   .attr('fill','#fff')
-  //   /* cosine * radius of base circle  */
-  //   .attr('x', (d,i) => {
-  //     return 10 + (20 * i);
-  //   })
-  //   /* sine * radius of base circle  */
-  //   .attr('y', (d) => {
-  //     return Math.sin(d.angle) * d.dist;
-  //   });
-
   astronaut
     .selectAll('circle')
     .data((d) => {
@@ -232,7 +221,7 @@ function buildLine(data, years) {
       height = 920 - margin.top - margin.bottom;
 
   var y = d3.scaleBand()
-            .range([height, 0])
+            .range([0, height])
             .padding(0.1);
   var x = d3.scaleLinear()
             .range([0, width]);
@@ -247,30 +236,31 @@ function buildLine(data, years) {
     y.domain(d3.range(1958, 2011));
     x.domain([0, d3.max(data, function(d) { return d.count; })]);
 
-    // append the rectangles for the bar chart
     svg.selectAll(".bar")
         .data(data)
       .enter().append("rect")
         .attr("class", "bar")
-        // .attr("x", function(d) { return x(d.year); })
-        // .attr("width", x.bandwidth())
-        // .attr("y", function(d) { return y(d.count); })
-        // .attr("height", function(d) { return height - y(d.count); })
         .attr("width", function(d) {return x(d.count); } )
         .attr("y", function(d) { return y(d.year); })
         .attr("height", y.bandwidth())
         .attr('fill', (d) => d.color)
-        .on('mouseover', function(d) {
-          $('.group').hide();
-
-          let groupClass = `.group-${d.year}`;
-
-          $(groupClass).show();
-          $('#flightTime').text(d.hours.toLocaleString());
+        .on("click", function(d) {
+          if (selectedGroup === d) {
+            selectedGroup = null;
+            hideGroup(d);
+          } else {
+            selectedGroup = d;
+            showGroup(d);
+          }
+          d3.event.stopPropagation();
         })
-        .on('mouseout', function(d) {
-          $('.group').show();
-          $('#flightTime').text(totalHours.toLocaleString());
+        .on('mouseover', showGroup)
+        .on('mouseout', (d) => {
+          hideGroup(d);
+
+          if (selectedGroup !== null) {
+            showGroup(selectedGroup);
+          }
         });
         
     svg.selectAll("text")
@@ -283,12 +273,6 @@ function buildLine(data, years) {
         .style("fill", "white")
         .attr('font-size', '10px');
 
-    // add the x Axis
-    // svg.append("g")
-    //     .attr("transform", "translate(0," + height + ")")
-    //     .call(d3.axisBottom(x).tickValues(years).tickSizeOuter(0));
-
-    // add the y Axis
     svg.append("g")
         .call(d3.axisLeft(y).tickValues(years).tickSizeOuter(0));
 
@@ -304,3 +288,21 @@ function buildLine(data, years) {
       .attr('y',-5)
       .style('font-size', '10px');
 }
+
+function showGroup(d) {
+  $('.group').hide();
+
+  let groupClass = `.group-${d.year}`;
+
+  $(groupClass).show();
+  $('#flightTime').text(d.hours.toLocaleString());
+}
+
+function hideGroup(d) {
+  $('.group').show();
+  $('#flightTime').text(totalHours.toLocaleString());
+}
+
+$('body').click(() => {
+  hideGroup(selectedGroup);
+});
