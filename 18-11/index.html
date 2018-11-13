@@ -1,107 +1,15 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i|Roboto" rel="stylesheet">
-<style>
-  body {
-    background: #333;
-  }
-
-  .viz {
-    min-width: 1620px;
-  }
-
-  svg, #tooltip {
-    font-family: 'Roboto', sans-serif;
-  }
-
-  h1, h2 {
-    color: #fff;
-    font-family: 'Playfair Display', serif;
-    position: relative; 
-    left: -50%;
-    top: 300px;
-    font-size: 70px;
-    text-align: center;
-    line-height: 1.25;
-    font-style: italic;
-  }
-
-  h1 div {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight:400;
-    font-style: normal;
-    padding-top: 10px;
-  }
-
-  h2 {
-    font-size: 20px;
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  #tooltip {
-    position: absolute;
-    background: #fff;
-    padding: 2px 10px;
-    border-radius: 3px;
-    font-size: 10px;
-    color: #333;
-  }
-  a, a:visited {
-    color: lightsteelblue;
-  }
-  a:hover {
-    color: lightyellow;
-  }
-
-  .legend {
-    position: absolute;
-    top: 560px;
-    left: -210px;
-  }
-
-  .notes {
-    clear: both;
-    font-size: 12px;
-    font-family: 'Roboto', sans-serif;
-    color: #fff;
-    -webkit-column-count: 3; /* Chrome, Safari, Opera */
-    -moz-column-count: 3; /* Firefox */
-    column-count: 3;
-    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
-    -moz-column-gap: 40px; /* Firefox */
-    column-gap: 40px;
-    padding: 50px 100px 100px;
-  }
-
-
-  #bar * {
-    color: white;
-  }
-  
-  #bar text {
-    fill: white;
-  }
-
-  #bar line {
-    visibility: hidden;
-  }
-
-  #bar path {
-    stroke: #444;
-  }
-</style>
+<link rel="stylesheet" href="main.css">
 <body>
   <div class="viz">
-    <div style="float:left; width:1300px;position:relative;">
-      <div style="position: absolute;left: 50%; z-index: -1;">
+    <div class="burst">
+      <div class="burst-text">
         <h2>Total hours of space flight: <span id="flightTime"></span></h2>
         <h1>Spacing Out<br />
           <div>
             NASA astronaut data from 1959-2009<br />
-            <!-- by <a href="https://bl.ocks.org/tiffylou">Tiffany France</a> | 
-            <a href="https://docs.google.com/spreadsheets/d/1kG9Jwknb6siBk0nm8lW40ltkJQuXPekc8zXikXp-rdg/edit?hl=en_US&hl=en_US#gid=0">Data</a> -->
           </div>
         </h1>
         <div class="legend">
@@ -110,13 +18,12 @@
       </div>
 
       <div id="burst" style="text-align: center;">
-        <svg width="1200" height="1100" font-family="sans-serif" font-size="10" style="margin: 0 auto;"></svg>
+        <svg width="1180" height="1100"></svg>
       </div> 
     </div>
 
-
-    <div id="bar" style="text-align: center;float:left;">
-      <svg width="1200" height="1100"></svg>
+    <div id="bar">
+      <svg width="260" height="1100"></svg>
     </div>
   </div>
 
@@ -150,7 +57,7 @@
       I initially laid out the bar graph as a traditional vertical bar chart. I had an irrisitable urge to click on the bars and see some kind of action with the burst visualization above. The urge was so strong that I decided to convert the bar chart to a horizontal bar chart, float it beside the burst chart, and add a mouseover that would correspond to the applicable year pie segment in the burst chart. This is the type of iteration that comes from building a visualization and then testing it. I find it is nearly impossible to build a solid visual experience based on sketching in Illustrator or Sketch. One must use the visualization to know if it is successful. One must use the visualization to know how it can be improved.
     </p>
     <p>
-      A couple of TODOs, if I find some free time (jokes!), would be: [1] on('click') to function like the mouseover when interacting between the two charts. Ideally, clicking one of the bars would "freeze" the burst state so that you could interact with the selection (view the tooltip information). [2] Responsive web design/mobile considerations. Currently this page is meant to render only on a large desktop screen (min-width: 1620px). [3] Complete the other prototyped charts which may give further insight to this data set [4] Add labels around the circle for each group. [5] Code cleanup and refactoring.
+      A few of TODOs, if I find some free time (jokes!), would be: <span style="text-decoration: line-through;">[1] on('click') to function like the mouseover when interacting between the two charts. Ideally, clicking one of the bars would "freeze" the burst state so that you could interact with the selection (view the tooltip information).</span> [2] Responsive web design/mobile considerations. Currently this page is meant to render only on a large desktop screen (min-width: 1440px). [3] Complete the other prototyped charts which may give further insight to this data set [4] Add labels around the circle for each group. [5] Code cleanup and refactoring. [6] Share insights as a bl.ock or on observable.
     </p>
     <p>
       I set a strict 8-hour maximum for this project. There were many things that I wanted to include, but either because of time restrictions or difficulty, those items were abandoned. A side effect of this time limit was that the idea was simplified to fit into the 8 hour limit, which had the effect of making the visualization very different than the original sketches/ideas. In the end I was happy with the concessions because, as I often find, the simplier the visualization, the more effective the message.

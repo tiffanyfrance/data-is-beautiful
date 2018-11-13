@@ -90,7 +90,7 @@ d3.csv("nasa.csv", function(d, i, columns) {
     })
   }
 
-  $('#flightTime').html(totalHours.toLocaleString());
+  $('#flightTime').html(totalHours.toLocaleString() + ' hrs');
 
   buildBurst(data);
   
@@ -216,8 +216,8 @@ function buildBurst(data) {
 }
 
 function buildLine(data, years) {
-  var margin = {top: 60, right: 20, bottom: 30, left: 60},
-      width = 300 - margin.left - margin.right,
+  var margin = {top: 60, right: 35, bottom: 0, left: 30},
+      width = 260 - margin.left - margin.right,
       height = 920 - margin.top - margin.bottom;
 
   var y = d3.scaleBand()
@@ -295,12 +295,12 @@ function showGroup(d) {
   let groupClass = `.group-${d.year}`;
 
   $(groupClass).show();
-  $('#flightTime').text(d.hours.toLocaleString());
+  $('#flightTime').text(d.hours.toLocaleString() + ' hrs');
 }
 
 function hideGroup(d) {
   $('.group').show();
-  $('#flightTime').text(totalHours.toLocaleString());
+  $('#flightTime').text(totalHours.toLocaleString() + ' hrs');
 }
 
 $('body').click(() => {
