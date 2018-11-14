@@ -71,6 +71,7 @@ d3.csv('nasa.csv', function(d, i, columns) {
     group: (+d[' Group'] - 1),
     name: d['Astronaut'],
     year: d['Selection Year'],
+    status: d['Status'],
   }
 }, function(error, data) {
   var yearCount = [];
@@ -214,6 +215,9 @@ function buildBurst(data, yearCount) {
         
       tooltip.select('#name')
         .text(d.name);
+
+      tooltip.select('#status')
+        .text(d.status)
 
       tooltip
         .transition()
