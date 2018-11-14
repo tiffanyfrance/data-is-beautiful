@@ -18,7 +18,7 @@ h1, h2 {
   font-family: 'Playfair Display', serif;
   position: relative; 
   left: -50%;
-  top: 300px;
+  top: 320px;
   font-size: 70px;
   text-align: center;
   line-height: 1.25;
@@ -78,7 +78,7 @@ a:hover {
 
 .legend {
   position: absolute;
-  top: 500px;
+  top: 520px;
   left: -210px;
 }
 

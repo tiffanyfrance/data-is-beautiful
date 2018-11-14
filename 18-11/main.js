@@ -107,7 +107,7 @@ d3.csv('nasa.csv', function(d, i, columns) {
 
   buildBurst(data, yearCount);
   
-  buildLine(yearCount, years);
+  buildBar(yearCount, years);
 
 });
 
@@ -250,7 +250,7 @@ function buildBurst(data, yearCount) {
     .attr('class', (d) => `group group-${d.year}`);
 }
 
-function buildLine(data, years) {
+function buildBar(data, years) {
   var margin = {top: 100, right: 35, bottom: 60, left: 33},
       width = 260 - margin.left - margin.right,
       height = 920 - margin.top - margin.bottom;
