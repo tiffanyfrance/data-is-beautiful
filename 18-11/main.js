@@ -3,6 +3,15 @@
  *
 */
 
+// $(document).ready(function() {
+//   let hint = `<div style="font-family: 'roboto',sans-serif;font-size: 11px;position: relative;left: -50%;
+//     top: 340px;color: #fff;">
+//     hover circles of burst for specific astronaut data</div>`;
+
+//   $('.burst-text').append(hint).fadeIn(2000);
+
+// });
+
 // let colors = d3.schemeCategory20;
 let colors = [
   '#FF0000',
@@ -27,7 +36,7 @@ let colors = [
   '#FF0065',
 ];
 
-let tooltip = d3.select("#tooltip");
+let tooltip = d3.select('#tooltip');
 
 let totalHours = 0;
 
@@ -56,7 +65,7 @@ const circleSizes = [
   }
 ];
 
-d3.csv("nasa.csv", function(d, i, columns) {
+d3.csv('nasa.csv', function(d, i, columns) {
   return {
     hours: +d['Cumulative hours of space flight time'],
     group: (+d[' Group'] - 1),
@@ -66,9 +75,10 @@ d3.csv("nasa.csv", function(d, i, columns) {
 }, function(error, data) {
   var yearCount = [];
 
-  var unique = [...new Set(data.map(data => data.year))];
+  let years = [...new Set(data.map(data => data.year))];
 
-  let years = Array.from(unique);
+  let sumAstronuats = 0;
+  let totalAstronauts = data.length;
   
   for (var i = 0; i < years.length; i++) {
     var count = 0;
@@ -87,23 +97,26 @@ d3.csv("nasa.csv", function(d, i, columns) {
       count: count,
       color: colors[i],
       hours: hours,
-    })
+      angle: ((sumAstronuats + (count / 2)) / totalAstronauts) * 2 * Math.PI
+    });
+
+    sumAstronuats += count;
   }
 
   $('#flightTime').html(totalHours.toLocaleString() + ' hrs');
 
-  buildBurst(data);
+  buildBurst(data, yearCount);
   
   buildLine(yearCount, years);
 
 });
 
 
-function buildBurst(data) {
+function buildBurst(data, yearCount) {
 
-  let svg = d3.select("#burst svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height")
+  let svg = d3.select('#burst svg'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height')
     baseRadius = 350;
 
   let base = svg.append('g')
@@ -154,9 +167,9 @@ function buildBurst(data) {
   }
 
   base.append('circle')
-    .attr("fill", "none")
-    .attr("stroke", "none")
-    .attr("r", baseRadius);
+    .attr('fill', 'none')
+    .attr('stroke', 'none')
+    .attr('r', baseRadius);
 
   let dataCircles = base.append('g')
     .attr('class', 'data-circles');
@@ -188,18 +201,18 @@ function buildBurst(data) {
     .attr('stroke-width', 1)
     .on('mouseover', function(d) {
       tooltip
-        .style("left", (d3.event.pageX + 10) + "px")
-        .style("top", (d3.event.pageY + 10) + "px");
+        .style('left', (d3.event.pageX + 10) + 'px')
+        .style('top', (d3.event.pageY + 10) + 'px');
 
       tooltip
-        .select("#group")
-        .text("#" + (d.group + 1) + " - " + d.year);
+        .select('#group')
+        .text('#' + (d.group + 1) + ' - ' + d.year);
 
       tooltip
-        .select("#hours")
+        .select('#hours')
         .text(d.hours);
         
-      tooltip.select("#name")
+      tooltip.select('#name')
         .text(d.name);
 
       tooltip
@@ -207,44 +220,66 @@ function buildBurst(data) {
         .duration(500)
         .style('opacity', 1);
     })
-    .on("mouseout", function(d) {
+    .on('mouseout', function(d) {
       tooltip
         .transition()
         .duration(500)
         .style('opacity', 0);
+    });
+
+  const labelRadius = baseRadius * 0.94;
+
+  let groupLabels = base.append('g')
+    .attr('class', 'group-labels');
+
+  groupLabels.selectAll('g')
+    .data(yearCount)
+    .enter()
+    .append('text')
+    .text((d) => d.year)
+    .attr('text-anchor', 'middle')
+    .attr('transform', function(d) {
+      let angle = startAngle + d.angle;
+      let x = Math.cos(angle) * labelRadius;
+      let y = Math.sin(angle) * labelRadius;
+      let rotate = (angle * (180 / Math.PI)) + 90;
+      return `translate(${x},${y})rotate(${rotate})`;
     })
+    .attr('fill', '#ccc')
+    .style('font-size', '12px')
+    .attr('class', (d) => `group group-${d.year}`);
 }
 
 function buildLine(data, years) {
-  var margin = {top: 60, right: 35, bottom: 0, left: 30},
+  var margin = {top: 100, right: 35, bottom: 60, left: 33},
       width = 260 - margin.left - margin.right,
       height = 920 - margin.top - margin.bottom;
 
   var y = d3.scaleBand()
             .range([0, height])
-            .padding(0.1);
+            .padding(0.35);
   var x = d3.scaleLinear()
             .range([0, width]);
             
-  var svg = d3.select("#bar svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", 
-            "translate(" + margin.left + "," + margin.top + ")");
+  var svg = d3.select('#bar svg')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+      .attr('transform', 
+            'translate(' + margin.left + ',' + margin.top + ')');
 
     y.domain(d3.range(1958, 2011));
     x.domain([0, d3.max(data, function(d) { return d.count; })]);
 
-    svg.selectAll(".bar")
+    svg.selectAll('.bar')
         .data(data)
-      .enter().append("rect")
-        .attr("class", "bar")
-        .attr("width", function(d) {return x(d.count); } )
-        .attr("y", function(d) { return y(d.year); })
-        .attr("height", y.bandwidth())
+      .enter().append('rect')
+        .attr('class', 'bar')
+        .attr('width', function(d) {return x(d.count); } )
+        .attr('y', function(d) { return y(d.year); })
+        .attr('height', y.bandwidth())
         .attr('fill', (d) => d.color)
-        .on("click", function(d) {
+        .on('click', function(d) {
           if (selectedGroup === d) {
             selectedGroup = null;
             hideGroup(d);
@@ -263,17 +298,17 @@ function buildLine(data, years) {
           }
         });
         
-    svg.selectAll("text")
+    svg.selectAll('text')
         .data(data)
       .enter().append('text')
         .text(function(d) { return d.count;})
-        .attr("y", function(d) { return y(d.year) + 11; })
-        .attr("x", function(d) { return x(d.count) + 15; })
-        .style("text-anchor", "middle")
-        .style("fill", "white")
+        .attr('y', function(d) { return y(d.year) + 8; })
+        .attr('x', function(d) { return x(d.count) + 10; })
+        .style('text-anchor', 'middle')
+        .style('fill', 'white')
         .attr('font-size', '10px');
 
-    svg.append("g")
+    svg.append('g')
         .call(d3.axisLeft(y).tickValues(years).tickSizeOuter(0));
 
     svg.append('text')

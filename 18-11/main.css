@@ -39,6 +39,12 @@ h2 {
   font-style: normal;
 }
 
+p {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  font-size: 12px;
+}
+
 #tooltip {
   position: absolute;
   background: #fff;
@@ -69,7 +75,7 @@ a:hover {
 
 .legend {
   position: absolute;
-  top: 560px;
+  top: 500px;
   left: -210px;
 }
 
@@ -110,4 +116,12 @@ a:hover {
 
 #bar path {
   stroke: #444;
+}
+
+.bar {
+  cursor: pointer;
+}
+
+.group {
+  cursor: pointer
 }
