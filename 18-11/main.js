@@ -242,11 +242,15 @@ function buildBurst(data, yearCount) {
 
       tooltip
         .select('#group')
-        .text('#' + (d.group + 1) + ' - ' + d.year);
+        .text('#' + (d.group + 1));
+
+      tooltip
+        .select('#year')
+        .text(d.year);
 
       tooltip
         .select('#hours')
-        .text(d.hours);
+        .text(d.hours.toLocaleString());
         
       tooltip.select('#name')
         .text(d.name);
