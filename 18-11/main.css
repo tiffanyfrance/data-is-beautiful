@@ -82,6 +82,10 @@ a:hover {
   left: -210px;
 }
 
+.legend p {
+  font-size: 14px;
+}
+
 #flightTime {
   color: #00B0FF;
 }

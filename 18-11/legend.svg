@@ -1,44 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="417px" height="12px" viewBox="0 0 417 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="456px" height="15px" viewBox="0 0 456 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
     <title>Group</title>
     <desc>Created with Sketch.</desc>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="Group" transform="translate(1.000000, -3.000000)">
             <g id="Group-7">
-                <circle id="Oval" stroke="#FF0000" fill-rule="nonzero" cx="1.5" cy="7.5" r="1.5"></circle>
-                <text id="0-flights" font-family="SourceSansPro-SemiBold, Source Sans Pro" font-size="12" font-weight="500" fill="#F2F2F2">
-                    <tspan x="10" y="12">0 flights</tspan>
+                <circle id="Oval" stroke="#FF0000" fill-rule="nonzero" cx="1.5" cy="9.5" r="1.5"></circle>
+                <text id="0-flights" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="14" font-weight="normal" fill="#F2F2F2">
+                    <tspan x="10" y="14">0 flights</tspan>
                 </text>
             </g>
-            <g id="Group-6" transform="translate(70.000000, 0.000000)">
-                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="2.5" cy="8.5" r="2.5"></circle>
-                <text id="250-hours" font-family="SourceSansPro-SemiBold, Source Sans Pro" font-size="12" font-weight="500" fill="#F2F2F2">
-                    <tspan x="12" y="12">250 hours</tspan>
+            <g id="Group-6" transform="translate(74.000000, 0.000000)">
+                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="2.5" cy="10.5" r="2.5"></circle>
+                <text id="250-hours" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="14" font-weight="normal" fill="#F2F2F2">
+                    <tspan x="12" y="14">250 hours</tspan>
                 </text>
             </g>
-            <g id="Group-2" transform="translate(151.000000, 0.000000)">
-                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="2" cy="8" r="2"></circle>
-                <text id="100-hours" font-family="SourceSansPro-SemiBold, Source Sans Pro" font-size="12" font-weight="500" fill="#F2F2F2">
-                    <tspan x="9" y="12">100 hours</tspan>
+            <g id="Group-2" transform="translate(165.000000, 0.000000)">
+                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="2" cy="10" r="2"></circle>
+                <text id="100-hours" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="14" font-weight="normal" fill="#F2F2F2">
+                    <tspan x="9" y="14">100 hours</tspan>
                 </text>
             </g>
-            <g id="Group-3" transform="translate(229.000000, 0.000000)">
-                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="1.5" cy="7.5" r="1.5"></circle>
-                <text id="50-hours" font-family="SourceSansPro-SemiBold, Source Sans Pro" font-size="12" font-weight="500" fill="#F2F2F2">
-                    <tspan x="8" y="12">50 hours</tspan>
+            <g id="Group-3" transform="translate(253.000000, 0.000000)">
+                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="1.5" cy="9.5" r="1.5"></circle>
+                <text id="50-hours" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="14" font-weight="normal" fill="#F2F2F2">
+                    <tspan x="8" y="14">50 hours</tspan>
                 </text>
             </g>
-            <g id="Group-4" transform="translate(300.000000, 0.000000)">
-                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="1" cy="7" r="1"></circle>
-                <text id="10-hours" font-family="SourceSansPro-SemiBold, Source Sans Pro" font-size="12" font-weight="500" fill="#F2F2F2">
-                    <tspan x="8" y="12">10 hours</tspan>
+            <g id="Group-4" transform="translate(328.000000, 0.000000)">
+                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="1" cy="9" r="1"></circle>
+                <text id="10-hours" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="14" font-weight="normal" fill="#F2F2F2">
+                    <tspan x="8" y="14">10 hours</tspan>
                 </text>
             </g>
-            <g id="Group-5" transform="translate(371.000000, 0.000000)">
-                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="0.5" cy="6.5" r="1"></circle>
-                <text id="1-hours" font-family="SourceSansPro-SemiBold, Source Sans Pro" font-size="12" font-weight="500" fill="#F2F2F2">
-                    <tspan x="7" y="12">1 hours</tspan>
+            <g id="Group-5" transform="translate(405.000000, 0.000000)">
+                <circle id="Oval" stroke="#FF0000" fill="#FF0000" fill-rule="nonzero" cx="0.5" cy="8.5" r="1"></circle>
+                <text id="1-hours" font-family="SourceSansPro-Regular, Source Sans Pro" font-size="14" font-weight="normal" fill="#F2F2F2">
+                    <tspan x="7" y="14">1 hours</tspan>
                 </text>
             </g>
         </g>
