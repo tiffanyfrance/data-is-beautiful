@@ -51,6 +51,9 @@ p {
   padding: 2px 10px;
   border-radius: 3px;
   font-size: 10px;
+}
+
+#tooltip p {
   color: #333;
 }
 
@@ -118,10 +121,10 @@ a:hover {
   stroke: #444;
 }
 
-.bar {
+#bar .bar {
   cursor: pointer;
 }
 
-.group {
+#bar .group {
   cursor: pointer
 }
