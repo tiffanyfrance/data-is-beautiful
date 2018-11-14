@@ -86,20 +86,6 @@ a:hover {
   color: #00B0FF;
 }
 
-.notes {
-  clear: both;
-  font-size: 12px;
-  font-family: 'Roboto', sans-serif;
-  color: #fff;
-  -webkit-column-count: 3; /* Chrome, Safari, Opera */
-  -moz-column-count: 3; /* Firefox */
-  column-count: 3;
-  -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
-  -moz-column-gap: 40px; /* Firefox */
-  column-gap: 40px;
-  padding: 50px 100px 100px;
-}
-
 #bar {
    text-align: center;
    float:left;
@@ -127,4 +113,72 @@ a:hover {
 
 #bar .group {
   cursor: pointer
+}
+
+
+#mostFlights {
+  clear: both;
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+
+#mostFlights h3 {
+  text-align: center;
+  padding-top: 50px;
+  font-size: 30px; 
+  color: #fff;
+  font-weight: normal;
+}
+
+#mostFlights .row-flex {
+  display: flex;
+  padding: 0px 100px 100px;
+}
+
+#mostFlights p {
+  font-size: 14px;
+}
+
+#mostFlights .hours {
+  font-weight: bold;
+}
+
+#mostFlights p.big-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+}
+
+.num-bar {
+  height: 10px;
+  display:block;
+  margin: 10px 10px 10px 0px;
+}
+
+.col-5 {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: calc(100% - 20px);
+}
+
+hr {
+   margin: 0 auto;
+   max-width: 80%;
+   border: solid 0.25px #444;
+   margin-top: 50px;
+   margin-bottom: 60px;
+}
+
+.notes {
+  clear: both;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+  -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+  -moz-column-gap: 40px; /* Firefox */
+  column-gap: 40px;
+  padding: 50px 100px 100px;
 }

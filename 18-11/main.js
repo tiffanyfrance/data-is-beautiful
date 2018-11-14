@@ -72,6 +72,9 @@ d3.csv('nasa.csv', function(d, i, columns) {
     name: d['Astronaut'],
     year: d['Selection Year'],
     status: d['Status'],
+    gender: d['Gender'],
+    dob: d['Date of birth'],
+    missions: d['Missions flown'],
   }
 }, function(error, data) {
   var yearCount = [];
@@ -110,7 +113,39 @@ d3.csv('nasa.csv', function(d, i, columns) {
   
   buildBar(yearCount, years);
 
+  buildRank(data, yearCount);
+
 });
+
+
+function buildRank(data, yearCount) {
+
+  let sortedData = data.sort(function(a, b) {
+    return b.hours - a.hours;
+  });
+
+  let topResults = sortedData.slice(0, 6);
+
+  for (var i = 0; i < topResults.length; i++) {
+
+    var elem = $('#a-' + i),
+      t = topResults[i],
+      w = ((t.hours / topResults[0].hours) * 100) * 0.8,
+      c = yearCount[t.group].color;
+
+      $(elem).find('.hours').text(t.hours.toLocaleString());
+      $(elem).find('.num-bar').css('width', w + '%');
+      $(elem).find('.num-bar').css('background', c);
+      $(elem).find('.name').text(t.name);
+      $(elem).find('.year').text(t.year);
+      $(elem).find('.group').text(t.group);
+      $(elem).find('.status').text(t.status);
+      $(elem).find('.gender').text(t.gender);
+      $(elem).find('.dob').text(t.dob);
+      $(elem).find('.missions').text(t.missions);
+  }
+
+}
 
 
 function buildBurst(data, yearCount) {
