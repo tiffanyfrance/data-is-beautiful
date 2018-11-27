@@ -1,16 +1,8 @@
-/* Astronauts in Space
+/* 
+ * Title: Spacing out
+ * Description: A look at astronauts in space 1959-2009
  * Author: Tiffany France
- *
 */
-
-// $(document).ready(function() {
-//   let hint = `<div style="font-family: 'roboto',sans-serif;font-size: 11px;position: relative;left: -50%;
-//     top: 340px;color: #fff;">
-//     hover circles of burst for specific astronaut data</div>`;
-
-//   $('.burst-text').append(hint).fadeIn(2000);
-
-// });
 
 // let colors = d3.schemeCategory20;
 let colors = [
@@ -289,7 +281,6 @@ function buildBurst(data, yearCount) {
       return `translate(${x},${y})rotate(${rotate})`;
     })
     .attr('fill', '#ccc')
-    .style('font-size', '12px')
     .attr('class', (d) => `group group-${d.year}`);
 }
 
@@ -348,8 +339,7 @@ function buildBar(data, years) {
         .attr('y', function(d) { return y(d.year) + 8; })
         .attr('x', function(d) { return x(d.count) + 10; })
         .style('text-anchor', 'middle')
-        .style('fill', 'white')
-        .attr('font-size', '10px');
+        .style('fill', 'white');
 
     svg.append('g')
         .call(d3.axisLeft(y).tickValues(years).tickSizeOuter(0));
@@ -357,14 +347,12 @@ function buildBar(data, years) {
     svg.append('text')
       .text('year')
       .attr('x',-33)
-      .attr('y',-5)
-      .style('font-size', '10px');
+      .attr('y',-5);
 
     svg.append('text')
       .text('# of astronauts selected')
       .attr('x',3)
-      .attr('y',-5)
-      .style('font-size', '10px');
+      .attr('y',-5);
 }
 
 function showGroup(d) {

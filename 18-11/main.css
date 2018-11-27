@@ -1,6 +1,7 @@
 body {
   background: #333;
   min-width: 1440px;
+  font-size: 12px;
 }
 
 .viz {
@@ -82,9 +83,9 @@ a:hover {
   left: -210px;
 }
 
-.legend p {
+/*.legend p {
   font-size: 14px;
-}
+}*/
 
 #flightTime {
   color: #00B0FF;
@@ -139,10 +140,10 @@ a:hover {
   padding: 0px 100px 100px;
 }
 
-#mostFlights p {
+/*#mostFlights p {
   font-size: 14px;
   line-height: 1.5;
-}
+}*/
 
 #mostFlights .hours {
   font-weight: bold;
