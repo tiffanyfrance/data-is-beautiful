@@ -127,15 +127,16 @@ a:hover {
   padding-bottom: 20px;
 }
 
-#mostFlights h3 {
+h3 {
   text-align: center;
   padding-top: 50px;
-  font-size: 30px; 
+  font-size: 28px; 
   color: #fff;
   font-weight: normal;
+  margin-bottom: 0px;
 }
 
-#mostFlights .row-flex {
+.row-flex {
   display: flex;
   padding: 0px 100px 100px;
 }
@@ -152,6 +153,7 @@ a:hover {
 #mostFlights p.big-number {
   font-family: 'Playfair Display', serif;
   font-size: 30px;
+  margin-bottom: 0px;
 }
 
 .num-bar {
@@ -165,6 +167,28 @@ a:hover {
   padding-left: 10px;
   padding-right: 10px;
   width: calc(100% - 20px);
+}
+
+#roll-call {
+  padding: 0px 100px 100px;  
+}
+
+#roll-call div.col-5 {
+  float: left;
+  max-width: calc(10% - 20px);
+  height: 730px; /* TODO: fix LAZY hack */
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+#roll-call ul {
+  padding: 0px;
+  line-height: 1.5;
+  margin-top: 3px;
+}
+
+#roll-call li {
+  list-style-type: none;
 }
 
 hr {

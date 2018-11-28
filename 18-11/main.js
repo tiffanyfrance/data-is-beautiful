@@ -79,12 +79,16 @@ d3.csv('nasa.csv', function(d, i, columns) {
   for (var i = 0; i < years.length; i++) {
     var count = 0;
     var hours = 0;
+
+    var $ul = $('<ul></ul>');
     
     for (var j = 0; j < data.length; j++) { 
         if(data[j].year === years[i]) {
           count++;
           hours += data[j].hours;
           totalHours += data[j].hours;
+          
+          $ul.append(`<li>${data[j].name}</li>`);
         }
     }
 
@@ -97,6 +101,10 @@ d3.csv('nasa.csv', function(d, i, columns) {
     });
 
     sumAstronuats += count;
+
+    $str = $(`<div class="col-5"><b>${years[i]}</b><br /></div>`);
+    $str.append($ul);
+    $('#roll-call').append($str);
   }
 
   $('#flightTime').html(totalHours.toLocaleString() + ' hrs');
