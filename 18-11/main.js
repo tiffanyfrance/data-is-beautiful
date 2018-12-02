@@ -30,9 +30,8 @@ let colors = [
 
 let tooltip = d3.select('#tooltip');
 
-let totalHours = 0;
-
-var selectedGroup = null;
+let totalHours = 0,
+    selectedGroup = null;
 
 const circleSizes = [
   {
@@ -49,7 +48,7 @@ const circleSizes = [
   },
   {
     hours: 10,
-    radius: 0.5
+    radius: 0.75
   },
   {
     hours: 1,
@@ -69,22 +68,24 @@ d3.csv('nasa.csv', function(d, i, columns) {
     missions: d['Missions flown'],
   }
 }, function(error, data) {
-  var yearCount = [];
+  
+  console.log(data);
+
+  let yearCount = [],
+      sumAstronuats = 0,
+      totalAstronauts = data.length;
 
   let years = [...new Set(data.map(data => data.year))];
 
-  let sumAstronuats = 0;
-  let totalAstronauts = data.length;
-  
-  for (var i = 0; i < years.length; i++) {
-    var count = 0;
-    var hours = 0;
+  for (let i = 0; i < years.length; i++) {
+    let numAstByYear = 0,
+        hours = 0;
 
-    var $ul = $('<ul></ul>');
+    let $ul = $('<ul></ul>');
     
-    for (var j = 0; j < data.length; j++) { 
+    for (let j = 0; j < data.length; j++) { 
         if(data[j].year === years[i]) {
-          count++;
+          numAstByYear++;
           hours += data[j].hours;
           totalHours += data[j].hours;
           
@@ -94,13 +95,13 @@ d3.csv('nasa.csv', function(d, i, columns) {
 
     yearCount.push({
       year: +years[i],
-      count: count,
+      count: numAstByYear,
       color: colors[i],
       hours: hours,
-      angle: ((sumAstronuats + (count / 2)) / totalAstronauts) * 2 * Math.PI
+      angle: ((sumAstronuats + (numAstByYear / 2)) / totalAstronauts) * 2 * Math.PI
     });
 
-    sumAstronuats += count;
+    sumAstronuats += numAstByYear;
 
     $str = $(`<div class="col-5"><b>${years[i]}</b><br /></div>`);
     $str.append($ul);
@@ -126,9 +127,9 @@ function buildRank(data, yearCount) {
 
   let topResults = sortedData.slice(0, 6);
 
-  for (var i = 0; i < topResults.length; i++) {
+  for (let i = 0; i < topResults.length; i++) {
 
-    var elem = $('#a-' + i),
+    let elem = $('#a-' + i),
       t = topResults[i],
       w = ((t.hours / topResults[0].hours) * 100) * 0.8,
       c = yearCount[t.group].color;
@@ -159,7 +160,6 @@ function buildBurst(data, yearCount) {
     .attr('class','base-group')
     .attr('transform',`translate(${(width / 2)}, ${(height / 2) - 90})`);
 
-  /* theta is the letter for angle in math */
   let theta = (2 * Math.PI) / data.length;
   let startAngle = -1 * Math.PI / 2;
   const distBetween = 6;
@@ -169,8 +169,8 @@ function buildBurst(data, yearCount) {
     d.newData = [];
 
     let angle = startAngle + (i * theta);
-    let hours = d.hours;
-    let dist = baseRadius;
+    let hours = d.hours,
+        dist = baseRadius;
 
     if(hours === 0) {
       d.newData.push({
@@ -202,10 +202,10 @@ function buildBurst(data, yearCount) {
     }
   }
 
-  base.append('circle')
-    .attr('fill', 'none')
-    .attr('stroke', 'none')
-    .attr('r', baseRadius);
+  // base.append('circle')
+  //   .attr('fill', 'none')
+  //   .attr('stroke', 'none')
+  //   .attr('r', baseRadius);
 
   let dataCircles = base.append('g')
     .attr('class', 'data-circles');
@@ -293,17 +293,17 @@ function buildBurst(data, yearCount) {
 }
 
 function buildBar(data, years) {
-  var margin = {top: 100, right: 35, bottom: 60, left: 33},
+  let margin = {top: 100, right: 35, bottom: 60, left: 33},
       width = 260 - margin.left - margin.right,
       height = 920 - margin.top - margin.bottom;
 
-  var y = d3.scaleBand()
+  let y = d3.scaleBand()
             .range([0, height])
             .padding(0.35);
-  var x = d3.scaleLinear()
+  let x = d3.scaleLinear()
             .range([0, width]);
             
-  var svg = d3.select('#bar svg')
+  let svg = d3.select('#bar svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
     .append('g')
