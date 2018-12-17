@@ -25,7 +25,7 @@ let ranges = [
   },
   {
     min: 130,
-    max: 200
+    max: 161
   }
 ];
 
@@ -75,25 +75,27 @@ function createCircle(count, syear, eyear) {
       .attr('y2', y)
       .attr('stroke-width', 0.25)
       .attr('stroke', '#336699');
-
-    center.append('circle')
-      .attr('cx', 0)
-      .attr('cy', 0)
-      .attr('r', 10)
-      .attr('fill', 'rgba(255, 255, 255, 0.7)');
-
-    center.append('text')
-      .text(count)
-      .attr('x', 0)
-      .attr('y', 3)
-      .attr('text-anchor', 'middle');
-
-    center.append('text')
-      .text(syear + ' - ' + eyear)
-      .attr('x', 0)
-      .attr('y', -height/2 + 3)
-      .attr('text-anchor', 'middle');
   }
+
+  center.append('circle')
+  .attr('cx', 0)
+  .attr('cy', 0)
+  .attr('r', 10)
+  .attr('class', 'count')
+  .attr('fill', 'rgba(255, 255, 255, 0.9)');
+
+center.append('text')
+  .text(count)
+  .attr('x', 0)
+  .attr('y', 3)
+  .attr('class', 'count')
+  .attr('text-anchor', 'middle');
+
+center.append('text')
+  .text(syear + ' - ' + eyear)
+  .attr('x', 0)
+  .attr('y', -height/2 + 3)
+  .attr('text-anchor', 'middle');
 }
 
 function getRangeClass(count) {
@@ -105,3 +107,19 @@ function getRangeClass(count) {
     }
   }
 }
+
+$(function() {
+  $('.flex').append(`<div class="col"><a href="#">hide count</a></div>`);
+
+  $('a').on('click', function() {
+    if ($(this).text() === 'hide count') {
+      $(this).text('show count');
+      $('.count').css('visibility','hidden');
+    } else {
+      $(this).text('hide count');
+      $('.count').css('visibility','visible');
+    }
+
+    return false;
+  });
+})
