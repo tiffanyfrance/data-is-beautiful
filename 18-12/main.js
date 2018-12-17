@@ -109,15 +109,28 @@ function getRangeClass(count) {
 }
 
 $(function() {
-  $('.flex').append(`<div class="col"><a href="#">hide count</a></div>`);
+  $('.flex').append(`<div class="col"><a href="#" class="countin">hide count</a></div>`);
+  $('.flex').append(`<div class="col"><a href="#" class="zoomin">zoom out</a></div>`)
 
-  $('a').on('click', function() {
+  $('a.countin').on('click', function() {
     if ($(this).text() === 'hide count') {
       $(this).text('show count');
       $('.count').css('visibility','hidden');
     } else {
       $(this).text('hide count');
       $('.count').css('visibility','visible');
+    }
+
+    return false;
+  });
+
+  $('a.zoomin').on('click', function() {
+    if ($(this).text() === 'zoom out') {
+      $('.container').addClass('zoom');
+      $(this).text('zoom in');
+    } else {
+      $('.container').removeClass('zoom');
+      $(this).text('zoom out');
     }
 
     return false;
