@@ -56,7 +56,7 @@ const circleSizes = [
   }
 ];
 
-d3.csv('nasa.csv', function(d, i, columns) {
+d3.csv('nasa.csv', function(d) {
   return {
     hours: +d['Cumulative hours of space flight time'],
     group: (+d[' Group'] - 1),
