@@ -31,29 +31,62 @@ let ranges = [
 
 d3.csv('data.csv', (data) => {
   for (let d of data) {
-    createCircle(+d.DAYS, d['START YEAR'],d['END YEAR']);
+    let days = +d.DAYS,
+        syear = d['START YEAR'], 
+        eyear = d['END YEAR'];
+
+    let elem = d3.select('.container').append('span')
+      .on('click', function(d) {
+        let $modal = $('#modal');
+        let modal = d3.select('#modal');
+
+        $modal.find('svg').remove();
+
+        $modal.modal({
+          showClose: false
+        });
+
+        $modal.html(createCircle(modal, days, syear, eyear))
+
+        d3.event.stopPropagation();
+      });
+
+    createCircle(elem, days, syear, eyear);
   }
+
+
 
   /* Create filters */
   for(let i = 0; i < ranges.length; i++) {
     let r = ranges[i];
-    let $elem = $(`<div class="col"><label><input type="checkbox" checked><span class="checkmark"></span>${r.min}-${r.max}</label></div>`);
+
+    let $elem = $(`<div class="col"><label>
+      <input type="checkbox" checked class="input-${i}">
+      <span class="checkmark"></span>${r.min}-${r.max} days
+      </label></div>`);
+
     $('.flex').append($elem);
 
     let $input = $elem.find('input');
+
     $input.change(() => {
       let opacity = $input.is(':checked') ? 1 : 0.125;
-      d3.selectAll(`.range-${i}`).style('opacity', opacity);
+      d3.selectAll(`.range-${i}`).transition()
+        .attr("duration", 300)
+        .style('opacity', opacity);
     });
   }
+
+  addButtons();
+
 });
 
-function createCircle(count, syear, eyear) {
+function createCircle(elem, count, syear, eyear) {
   let width = 80;
   let height = 110;
   let radius = 40;
 
-  let center = d3.select('.container').append('svg')
+  let center = elem.append('svg')
     .attr('width', width)
     .attr('height', height)
     .attr('class', 'year')
@@ -84,18 +117,18 @@ function createCircle(count, syear, eyear) {
   .attr('class', 'count')
   .attr('fill', 'rgba(255, 255, 255, 0.9)');
 
-center.append('text')
-  .text(count)
-  .attr('x', 0)
-  .attr('y', 3)
-  .attr('class', 'count')
-  .attr('text-anchor', 'middle');
+  center.append('text')
+    .text(count)
+    .attr('x', 0)
+    .attr('y', 3)
+    .attr('class', 'count')
+    .attr('text-anchor', 'middle');
 
-center.append('text')
-  .text(syear + ' - ' + eyear)
-  .attr('x', 0)
-  .attr('y', -height/2 + 3)
-  .attr('text-anchor', 'middle');
+  center.append('text')
+    .text(syear + ' - ' + eyear)
+    .attr('x', 0)
+    .attr('y', -height/2 + 3)
+    .attr('text-anchor', 'middle');
 }
 
 function getRangeClass(count) {
@@ -108,9 +141,13 @@ function getRangeClass(count) {
   }
 }
 
-$(function() {
-  $('.flex').append(`<div class="col"><a href="#" class="countin">hide count</a></div>`);
-  $('.flex').append(`<div class="col"><a href="#" class="zoomin">zoom out</a></div>`)
+function addButtons() {
+  $('.flex').append(`
+    <div class="col" style="min-width: 140px;">
+    <a href="#" class="countin">hide count</a> 
+    <a href="#" class="zoomin">zoom in</a>
+    <!-- <a href="#" class="median">hide median</a>-->
+    </div>`);
 
   $('a.countin').on('click', function() {
     if ($(this).text() === 'hide count') {
@@ -135,4 +172,7 @@ $(function() {
 
     return false;
   });
-})
+}
+
+
+
