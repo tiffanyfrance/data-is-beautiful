@@ -43,7 +43,9 @@ d3.csv('data.csv', (data) => {
         $modal.find('svg').remove();
 
         $modal.modal({
-          showClose: false
+          showClose: false,
+          fadeDuration: 500,
+          fadeDelay: 0.15
         });
 
         $modal.html(createCircle(modal, days, syear, eyear))

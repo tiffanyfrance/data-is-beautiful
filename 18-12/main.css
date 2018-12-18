@@ -31,6 +31,7 @@ h1 {
 .year {
   padding: 10px;
   font-size: 11px;
+  cursor: pointer;
 }
 
 .median-selected {
@@ -146,11 +147,11 @@ label .checkmark:after {
 }
 
 .modal {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -o-border-radius: 3px;
-  -ms-border-radius: 3px;
-  border-radius: 3px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
   -webkit-box-shadow: 0 0 10px #999;
   -moz-box-shadow: 0 0 10px #999;
   -o-box-shadow: 0 0 10px #999;
@@ -158,6 +159,7 @@ label .checkmark:after {
   box-shadow: 0 0 10px #999;
   text-align: center;
   max-width: min-content;
+  background: #F5F5F3;
 }
 
 .modal svg {
