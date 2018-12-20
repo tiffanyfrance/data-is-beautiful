@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 
 body {
-  background: #F5F5F3;
+  background-color: #F5F5F3;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 11px;
   margin-top: 0px;
@@ -28,7 +28,7 @@ h1 {
   zoom: 0.7;
 }
 
-.year {
+svg {
   padding: 10px;
   font-size: 11px;
   cursor: pointer;
@@ -37,6 +37,7 @@ h1 {
 .median-selected {
   border: solid 1px lightgrey;
   background-color: #f1f1f1;
+/*  background-color: khaki;*/
   border-radius: 3px;
 }
 
@@ -52,7 +53,7 @@ text {
 #header {
   position: fixed;
   width: 100%;
-  background: #F5F5F3;
+  background-color: #F5F5F3;
 }
 
 .flex {
@@ -159,7 +160,7 @@ label .checkmark:after {
   box-shadow: 0 0 10px #999;
   text-align: center;
   max-width: min-content;
-  background: #F5F5F3;
+  background-color: #F5F5F3;
 }
 
 .modal svg {

@@ -56,14 +56,12 @@ d3.csv('data.csv', (data) => {
     createCircle(elem, days, syear, eyear);
   }
 
-
-
   /* Create filters */
   for(let i = 0; i < ranges.length; i++) {
     let r = ranges[i];
 
     let $elem = $(`<div class="col"><label>
-      <input type="checkbox" checked class="input-${i}">
+      <input type="checkbox" checked class="input-${i}" data-index="${i}">
       <span class="checkmark"></span>${r.min}-${r.max} days
       </label></div>`);
 
@@ -76,11 +74,14 @@ d3.csv('data.csv', (data) => {
       d3.selectAll(`.range-${i}`).transition()
         .attr("duration", 300)
         .style('opacity', opacity);
+
+      selectMedian();
     });
   }
 
-  addButtons();
+  selectMedian();
 
+  addButtons();
 });
 
 function createCircle(elem, count, syear, eyear) {
@@ -91,7 +92,6 @@ function createCircle(elem, count, syear, eyear) {
   let center = elem.append('svg')
     .attr('width', width)
     .attr('height', height)
-    .attr('class', 'year')
     .append('g')
     .attr('class', getRangeClass(count))
     //makes 0,0 center of circle for easier math
@@ -143,25 +143,34 @@ function getRangeClass(count) {
   }
 }
 
+function selectMedian() {
+  let visibleRanges = [];
+
+  $('input[type=checkbox]:checked').each((i, elem) => {
+    visibleRanges.push(`.range-${$(elem).data('index')}`);
+  });
+
+  let $visibleSnowflakes = $(visibleRanges.join(', '));
+
+  $('.median-selected').removeClass('median-selected');
+
+  let count = $visibleSnowflakes.length;
+  if(count > 0) {
+    let medianIndex = Math.floor($visibleSnowflakes.length / 2);
+    $($visibleSnowflakes[medianIndex]).parent().addClass('median-selected');
+
+    // if(count % 2 === 0) {
+    //   $($visibleSnowflakes[medianIndex + 1]).parent().addClass('median-selected');
+    // }
+  }
+}
+
 function addButtons() {
   $('.flex').append(`
     <div class="col" style="min-width: 140px;">
-    <a href="#" class="countin">hide count</a> 
     <a href="#" class="zoomin">zoom in</a>
     <!-- <a href="#" class="median">hide median</a>-->
     </div>`);
-
-  $('a.countin').on('click', function() {
-    if ($(this).text() === 'hide count') {
-      $(this).text('show count');
-      $('.count').css('visibility','hidden');
-    } else {
-      $(this).text('hide count');
-      $('.count').css('visibility','visible');
-    }
-
-    return false;
-  });
 
   $('a.zoomin').on('click', function() {
     if ($(this).text() === 'zoom out') {
