@@ -20,13 +20,13 @@ h1 {
 .container {
   width: 90%;
   margin: 0 auto;
-  padding-top: 140px;
-  text-align: center;
+  padding-top: 120px;
+  /*text-align: center;*/
 }
 
 .container.zoom {
   /*width: 90%;*/
-  padding-top: 190px;
+  padding-top: 170px;
   zoom: 0.7;
 }
 
