@@ -3,7 +3,7 @@
 body {
   background-color: #F5F5F3;
   font-family: 'Source Sans Pro', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   margin-top: 0px;
   padding-top: 0;
 }
@@ -13,6 +13,8 @@ h1 {
   margin: 20px auto 0px;
   max-width: 80%;
   text-align: center;
+  font-weight: normal;
+  color: #333;
 }
 
 .container {
@@ -24,25 +26,46 @@ h1 {
 
 .container.zoom {
   /*width: 90%;*/
-  padding-top: 200px;
+  padding-top: 190px;
   zoom: 0.7;
 }
 
 svg {
   padding: 10px;
-  font-size: 11px;
+  font-size: 14px;
   cursor: pointer;
 }
 
-.median-selected {
-  border: solid 1px lightgrey;
-  background-color: #f1f1f1;
+.col a.median {
+  padding-right: 3px;
+}
+
+.info {
+  color: #369;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.info-modal {
+  width: 250px;
+  text-align: left;
+  font-size: 14px;
+}
+
+body.show-median .median-selected {
+  /*border: solid 1px lightgrey;*/
+  background-color: #F3EFC0;
 /*  background-color: khaki;*/
   border-radius: 3px;
 }
 
 .median-selected:nth-child(2) {
   border-left: 0;
+}
+
+.median-selected.median-hide {
+  /*border: none;*/
+  background-color: transparent !important;
 }
 
 text {
@@ -77,20 +100,20 @@ text {
   color: #369;
   padding: 3px 10px;
   border-radius: 3px;
-  opacity: 0.6
 }
 
 /* Customize the label (the container) */
 label {
   display: block;
   position: relative;
-  padding-left: 25px;
+  padding-left: 20px;
   margin-bottom: 12px;
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: #666;
 }
 
 /* Hide the browser's default checkbox */

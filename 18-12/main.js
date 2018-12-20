@@ -48,6 +48,7 @@ d3.csv('data.csv', (data) => {
           fadeDelay: 0.15
         });
 
+        $modal.empty();
         $modal.html(createCircle(modal, days, syear, eyear))
 
         d3.event.stopPropagation();
@@ -115,9 +116,9 @@ function createCircle(elem, count, syear, eyear) {
   center.append('circle')
   .attr('cx', 0)
   .attr('cy', 0)
-  .attr('r', 10)
+  .attr('r', 15)
   .attr('class', 'count')
-  .attr('fill', 'rgba(255, 255, 255, 0.9)');
+  .attr('fill', 'rgba(255, 255, 255, 1)');
 
   center.append('text')
     .text(count)
@@ -155,6 +156,7 @@ function selectMedian() {
   $('.median-selected').removeClass('median-selected');
 
   let count = $visibleSnowflakes.length;
+
   if(count > 0) {
     let medianIndex = Math.floor($visibleSnowflakes.length / 2);
     $($visibleSnowflakes[medianIndex]).parent().addClass('median-selected');
@@ -167,9 +169,9 @@ function selectMedian() {
 
 function addButtons() {
   $('.flex').append(`
-    <div class="col" style="min-width: 140px;">
+    <div class="col" style="min-width: 195px;">
     <a href="#" class="zoomin">zoom in</a>
-    <!-- <a href="#" class="median">hide median</a>-->
+    <a href="#" class="median">show median</a><span class="info">&#9432</span>
     </div>`);
 
   $('a.zoomin').on('click', function() {
@@ -183,6 +185,33 @@ function addButtons() {
 
     return false;
   });
+
+  $('a.median').on('click', function() {
+    $('body').toggleClass('show-median');
+
+    if($('body').hasClass('show-median')) {
+      $(this).text('hide median');
+    } else {
+      $(this).text('show median');
+    }
+
+    return false;
+  });
+
+  $('.info').on('click', function() {
+    $('#modal').modal({
+      showClose: false,
+      fadeDuration: 500,
+      fadeDelay: 0.15
+    });
+
+    $('#modal').html(`<div class="info-modal">
+      <p>The median shows the halfway point of filtered years.</p>
+      <p>The calculation takes the floor value, when median returns a remainder.</p>
+      </div>`);
+
+    selectMedian();
+  })
 }
 
 
