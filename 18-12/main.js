@@ -49,7 +49,8 @@ d3.csv('data.csv', (data) => {
         });
 
         $modal.empty();
-        $modal.html(createCircle(modal, days, syear, eyear))
+        $modal.html(createCircle(modal, days, syear, eyear));
+        $modal.append('<a href="#" rel="modal:close">Close</a>');
 
         d3.event.stopPropagation();
       });
@@ -207,8 +208,8 @@ function addButtons() {
 
     $('#modal').html(`<div class="info-modal">
       <p>The median shows the halfway point of filtered years.</p>
-      <p>The calculation takes the floor value, when median returns a remainder.</p>
-      </div>`);
+      <p>The calculation takes the floor value, when median contains a remainder.</p>
+      <p><a href="#" rel="modal:close">Close</a></p></div>`);
 
     selectMedian();
   })

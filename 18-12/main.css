@@ -17,6 +17,11 @@ h1 {
   color: #333;
 }
 
+a {
+  color: #369;
+  text-decoration: none;
+}
+
 .container {
   width: 90%;
   margin: 0 auto;
@@ -41,7 +46,6 @@ svg {
 }
 
 .info {
-  color: #369;
   cursor: pointer;
   font-size: 10px;
 }
@@ -95,9 +99,7 @@ text {
 }
 
 .col a {
-  text-decoration: none;
   background: transparent;
-  color: #369;
   padding: 3px 10px;
   border-radius: 3px;
 }
@@ -142,7 +144,7 @@ label:hover input ~ .checkmark {
 
 /* When the checkbox is checked, add a blue background */
 label input:checked ~ .checkmark {
-  background-color: #666;
+  background-color: #999;
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
