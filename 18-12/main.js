@@ -67,7 +67,7 @@ d3.csv('data.csv', (data) => {
       <span class="checkmark"></span>${r.min}-${r.max} days
       </label></div>`);
 
-    $('.flex').append($elem);
+    $('.filters').append($elem);
 
     let $input = $elem.find('input');
 
@@ -169,10 +169,10 @@ function selectMedian() {
 }
 
 function addButtons() {
-  $('.flex').append(`
+  $('.filters').append(`
     <div class="col" style="min-width: 195px;">
-    <a href="#" class="zoomin">zoom in</a>
-    <a href="#" class="median">show median</a><span class="info">&#9432</span>
+    <p><a href="#" class="zoomin">zoom in</a></p>
+    <p><a href="#" class="median">show median</a><span class="info">&#9432</span></p>
     </div>`);
 
   $('a.zoomin').on('click', function() {

@@ -23,7 +23,7 @@ a {
 }
 
 .container {
-  width: 95%;
+  width: 100%;
   margin: 0 auto;
   padding-top: 140px;
   text-align: center;
@@ -38,6 +38,7 @@ svg {
   padding: 0px 0px 0px;
   font-size: 14px;
   cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .col a.median {
