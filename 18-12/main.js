@@ -90,6 +90,9 @@ function createCircle(elem, count, syear, eyear) {
   let width = 80;
   let height = 110;
   let radius = 40;
+  // let width = Math.max(80, (count/2.25) + 80);
+  // let height = Math.max(90, (count/2.5) + 90 + 10);
+  // let radius = Math.max(40, (count/2.25));
 
   let center = elem.append('svg')
     .attr('width', width)
