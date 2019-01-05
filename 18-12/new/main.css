@@ -101,6 +101,7 @@ body.show-median .median-selected {
   /* background-color: #F3EFC0;
   border-radius: 3px; */
   fill: #DC5638;
+  opacity: 1 !important;
 }
 
 .median-selected:nth-child(2) {

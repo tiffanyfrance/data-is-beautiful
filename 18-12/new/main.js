@@ -3,6 +3,8 @@ let height = 65 * 4;
 let radius = 30 * 3;
 let innerRadius = 8 * 2;
 let marginTop = 20;
+// let o = [0.7,0.75,0.8,0.85,0.9,0.95,1];
+let o = [0.4,0.5,0.6,0.7,0.8,0.9,1];
 
 let ranges = [
   {
@@ -110,7 +112,8 @@ d3.csv('data.csv', (data) => {
       .text(decade.syear + ' - ' + decade.eyear)
       .attr('x', width / 2)
       .attr('y', marginTop / 1.5)
-      .attr('text-anchor', 'middle');
+      .attr('text-anchor', 'middle')
+      .style('font-weight', 'bold');
 
     svgs.push(svg);
 
@@ -127,7 +130,7 @@ d3.csv('data.csv', (data) => {
 
     for (let y of decade.years) {
       let radius = y.days * (21 / 140);
-      radius = Math.max(6, radius);
+      radius = Math.max(8, radius);
 
       nodes.push({
         radius,
@@ -175,7 +178,27 @@ d3.csv('data.csv', (data) => {
 
             g.append('circle')
               .attr('r', (d) => d.radius - 2)
-              .attr('fill', '#369');
+              .attr('fill', '#369')
+              .style('opacity', (d) => {
+                let num = d.data.days;
+
+                console.log(num)
+                if (num < 80) {
+                  return o[0];
+                } else if (num >= 80 && num < 90) {
+                  return o[1];
+                } else if (num >= 90 && num < 100) {
+                  return o[2];
+                } else if (num >= 100 && num < 110) {
+                  return o[3];
+                } else if (num >= 110 && num < 120) {
+                  return o[4];
+                } else if (num >= 120 && num < 130) {
+                  return o[5];
+                } else {
+                  return o[6];
+                }
+              });
 
             // console.log(d)
 
@@ -202,7 +225,8 @@ d3.csv('data.csv', (data) => {
   for (let i = 0; i < ranges.length; i++) {
     let r = ranges[i];
 
-    let $elem = $(`<button class="input-${i} checked" data-index="${i}">
+    let $elem = $(`<button class="input-${i} checked" data-index="${i}"
+      style="opacity: ${o[i]}">
       ${r.min}-${r.max}</button>`);
 
     $elem.click(() => {
