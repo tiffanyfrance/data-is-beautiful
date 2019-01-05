@@ -366,6 +366,7 @@ function addButtons() {
 
     $('#modal').html(`<div class="info-modal">
       <p>The median shows the halfway point of filtered years.</p>
+      <p>Turning on the "median" will help guide your eye to the warming trend.</p>
       <p>The calculation takes the floor value, when median contains a remainder.</p>
       <p><a href="#" rel="modal:close">Close</a></p></div>`);
   })
