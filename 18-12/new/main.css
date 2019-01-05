@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400');
 
 body {
   background-color: #F5F5F3;
@@ -6,6 +6,7 @@ body {
   font-size: 12px;
   margin-top: 0px;
   padding-top: 20px;
+  overflow: visible !important;
 }
 
 h1 {
@@ -38,14 +39,20 @@ button {
   cursor: pointer;
 }
 
-button.active {
+button.checked {
+  background: #369;
+}
+
+button.unchecked {
+  /* background: #d8d8d8; */
+  /* color: #fff; */
   background: #ddd;
-  color: #333;
+  color: #999;
 }
 
 button.median {
   background: #DC5638;
-  margin: 2px 0px 2px 10px;
+  margin: 2px 5px 2px 10px;
 }
 
 .container {
@@ -91,10 +98,9 @@ svg {
 }
 
 body.show-median .median-selected {
-  /*border: solid 1px lightgrey;*/
-  background-color: #F3EFC0;
-/*  background-color: khaki;*/
-  border-radius: 3px;
+  /* background-color: #F3EFC0;
+  border-radius: 3px; */
+  fill: #DC5638;
 }
 
 .median-selected:nth-child(2) {
@@ -255,4 +261,16 @@ label .checkmark:after {
 
 .blocker {
   background-color: rgba(0,0,0,0.25);
+}
+
+svg.no-value g {
+  visibility: hidden;
+}
+
+.line-circle {
+  transition: opacity 0.3s;
+}
+
+svg.is-filtered .line-circle {
+  opacity: 0.1;
 }

@@ -35,6 +35,11 @@ let ranges = [
   }
 ];
 
+let svgs = [];
+let decadeNodes = [];
+let decadeTexts = [];
+let simulations = [];
+
 d3.csv('data.csv', (data) => {
   let temp = {};
 
@@ -55,7 +60,8 @@ d3.csv('data.csv', (data) => {
     years.push({
       days,
       syear,
-      eyear
+      eyear,
+      range: +getRangeClass(days).substr(6)
     });
   }
 
@@ -81,7 +87,7 @@ d3.csv('data.csv', (data) => {
 
     count /= years.length;
     count = Math.round(count);
-    console.log(count)
+    // console.log(count)
 
     decades.push({
       syear,
@@ -103,26 +109,51 @@ d3.csv('data.csv', (data) => {
     svg.append('text')
       .text(decade.syear + ' - ' + decade.eyear)
       .attr('x', width / 2)
-      .attr('y', marginTop/1.5)
+      .attr('y', marginTop / 1.5)
       .attr('text-anchor', 'middle');
 
-    let nodes = [{
+    svgs.push(svg);
+
+    let decadeNode = {
       radius: decade.radius,
-      data: decade
-    }];
+      data: decade,
+      x: width / 2,
+      y: height / 2,
+      scale: 1
+    };
+
+    let nodes = [decadeNode];
+    decadeNodes.push(decadeNode);
 
     for (let y of decade.years) {
+      let radius = y.days * (21 / 140);
+      radius = Math.max(6, radius);
+
       nodes.push({
-        radius: y.days * (18 / 140),
-        data: y
+        radius,
+        data: y,
+        x: (width / 2),
+        y: (height / 2),
+        scale: 1
       });
     }
 
-    d3.forceSimulation(nodes)
-      .force('charge', d3.forceManyBody().strength(2))
-      .force('center', d3.forceCenter(width / 2, height / 2))
+    shuffle(nodes);
+
+    let fs = d3.forceSimulation(nodes)
+      .force('charge', d3.forceManyBody().strength((d) => (d.data.years) ? 100 : 1))
+      .force("x", d3.forceX((d) => {
+        let delta = (d.data.years) ? -20 : 20;
+        return (width / 2) + delta;
+      }).strength(0.1))
+      .force("y", d3.forceY((d) => {
+        let delta = (d.data.years) ? 0 : -20;
+        return height / 2 + delta;
+      }))
       .force('collision', d3.forceCollide().radius((d) => d.radius))
       .on('tick', ticked);
+    
+    simulations.push(fs);
 
     function ticked() {
       let u = svg
@@ -131,65 +162,94 @@ d3.csv('data.csv', (data) => {
 
       u.enter()
         .append('g')
-        .attr('class', 'force-circle')
         .each(function (d) {
-          console.log(d);
+          // console.log(d);
           let g = d3.select(this);
 
           if (d.data.years) {
+            g.attr('class', 'force-circle line-circle');
+
             createCircle(g, decade);
           } else {
+            g.attr('class', 'force-circle ' + getRangeClass(d.data.days));
+
             g.append('circle')
-              .attr('r', (d) => d.radius)
+              .attr('r', (d) => d.radius - 2)
               .attr('fill', '#369');
 
-              console.log(d)
+            // console.log(d)
 
-            if (d.radius > 9) {
+            if (d.radius > 12) {
               g.append('text')
                 .text(d.data.eyear)
                 .attr('x', 0)
                 .attr('y', 3)
                 .attr('text-anchor', 'middle')
-                .attr('stroke', '#eee')
-                .style('font-size', 8)
-                .style('font-weight', 200)
-                .style('letter-spacing', 1.15)
-                .attr('text-rendering', 'optimizeLegibility');
+                .style('fill', '#fff')
+                .style('font-size', 9)
+                .style('font-weight', 300);
             }
           }
         })
         .merge(u)
-        .attr('transform', (d) => `translate(${d.x},${d.y})`);
+        .attr('transform', (d) => `translate(${d.x},${d.y}) scale(${d.scale})`);
 
       u.exit().remove();
     }
   }
 
-  // /* Create filters */
-  for(let i = 0; i < ranges.length; i++) {
+  /* Create filters */
+  for (let i = 0; i < ranges.length; i++) {
     let r = ranges[i];
 
-    let $elem = $(`<button class="input-${i}" data-index="${i}">
+    let $elem = $(`<button class="input-${i} checked" data-index="${i}">
       ${r.min}-${r.max}</button>`);
 
+    $elem.click(() => {
+      $elem.toggleClass('checked');
+      $elem.toggleClass('unchecked');
+
+      let opacity = $elem.hasClass('checked') ? 1 : 0.05;
+      d3.selectAll(`.range-${i}`).transition()
+        .attr("duration", 300)
+        .style('opacity', opacity);
+
+      selectMedian();
+
+      /* Update decade average. */
+      let activeRanges = $('button.checked').map((i, elem) => $(elem).data('index')).get();
+
+      for(let j = 0; j < decadeNodes.length; j++) {
+        let total = 0;
+        let count = 0;
+
+        for(let y of decadeNodes[j].data.years) {
+          if(activeRanges.includes(y.range)) {
+            total += y.days;
+            count++;
+          }
+        }
+
+        let average = Math.round(total / count);
+        if(isNaN(average)) {
+          decadeTexts[j].text(0);
+          svgs[j].classed('no-value', true);
+        } else {
+          decadeTexts[j].text(average);
+          svgs[j].classed('no-value', false);
+        }
+
+        let isFiltered = (count != decadeNodes[j].data.years.length);
+        svgs[j].classed('is-filtered', isFiltered);
+      }
+    });
+
     $('#filters').append($elem);
-
-    // let $input = $elem.find('input');
-
-    // $input.change(() => {
-    //   let opacity = $input.is(':checked') ? 1 : 0.125;
-    //   d3.selectAll(`.range-${i}`).transition()
-    //     .attr("duration", 300)
-    //     .style('opacity', opacity);
-
-      // selectMedian();
-    // });
   }
 
-  // selectMedian();
-
   addButtons();
+
+  setTimeout(selectMedian, 100);
 });
 
 function createCircle(center, d) {
@@ -215,12 +275,14 @@ function createCircle(center, d) {
     .attr('class', 'count')
     .attr('fill', 'rgba(255, 255, 255, 1)');
 
-  center.append('text')
+  let text = center.append('text')
     .text(d.count)
     .attr('x', 0)
     .attr('y', 3)
     .attr('class', 'count')
     .attr('text-anchor', 'middle');
+  
+  decadeTexts.push(text);
 }
 
 function getRangeClass(count) {
@@ -236,7 +298,7 @@ function getRangeClass(count) {
 function selectMedian() {
   let visibleRanges = [];
 
-  $('input[type=checkbox]:checked').each((i, elem) => {
+  $('button.checked').each((i, elem) => {
     visibleRanges.push(`.range-${$(elem).data('index')}`);
   });
 
@@ -248,30 +310,18 @@ function selectMedian() {
 
   if (count > 0) {
     let medianIndex = Math.floor($visibleSnowflakes.length / 2);
-    $($visibleSnowflakes[medianIndex]).parent().addClass('median-selected');
+    $($visibleSnowflakes[medianIndex]).find('circle').addClass('median-selected');
 
     // if(count % 2 === 0) {
-    //   $($visibleSnowflakes[medianIndex + 1]).parent().addClass('median-selected');
+    //   $($visibleSnowflakes[medianIndex + 1]).find('circle').addClass('median-selected');
     // }
   }
 }
 
 function addButtons() {
-  $('#filters').append('<button class="median">show median</button>');
+  $('#filters').append('<button class="median">hide median</button> <span class="info">&#9432;</span>');
 
-  // $('a.zoomin').on('click', function () {
-  //   if ($(this).text() === 'zoom out') {
-  //     $('.container').addClass('zoom');
-  //     $(this).text('zoom in');
-  //   } else {
-  //     $('.container').removeClass('zoom');
-  //     $(this).text('zoom out');
-  //   }
-
-  //   return false;
-  // });
-
-  $('a.median').on('click', function () {
+  $('button.median').on('click', function () {
     $('body').toggleClass('show-median');
 
     if ($('body').hasClass('show-median')) {
@@ -294,10 +344,25 @@ function addButtons() {
       <p>The median shows the halfway point of filtered years.</p>
       <p>The calculation takes the floor value, when median contains a remainder.</p>
       <p><a href="#" rel="modal:close">Close</a></p></div>`);
-
-    // selectMedian();
   })
 }
 
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
 
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 
