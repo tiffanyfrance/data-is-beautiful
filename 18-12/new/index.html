@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <h1>Freezing and thawing of Lake Mendota</h1>
+  <div class="flex">
+    <div class="col">
+      <p>
+        Lake Mendota is the largest lake in Madison, WI.
+        It is considered one of the <a href="https://openexplorer.nationalgeographic.com/expedition/adeepdiveintolakemendota">most studied lakes</a> in the US.
+        The <a href="http://www.aos.wisc.edu/~sco/lakes/Mendota-ice.html">data</a> 
+        used in this visualization captures the freezing and thawing cycles of 
+        Lake Medota since 1852. This visualization is provided for users to 
+        explore the change in temperature over the last 160 years by capturing 
+        the number of days per winter when the lake was frozen. 
+      </p>
+    </div>
+    <div class="col">
+      <p>
+        The large lined circle is the <b>average days frozen for that 
+        decade</b>. The small satellite circles are the individual years, 
+        sized by number of days. Click on the small circles to see more about 
+        each year. The season is marked by it's end year, for instance, the 
+        winter of 1959-1960 would be captured as 1960 for brevity. Turning on 
+        the "median" will help guide your eye to the warming trend.
+      </p>
+    </div>
+    <div class="col" id="filters" style="flex: 2;">
+      <p>
+        <b>Filter by days frozen:</b>
+      </p>
+    </div>
+  </div>
+
+  <div class="viz">
+    <div class="container">
+<!--       <div style="width: 200px;height: 242px;float: left;">Something here</div> -->
+    </div>
+    <!-- <div id="header" style="width: calc(20% - 40px);padding: 0px 10px 0px 30px;">
+      <h1>Total frozen days at <nobr>Lake Mendota</nobr> by year</h1>
+      <div class="filters"></div>
+    </div> -->
+  </div>
+
+  <div id="modal" class="modal">
+    <a href="#" rel="modal:close">Close</a>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js">
+  </script>
+  
+
+  <script src="main.js"></script>
+</body>
+
+</html>
