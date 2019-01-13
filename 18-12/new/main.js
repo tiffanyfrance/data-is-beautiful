@@ -88,19 +88,16 @@ d3.csv('data.csv', (data) => {
     }
 
     count /= years.length;
-    count = Math.round(count);
-    // console.log(count)
+    days = Math.round(count);
 
     decades.push({
       syear,
       eyear,
-      count,
+      days,
       years,
-      radius: (count / 200) * radius
+      radius: (days / 200) * radius
     });
   }
-
-  console.log(decades);
 
   for (let decade of decades) {
     let svg = d3.select('.container').append('div').append('svg');
@@ -108,8 +105,10 @@ d3.csv('data.csv', (data) => {
     svg.attr('width', width)
       .attr('height', height - marginTop);
 
+    // let yearGroup = (decade.syear ^= '185') ? '1850' : decade.syear;
+
     svg.append('text')
-      .text(decade.syear + ' - ' + decade.eyear)
+      .text(decade.syear + '-' + decade.eyear)
       .attr('x', width / 2)
       .attr('y', marginTop / 1.5)
       .attr('text-anchor', 'middle')
@@ -129,7 +128,7 @@ d3.csv('data.csv', (data) => {
     decadeNodes.push(decadeNode);
 
     for (let y of decade.years) {
-      let radius = y.days * (21 / 140);
+      let radius = y.days * (18 / 140);
       radius = Math.max(8, radius);
 
       nodes.push({
@@ -166,7 +165,6 @@ d3.csv('data.csv', (data) => {
       u.enter()
         .append('g')
         .each(function (d) {
-          // console.log(d);
           let g = d3.select(this);
 
           if (d.data.years) {
@@ -182,7 +180,6 @@ d3.csv('data.csv', (data) => {
               .style('opacity', (d) => {
                 let num = d.data.days;
 
-                console.log(num)
                 if (num < 80) {
                   return o[0];
                 } else if (num >= 80 && num < 90) {
@@ -198,9 +195,14 @@ d3.csv('data.csv', (data) => {
                 } else {
                   return o[6];
                 }
-              });
-
-            // console.log(d)
+              })
+              .on('mouseover', (d) => {
+                $(this).find('circle').attr('fill','#2C71D7');    
+              })
+              .on('mouseout', (d) => {
+                $(this).find('circle').attr('fill','#369');    
+              })
+              .on('click', buildModal);
 
             if (d.radius > 12) {
               g.append('text')
@@ -210,7 +212,14 @@ d3.csv('data.csv', (data) => {
                 .attr('text-anchor', 'middle')
                 .style('fill', '#fff')
                 .style('font-size', 9)
-                .style('font-weight', 300);
+                .style('font-weight', 300)
+                .on('mouseover', (d) => {
+                  $(this).find('circle').attr('fill','#2C71D7');    
+                })
+                .on('mouseout', (d) => {
+                  $(this).find('circle').attr('fill','#369');    
+                })
+                .on('click', buildModal);
             }
           }
         })
@@ -277,9 +286,9 @@ d3.csv('data.csv', (data) => {
 });
 
 function createCircle(center, d) {
-  let deltaAngle = (2 * Math.PI) / d.count;
+  let deltaAngle = (2 * Math.PI) / d.days;
 
-  for (let i = 0; i < d.count; i++) {
+  for (let i = 0; i < d.days; i++) {
     let x = Math.cos(deltaAngle * i) * d.radius;
     let y = Math.sin(deltaAngle * i) * d.radius;
 
@@ -300,11 +309,21 @@ function createCircle(center, d) {
     .attr('fill', 'rgba(255, 255, 255, 1)');
 
   let text = center.append('text')
-    .text(d.count)
+    .text(d.days)
     .attr('x', 0)
-    .attr('y', 3)
+    .attr('y', 2)
     .attr('class', 'count')
     .attr('text-anchor', 'middle');
+
+  if (d.years) {
+    center.append('text')
+      .text('avg')
+      .attr('x', 0)
+      .attr('y', 10)
+      .attr('class', 'count')
+      .attr('text-anchor', 'middle')
+      .style('font-size', 10);
+  }
   
   decadeTexts.push(text);
 }
@@ -391,3 +410,31 @@ function shuffle(array) {
   return array;
 }
 
+function buildModal(d) {
+  console.log(d);
+  $('#modal').modal({
+    showClose: false,
+    fadeDuration: 500,
+    fadeDelay: 0.15
+  });
+
+  $('#modal').html(`<div class="info-modal">
+    <p style="text-align: center;margin-bottom: 0px;">winter of</p>
+    <h2 style="text-align: center;margin-top: 0px;">${d.data.syear} - ${d.data.eyear}</h2>
+    </div>`);
+
+  let svg = d3.select('#modal').append('svg')
+    .attr('width', 70).attr('height', 70);
+
+  let g = svg.append('g')
+    .attr('transform', 'translate(35,35)');
+
+  d.data.radius = 35;
+
+  createCircle(g, d.data);
+
+  $('#modal').append(`<p style="position: absolute;
+    top: 198px;left: 41%;">days frozen</p>
+    <p style="margin-top: 15px;"><a href="#" rel="modal:close">Close</a></p>`);
+
+}
