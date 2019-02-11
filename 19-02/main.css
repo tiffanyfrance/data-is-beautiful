@@ -35,6 +35,7 @@ p {
 .panel {
   display: none;
   width: 100%;
+  min-width: 1440px;
 }
 .panel.active {
   display: flex;
@@ -116,9 +117,10 @@ body {
   margin: 0 auto;
 }
 .visualization {
-  width: 1320px;
+  min-width: 1440px;
   margin: 0 auto;
 }
+
 .left {
   /*float: left;*/
   /*width: 810px;*/
@@ -129,6 +131,7 @@ body {
   margin-left: 50px;
   /*width: 700px;*/
   width: 37%;
+  min-width: 560px;
   border-left: none;
 }
 .panel.center {

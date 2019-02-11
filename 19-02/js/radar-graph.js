@@ -71,6 +71,7 @@ $(function() {
     allRadarChart: [
       {
         className: 'physicalRadarData',
+        prettyName: 'Physical Harm',
         axes: [
           {"axis": "Heroin", "value": 2.78, "yOffset": -10},
           {"axis": "Cocaine", "value": 2.33, "xOffset": -48, "yOffset": -5},
@@ -96,6 +97,7 @@ $(function() {
       },
       {
         className: 'dependenceRadarData',
+        prettyName: 'Dependence',
         axes: [
           {"axis": "Heroin", "value": 3, "yOffset": -10},
           {"axis": "Cocaine", "value": 2.39, "xOffset": -48, "yOffset": -5},
@@ -121,6 +123,7 @@ $(function() {
       },
       {
         className: 'socialHarmRadarData',
+        prettyName: 'Social Harm',
         axes: [
           {"axis": "Heroin", "value": 2.54, "yOffset": -10},
           {"axis": "Cocaine", "value": 2.17, "xOffset": -48, "yOffset": -5},

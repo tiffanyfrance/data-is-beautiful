@@ -3,7 +3,7 @@ let isLoad = false;
 
 
 $(function() {
-  d3.csv('../drugs.csv', function(error, jsonData) {
+  d3.csv('drugs.csv', function(error, jsonData) {
     let data = jsonData;
 
     if (!isLoad) {

@@ -233,7 +233,7 @@ var RadarChart = {
           d3.event.stopPropagation();
           container.classed('focus', 1);
           d3.select(this).classed('focused', 1);
-          setTooltip(tooltip, cfg.tooltipFormatClass(dd.className));
+          setTooltip(tooltip, cfg.tooltipFormatClass(dd.prettyName));
         })
         .on('mouseout', function(){
           d3.event.stopPropagation();
