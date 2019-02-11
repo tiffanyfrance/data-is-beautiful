@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="main.css">
+<body>
+  <h1>
+    Development of a rational scale to 
+    assess the harm of drugs of potential misuse
+    <span>Visualization (design, concept, and code) by <a href="http://tiffanyfrance.com">Tiffany France</a> - <a href="https://commons.wikimedia.org/wiki/File:Development_of_a_rational_scale_to_assess_the_harm_of_drugs_of_potential_misuse_(physical_harm_and_dependence,_NA_free_means).svg#Data">data source</a></span>
+  </h1>
+  
+  <div id="visualization">
+    
+    <div id="tabs">
+      <h2 class="tabs active" data-tab="all">All</h2>
+      <h2 class="tabs" data-tab="physical-harm">Physical harm</h2>
+      <h2 class="tabs" data-tab="dependence">Dependence</h2>
+      <h2 class="tabs" data-tab="social-harm">Social harm</h2>
+    </div>
+
+    <div id="radar">
+      <div id="all" class="panel active">
+        <div id="allRadarChart" class="center"></div>
+      </div>
+
+      <div id="physical-harm" class="panel">
+        <div id="radarChart" class="left"></div>
+        <div class="right">
+          <div class="bar"></div>
+        </div>
+      </div>
+
+      <div id="dependence" class="panel">
+        <div id="radarChart2" class="left"></div>
+        <div class="right">
+          <div class="bar"></div>
+        </div>
+      </div>
+
+      <div id="social-harm" class="panel">
+        <div id="radarChart3" class="left"></div>
+        <div class="right">
+          <div class="bar"></div>
+        </div>
+      </div>
+    </div>
+
+    
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="//d3js.org/d3.v3.min.js"></script>
+  <script src="js/radar.js"></script>
+  <script src="js/radar-graph.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/bar.js"></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+/* InProfile CSS */
+/* Author: Tiffany France */
+/* Email: tiffany6872@gmail.com */
+
+* {
+	font-family: 'lucida grande', Helvetica Neue, Helvetica, Arial, san-serif;
+  color: #999;
+}
+body {
+  padding: 10px;
+}
+h1 {
+  font-weight: 300;
+  text-align: center;
+  font-size: 24px;
+  color: #aaa;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  border-bottom: solid 1px #323F5B;
+  margin-bottom: 0px;
+}
+
+h1 span {
+  font-size: 12px;
+  display: block;
+  padding-top: 10px;
+}
+
+p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ---------- RADAR CHART CONTAINER ---------- */
+#radar {
+  padding-right: 30px;
+  clear: both;
+}
+#tabs {
+  /*border-bottom: solid 1px #eee;*/
+}
+/*#radar h2.tabs.active {
+  color: #007ED3;
+  padding-bottom: 5px;
+  border-bottom: solid 2px #007ED3;
+}*/
+.panel {
+  display: none;
+  width: 100%;
+}
+.panel.active {
+  display: flex;
+  justify-content: center;
+}
+#all.panel.active {
+  display: block;
+}
+
+/*  ---------- RADAR CHART  ---------- */
+#radarChart, #radarChart2, #radarChart3, #allRadarChart {
+  margin-top: 10px;
+  text-align: center;
+}
+.radar-chart .level {
+  stroke: #eee;
+  stroke-width: 2px;
+}
+.radar-chart .axis line {
+  stroke: #eee;
+  stroke-width: 2px;
+  /*opacity: 0;*/
+}
+.radar-chart .axis .legend {
+  font-family: sans-serif;
+  font-size: 10px;
+  fill: #666;
+}
+.radar-chart .axis .legend.top {
+  dy:1em;
+}
+.radar-chart .axis .legend.left {
+  text-anchor: start;
+}
+.radar-chart .axis .legend.middle {
+  text-anchor: middle;
+}
+.radar-chart .axis .legend.right {
+  text-anchor: end;
+}
+.radar-chart .tooltip {
+  font-family: sans-serif;
+  font-size: 13px;
+  transition: opacity 200ms;
+  opacity: 0;
+}
+.radar-chart .tooltip.visible {
+  opacity: 1;
+}
+/* area transition when hovering */
+.radar-chart .area {
+  stroke-width: 1;
+  fill-opacity: 0;
+  stroke: #008BDF;
+  fill-opacity: 1;
+  fill: #49AFFF;
+}
+.radar-chart.focus .area {
+  fill-opacity: 0.1;
+}
+.radar-chart.focus .area.focused {
+  fill-opacity: 0.7;
+}
+.radar-chart .circle {
+  fill-opacity: 0;
+}
+/* transitions */
+.radar-chart .area, .radar-chart .circle {
+  transition: opacity 300ms, fill-opacity 200ms;
+  opacity: 1;
+}
+.radar-chart .d3-enter, .radar-chart .d3-exit {
+  opacity: 0;
+}
+
+
+body {
+  background: #202E4D;
+  margin: 0 auto;
+}
+.visualization {
+  width: 1320px;
+  margin: 0 auto;
+}
+.left {
+  /*float: left;*/
+  /*width: 810px;*/
+  width: 53%;
+}
+.right {
+  /*float: left;*/
+  margin-left: 50px;
+  /*width: 700px;*/
+  width: 47%;
+  border-left: none;
+}
+.panel.center {
+  margin: 0 auto;
+}
+#radarChart text, #radarChart2 text, #radarChart3 text, #allRadarChart text {
+  fill: #999;
+  font-size: 12px;
+  font-family: 'lucida grande', Helvetica Neue, Helvetica, Arial, san-serif;
+}
+.radar-chart .axis line {
+  /*stroke: #323F5B;*/
+  stroke: #323F5B;
+  stroke-width: 0.75px;
+  /*stroke-dasharray: 5;*/
+}
+.radar-chart .level {
+  stroke: #323F5B;
+  stroke-width: 0.5px;
+  /*stroke-dasharray: 3;*/
+}
+.radar-chart .level-group-5 {
+  display: none;
+}
+.radar-chart .area {
+  stroke-width: 0;
+  fill-opacity: 0.2;
+}
+.radar-chart .legend text {
+  fill: #eee !important;
+  opacity: 0.5;
+}
+#radarChart .radar-chart .area, .area.physicalRadarData {
+  fill: #49AFFF;
+  /*fill: #00FFC6;*/
+  /*fill: #00FF4A;*/
+  /*fill: red;*/
+}
+#radarChart2 .radar-chart .area, .area.dependenceRadarData {
+  /*fill: #49AFFF;*/
+  fill: #00FFC6;
+  /*fill: #00FF4A;*/
+  /*fill: orange;*/
+}
+#radarChart3 .radar-chart .area, .area.socialHarmRadarData {
+  /*fill: #49AFFF;*/
+  /*fill: #00FFC6;*/
+  fill: #00FF4A;
+  /*fill: yellow;*/
+}
+
+.bar text {
+  fill: #;
+  font-size: 10px;
+  fill: #999;
+}
+
+
+#tabs {
+  text-align: center;
+  border-bottom: solid 1px #323F5B;
+  margin-bottom: 30px;
+}
+h2.tabs {
+  margin-bottom: 0px;
+  font-weight: normal;
+  display: inline-block;
+  color: #999;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 0;
+  padding: 15px 30px;
+  cursor: pointer;
+}
+
+#tabs h2.tabs.active {
+  /*color: #007ED3;*/
+  color: #ddd;
+  /*text-decoration: underline;*/
+  border-bottom: solid 2px #007ED3;
+}
+
+/*#tabs h2.tabs.active[data-tab="physical-harm"] {
+  border-bottom-color: #49AFFF;
+}
+
+#tabs h2.tabs.active[data-tab="dependence"] {
+  border-bottom-color: #00FFC6;
+}
+
+#tabs h2.tabs.active[data-tab="social-harm"] {
+  border-bottom-color: #00FF4A;
+}*/
+
+
+#tabs h2:hover {
+  color: #ddd;
+  background: #323F5B;
+  border-bottom: solid 2px #323F5B;
+}
