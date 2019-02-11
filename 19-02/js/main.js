@@ -1,5 +1,5 @@
-var data;
-var isLoad = false;
+let data;
+let isLoad = false;
 
 
 $(function() {
@@ -8,15 +8,11 @@ $(function() {
 
     if (!isLoad) {
       $('.g').each(function(i, elem) {
-        // setTimeout(function() {
           $(elem).fadeIn("slow");
-        // }, 100 + Math.random() * (Math.random() * 1000));
       });
 
       isLoad = true;
     }
-
-    // barChart(data, 'Mean Physical Harm And Mean Dependence', '#all .bar', 500);
 
     barChart(data, 'Acute Harm', '#physical-harm .bar');
     barChart(data, 'Chronic Harm', '#physical-harm .bar');
@@ -36,7 +32,7 @@ $(function() {
     if (!$(this).hasClass('active')) {
       $('*').removeClass('active');
 
-      var id = $(this).data('tab');
+      let id = $(this).data('tab');
 
       $(this).addClass('active');
       $('#' + id).addClass('active');

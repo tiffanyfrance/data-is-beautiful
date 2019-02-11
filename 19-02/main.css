@@ -32,18 +32,6 @@ p {
 }
 
 /* ---------- RADAR CHART CONTAINER ---------- */
-#radar {
-  padding-right: 30px;
-  clear: both;
-}
-#tabs {
-  /*border-bottom: solid 1px #eee;*/
-}
-/*#radar h2.tabs.active {
-  color: #007ED3;
-  padding-bottom: 5px;
-  border-bottom: solid 2px #007ED3;
-}*/
 .panel {
   display: none;
   width: 100%;
@@ -140,7 +128,7 @@ body {
   /*float: left;*/
   margin-left: 50px;
   /*width: 700px;*/
-  width: 47%;
+  width: 37%;
   border-left: none;
 }
 .panel.center {
@@ -222,18 +210,6 @@ h2.tabs {
   /*text-decoration: underline;*/
   border-bottom: solid 2px #007ED3;
 }
-
-/*#tabs h2.tabs.active[data-tab="physical-harm"] {
-  border-bottom-color: #49AFFF;
-}
-
-#tabs h2.tabs.active[data-tab="dependence"] {
-  border-bottom-color: #00FFC6;
-}
-
-#tabs h2.tabs.active[data-tab="social-harm"] {
-  border-bottom-color: #00FF4A;
-}*/
 
 
 #tabs h2:hover {

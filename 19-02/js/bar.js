@@ -1,29 +1,20 @@
   
 function barChart(data, value, selector) {
-  // let svg = d3.select('#bar svg')
-  //     .attr('width', width + margin.left + margin.right)
-  //     .attr('height', height + margin.top + margin.bottom)
-  //   .append('g')
-  //     .attr('transform', 
-  //           'translate(' + margin.left + ',' + margin.top + ')');
-
-    //sort bars based on value
+  //sort bars based on value
   data = data.sort(function (a, b) {
       return d3.ascending(a[value], b[value]);
   })
-  //set up svg using margin conventions - we'll need plenty of room on the left for labels
   
-console.log(data)
-  var margin = {
+  let margin = {
       top: 35,
       right: 20,
       bottom: 15,
       left: 100
   };
-  var width = 280 - margin.left - margin.right,
+  let width = 280 - margin.left - margin.right,
       height = 350 - margin.top - margin.bottom;
 
-  var svg = d3.select(selector).append("svg")
+  let svg = d3.select(selector).append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
@@ -33,32 +24,32 @@ console.log(data)
     .text(value)
     .style('font-size', '12px');
 
-  var colors = d3.scale.linear()
-    .domain([0, d3.max(data, (d)=>d[value])/2, d3.max(data, (d)=>d[value])])
-    .range(['#49AFFF', '#00FFC6', '#00FF4A']);
-    // .domain([0, 1.5, 3])
-    // .range(['yellow', 'orange', 'red']);
+  let colors = d3.scale.linear()
+    // .domain([0, d3.max(data, (d)=>d[value])/2, d3.max(data, (d)=>d[value])])
+    // .range(['#49AFFF', '#00FFC6', '#00FF4A']);
+    .domain([0, 1.5, 3])
+    .range(['yellow', 'orange', 'red']);
 
-  var x = d3.scale.linear()
+  let x = d3.scale.linear()
       .range([0, width])
-      .domain([0, d3.max(data, function (d) {
-          return d[value];
+      .domain([0, d3.max(data, (d) => {
+          return (isNaN(d[value]) ? 0 : d[value])
       })]);
-  var y = d3.scale.ordinal()
+  let y = d3.scale.ordinal()
       .rangeRoundBands([height, 0], .35)
       .domain(data.map(function (d) {
           return d.Drug;
       }));
   //make y axis to show bar Drugs
-  var yAxis = d3.svg.axis()
+  let yAxis = d3.svg.axis()
       .scale(y)
       //no tick marks
       .tickSize(0)
       .orient("left");
-  var gy = svg.append("g")
+  let gy = svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
-  var bars = svg.selectAll(".bar")
+  let bars = svg.selectAll(".bar")
       .data(data)
       .enter()
       .append("g")
@@ -75,8 +66,8 @@ console.log(data)
       })
       .style('opacity', 0.4)
       .attr("x", 0)
-      .attr("width", function (d) {
-          return x(d[value]);
+      .attr("width", (d) => {
+          return (isNaN(d[value]) ? 0 : x(d[value]))
       });
   //add a[value] label to the right of each bar
   bars.append("text")
@@ -87,7 +78,7 @@ console.log(data)
       })
       //x position is 3 pixels to the right of the bar
       .attr("x", function (d) {
-          return x(d[value]) + 3;
+          return (isNaN(d[value]) ? 3 : x(d[value])  + 3);
       })
       .text(function (d) {
           return d[value];
