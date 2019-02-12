@@ -168,19 +168,19 @@ body {
   fill: #49AFFF;
   /*fill: #00FFC6;*/
   /*fill: #00FF4A;*/
-  /*fill: red;*/
+  fill: red;
 }
 #radarChart2 .radar-chart .area, .area.dependenceRadarData {
   /*fill: #49AFFF;*/
   fill: #00FFC6;
   /*fill: #00FF4A;*/
-  /*fill: orange;*/
+  fill: orange;
 }
 #radarChart3 .radar-chart .area, .area.socialHarmRadarData {
   /*fill: #49AFFF;*/
   /*fill: #00FFC6;*/
   fill: #00FF4A;
-  /*fill: yellow;*/
+  fill: yellow;
 }
 
 .bar text {
@@ -212,6 +212,7 @@ h2.tabs {
   color: #ddd;
   /*text-decoration: underline;*/
   border-bottom: solid 2px #007ED3;
+  border-bottom: solid 2px #999;
 }
 
 
