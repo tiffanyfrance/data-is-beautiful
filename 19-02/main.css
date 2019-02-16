@@ -113,7 +113,7 @@ p {
 
 
 body {
-  background: #202E4D;
+  background: #2B3345;
   margin: 0 auto;
 }
 .visualization {
@@ -181,6 +181,11 @@ body {
   /*fill: #00FFC6;*/
   fill: #00FF4A;
   fill: yellow;
+}
+
+#radarChart .radar-chart .area, #radarChart2 .radar-chart .area,
+#radarChart3 .radar-chart .area {
+  fill-opacity: 0.5;
 }
 
 .bar text {
