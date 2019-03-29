@@ -8,20 +8,25 @@
 }
 body {
   padding: 10px;
+  /*background: #2B3345;*/
+  background: #292E3A;
+  margin: 0 auto;
+  zoom: 0.95;
 }
 h1 {
   font-weight: 300;
   text-align: center;
-  font-size: 24px;
+  font-size: 18px;
   color: #aaa;
   padding-top: 20px;
   padding-bottom: 30px;
-  border-bottom: solid 1px #323F5B;
+  border-bottom: solid 1px #2A354E;
   margin-bottom: 0px;
+  text-transform: uppercase;
 }
 
 h1 span {
-  font-size: 12px;
+  font-size: 10px;
   display: block;
   padding-top: 10px;
 }
@@ -88,7 +93,6 @@ p {
 /* area transition when hovering */
 .radar-chart .area {
   stroke-width: 1;
-  fill-opacity: 0;
   stroke: #008BDF;
   fill-opacity: 1;
   fill: #49AFFF;
@@ -112,10 +116,6 @@ p {
 }
 
 
-body {
-  background: #2B3345;
-  margin: 0 auto;
-}
 .visualization {
   min-width: 1440px;
   margin: 0 auto;
@@ -141,6 +141,7 @@ body {
   fill: #999;
   font-size: 12px;
   font-family: 'lucida grande', Helvetica Neue, Helvetica, Arial, san-serif;
+  text-transform: uppercase;
 }
 .radar-chart .axis line {
   /*stroke: #323F5B;*/
@@ -185,19 +186,20 @@ body {
 
 #radarChart .radar-chart .area, #radarChart2 .radar-chart .area,
 #radarChart3 .radar-chart .area {
-  fill-opacity: 0.5;
+  fill-opacity: 0.5 !important;
 }
 
 .bar text {
   fill: #;
   font-size: 10px;
   fill: #999;
+  text-transform: uppercase;
 }
 
 
 #tabs {
   text-align: center;
-  border-bottom: solid 1px #323F5B;
+  border-bottom: solid 1px #2A354E;
   margin-bottom: 30px;
 }
 h2.tabs {
@@ -206,10 +208,11 @@ h2.tabs {
   display: inline-block;
   color: #999;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   margin-top: 0;
   padding: 15px 30px;
   cursor: pointer;
+  text-transform: uppercase;
 }
 
 #tabs h2.tabs.active {
@@ -223,6 +226,6 @@ h2.tabs {
 
 #tabs h2:hover {
   color: #ddd;
-  background: #323F5B;
-  border-bottom: solid 2px #323F5B;
+  background: #2A354E;
+  border-bottom: solid 2px #2A354E;
 }

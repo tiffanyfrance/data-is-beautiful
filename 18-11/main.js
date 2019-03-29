@@ -28,6 +28,8 @@ let colors = [
   '#FF0065',
 ];
 
+let base;
+
 let tooltip = d3.select('#tooltip');
 
 let totalHours = 0,
@@ -69,8 +71,6 @@ d3.csv('nasa.csv', function(d) {
   }
 }, function(error, data) {
   
-  console.log(data);
-
   let yearCount = [],
       sumAstronuats = 0,
       totalAstronauts = data.length;
@@ -112,41 +112,11 @@ d3.csv('nasa.csv', function(d) {
 
   buildBurst(data, yearCount);
   
-  buildBar(yearCount, years);
+  // buildBar(yearCount, years);
 
   buildRank(data, yearCount);
 
 });
-
-
-function buildRank(data, yearCount) {
-
-  let sortedData = data.sort(function(a, b) {
-    return b.hours - a.hours;
-  });
-
-  let topResults = sortedData.slice(0, 6);
-
-  for (let i = 0; i < topResults.length; i++) {
-
-    let elem = $('#a-' + i),
-      t = topResults[i],
-      w = ((t.hours / topResults[0].hours) * 100) * 0.8,
-      c = yearCount[t.group].color;
-
-      $(elem).find('.hours').text(t.hours.toLocaleString());
-      $(elem).find('.num-bar').css('width', w + '%');
-      $(elem).find('.num-bar').css('background', c);
-      $(elem).find('.name').text(t.name);
-      $(elem).find('.year').text(t.year);
-      $(elem).find('.group').text(t.group);
-      $(elem).find('.status').text(t.status);
-      $(elem).find('.gender').text(t.gender);
-      $(elem).find('.dob').text(t.dob);
-      $(elem).find('.missions').text(t.missions);
-  }
-
-}
 
 
 function buildBurst(data, yearCount) {
@@ -154,11 +124,11 @@ function buildBurst(data, yearCount) {
   let svg = d3.select('#burst svg'),
     width = +svg.attr('width'),
     height = +svg.attr('height')
-    baseRadius = 350;
+    baseRadius = 280;
 
-  let base = svg.append('g')
+  base = svg.append('g')
     .attr('class','base-group')
-    .attr('transform',`translate(${(width / 2)}, ${(height / 2) - 90})`);
+    .attr('transform',`translate(${(width / 2)}, ${(height / 2) - 160})`);
 
   let theta = (2 * Math.PI) / data.length;
   let startAngle = -1 * Math.PI / 2;
@@ -201,11 +171,6 @@ function buildBurst(data, yearCount) {
       }
     }
   }
-
-  // base.append('circle')
-  //   .attr('fill', 'none')
-  //   .attr('stroke', 'none')
-  //   .attr('r', baseRadius);
 
   let dataCircles = base.append('g')
     .attr('class', 'data-circles');
@@ -270,26 +235,101 @@ function buildBurst(data, yearCount) {
         .style('opacity', 0);
     });
 
+  buildDonut(yearCount);
+
   const labelRadius = baseRadius * 0.94;
 
   let groupLabels = base.append('g')
     .attr('class', 'group-labels');
 
-  groupLabels.selectAll('g')
+  let groupLabel = groupLabels.selectAll('g')
     .data(yearCount)
-    .enter()
-    .append('text')
-    .text((d) => d.year)
+    .enter();
+
+  buildGroupLabel(groupLabel, 'year', startAngle, labelRadius);
+
+  // buildGroupLabel(groupLabel, 'count', startAngle, 295);
+}
+
+function buildGroupLabel(groupLabel, textKey, startAngle, radius) {
+  groupLabel.append('text')
+    .text((d) => d[textKey])
     .attr('text-anchor', 'middle')
     .attr('transform', function(d) {
       let angle = startAngle + d.angle;
-      let x = Math.cos(angle) * labelRadius;
-      let y = Math.sin(angle) * labelRadius;
+      let x = Math.cos(angle) * radius;
+      let y = Math.sin(angle) * radius;
       let rotate = (angle * (180 / Math.PI)) + 90;
       return `translate(${x},${y})rotate(${rotate})`;
     })
-    .attr('fill', '#ccc')
+    .attr('fill', '#aaa')
     .attr('class', (d) => `group group-${d.year}`);
+}
+
+function buildDonut(yearCount) {
+
+  let thickness = 10,
+      radius = 250;
+
+  let arc = d3.arc()
+    // .startAngle(-1 * Math.PI / 2)
+    .innerRadius(radius - thickness)
+    .outerRadius(radius);
+
+  console.log(yearCount);
+
+  let pie = d3.pie()
+    // .startAngle(-1 * Math.PI / 2)
+    .value(d => d.count)
+    .sort(null);
+
+  let donut = base.append('g')
+    .attr('id','ring');
+    // .attr('transform', 'rotate(-93.5)');
+
+  let path = donut.selectAll('path')
+    .data(pie(yearCount))
+    .enter()
+    .append('g')
+    .append('path')
+    .attr('d', arc)
+    .style('fill', (d, i) => colors[i])
+    .style('fill-opacity', '1')
+    .attr('class', (d) => `group group-${d.data.year}`)
+    .on('click', function(d) {
+      console.log(d);
+        if (selectedGroup === d) {
+          selectedGroup = null;
+          hideGroup(d.data);
+        } else {
+          selectedGroup = d;
+          showGroup(d.data);
+        }
+        d3.event.stopPropagation();
+      })
+      .on('mouseover', (d) => showGroup(d.data))
+      .on('mouseout', (d) => {
+        hideGroup(d.data);
+
+        if (selectedGroup !== null) {
+          showGroup(selectedGroup.data);
+        }
+    });
+  //   .on("mouseover", function(d) {
+  //     d3.select(this)     
+  //       .style("cursor", "pointer")
+  //       .style("fill", 'red')
+  //       .style('fill-opacity', '0.3');
+
+  //     buildCenterStuff(d.data);
+  //     buildDollars(d.data.year);
+  //   })
+  //   .on("mouseout", function(d) {
+  //     d3.select(this)
+  //       .style("cursor", "none")  
+  //       .style('fill-opacity', '0');
+  //   })
+  //   .each(function(d, i) { this._current = i; });
 }
 
 function buildBar(data, years) {
@@ -303,7 +343,7 @@ function buildBar(data, years) {
   let x = d3.scaleLinear()
             .range([0, width]);
             
-  let svg = d3.select('#bar svg')
+  let svgBar = d3.select('#bar svg')
       .attr('width', width + margin.left + margin.right)
       .attr('height', height + margin.top + margin.bottom)
     .append('g')
@@ -313,7 +353,7 @@ function buildBar(data, years) {
     y.domain(d3.range(1958, 2011));
     x.domain([0, d3.max(data, function(d) { return d.count; })]);
 
-    svg.selectAll('.bar')
+    svgBar.selectAll('.bar')
         .data(data)
       .enter().append('rect')
         .attr('class', 'bar')
@@ -340,7 +380,7 @@ function buildBar(data, years) {
           }
         });
         
-    svg.selectAll('text')
+    svgBar.selectAll('text')
         .data(data)
       .enter().append('text')
         .text(function(d) { return d.count;})
@@ -349,18 +389,46 @@ function buildBar(data, years) {
         .style('text-anchor', 'middle')
         .style('fill', 'white');
 
-    svg.append('g')
+    svgBar.append('g')
         .call(d3.axisLeft(y).tickValues(years).tickSizeOuter(0));
 
-    svg.append('text')
+    svgBar.append('text')
       .text('year')
       .attr('x',-33)
       .attr('y',-5);
 
-    svg.append('text')
+    svgBar.append('text')
       .text('# of astronauts selected')
       .attr('x',3)
       .attr('y',-5);
+}
+
+function buildRank(data, yearCount) {
+
+  let sortedData = data.sort(function(a, b) {
+    return b.hours - a.hours;
+  });
+
+  let topResults = sortedData.slice(0, 6);
+
+  for (let i = 0; i < topResults.length; i++) {
+
+    let elem = $('#a-' + i),
+      t = topResults[i],
+      w = ((t.hours / topResults[0].hours) * 100) * 0.8,
+      c = yearCount[t.group].color;
+
+      $(elem).find('.hours').text(t.hours.toLocaleString());
+      $(elem).find('.num-bar').css('width', w + '%');
+      $(elem).find('.num-bar').css('background', c);
+      $(elem).find('.name').text(t.name);
+      $(elem).find('.year').text(t.year);
+      $(elem).find('.group').text(t.group);
+      $(elem).find('.status').text(t.status);
+      $(elem).find('.gender').text(t.gender);
+      $(elem).find('.dob').text(t.dob);
+      $(elem).find('.missions').text(t.missions);
+  }
 }
 
 function showGroup(d) {

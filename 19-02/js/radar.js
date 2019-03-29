@@ -1,5 +1,5 @@
 /* based on https://rawgit.com/tpreusse/radar-chart-d3/master/src/radar-chart.js */
-/* modified heavily for InProfile */
+/* heavily modified by Tiffany France */
 
 var RadarChart = {
   defaultConfig: {

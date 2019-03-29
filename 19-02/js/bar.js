@@ -7,11 +7,11 @@ function barChart(data, value, selector) {
   
   let margin = {
       top: 35,
-      right: 20,
+      right: 25,
       bottom: 15,
-      left: 100
+      left: 105
   };
-  let width = 280 - margin.left - margin.right,
+  let width = 290 - margin.left - margin.right,
       height = 350 - margin.top - margin.bottom;
 
   let svg = d3.select(selector).append("svg")
@@ -26,6 +26,7 @@ function barChart(data, value, selector) {
 
   let colors = d3.scale.linear()
     // .domain([0, d3.max(data, (d)=>d[value])/2, d3.max(data, (d)=>d[value])])
+    // .domain([0, 1.5, 3])
     // .range(['#49AFFF', '#00FFC6', '#00FF4A']);
     .domain([0, 1.5, 3])
     .range(['yellow', 'orange', 'red']);

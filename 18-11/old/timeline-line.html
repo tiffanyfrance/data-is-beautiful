@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<style> /* set the CSS */
+  body {
+    background: #333;
+  }
+
+  * {
+    color: white;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  text {
+    fill: white;
+  }
+
+  line {
+    visibility: hidden;
+  }
+
+  .bar { 
+    fill: steelblue; 
+  }
+
+  path {
+    stroke: #444;
+  }
+</style>
+<body>
+  
+<!-- load the d3.js library -->     
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script>
+
+  // data = [
+  //   {salesperson: 1958, sales: 0},
+  //   {salesperson: 1959, sales: 7},
+  //   {salesperson: 1960, sales: 0},
+  //   {salesperson: 1961, sales: 0},
+  //   {salesperson: 1962, sales: 9},
+  //   {salesperson: 1963, sales: 14},
+  //   {salesperson: 1964, sales: 0},
+  //   {salesperson: 1965, sales: 6},
+  //   {salesperson: 1966, sales: 19},
+  //   {salesperson: 1967, sales: 11},
+  //   {salesperson: 1968, sales: 0},
+  //   {salesperson: 1969, sales: 7},
+  //   {salesperson: 1970, sales: 0},
+  // ]
+
+// set the dimensions and margins of the graph
+var margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = 1460 - margin.left - margin.right,
+    height = 250 - margin.top - margin.bottom;
+
+// set the ranges
+var x = d3.scaleBand()
+          .range([0, width])
+          .padding(0.1);
+var y = d3.scaleLinear()
+          .range([height, 0]);
+          
+// append the svg object to the body of the page
+// append a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+// get the data
+d3.csv("nasa.csv", function(error, results) {
+  if (error) throw error;
+
+  var data= [];
+
+  var unique = [...new Set(results.map(results => results['Selection Year']))];
+
+  let years = Array.from(unique);
+  
+  for (var i = 0; i < years.length; i++) {
+    var count = 0;
+    
+    for (var j = 0; j < results.length; j++) { 
+        if(results[j]['Selection Year'] === years[i]) count++;
+    }
+
+    data.push({
+      year: +years[i],
+      count: count
+    })
+
+    // svg.append('text')
+    //     .text(`(${count})`)
+    //     .attr('x', (d) => {
+    //       return x(years[i]);
+    //     })
+    //     .attr('y', 30)
+    //     .style("text-anchor", "middle")
+    //     .attr('font-size', '10px');
+  }
+
+  console.log(data)
+  // format the data
+  // data.forEach(function(d) {
+  //   d.sales = +d.sales;
+  // });
+
+  // Scale the range of the data in the domains
+  x.domain(d3.range(1958, 2010));
+  y.domain([0, d3.max(data, function(d) { return d.count; })]);
+
+  // append the rectangles for the bar chart
+  svg.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.year); })
+      .attr("width", x.bandwidth())
+      .attr("y", function(d) { return y(d.count); })
+      .attr("height", function(d) { return height - y(d.count); });
+      
+  svg.selectAll("text")
+      .data(data)
+    .enter().append('text')
+      .text(function(d) { return d.count;})
+      .attr("x", function(d) { return x(d.year) + 11; })
+      .attr("y", function(d) { return y(d.count) + 15; })
+      .style("text-anchor", "middle")
+      .style("fill", "white")
+      .attr('font-size', '10px');
+
+  // add the x Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).tickValues(years).tickSizeOuter(0));
+
+  // add the y Axis
+  // svg.append("g")
+  //     .call(d3.axisLeft(y));
+
+});
+
+</script>
+</body>

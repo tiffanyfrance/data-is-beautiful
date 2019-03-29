@@ -1,0 +1,214 @@
+body {
+  background: #333;
+  min-width: 1440px;
+  font-size: 12px;
+}
+
+.viz {
+  width: 1440px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+svg, #tooltip {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2 {
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  position: relative; 
+  left: -50%;
+  top: 320px;
+  font-size: 70px;
+  text-align: center;
+  line-height: 1.25;
+  font-style: italic;
+}
+
+h1 div {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight:400;
+  font-style: normal;
+  padding-top: 10px;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+}
+
+p {
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  font-size: 12px;
+}
+
+#tooltip {
+  position: absolute;
+  background: #fff;
+  padding: 2px 10px;
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+#tooltip p {
+  color: #333;
+}
+
+a, a:visited {
+  color: lightsteelblue;
+}
+
+a:hover {
+  color: lightyellow;
+}
+
+.burst {
+  float:left; 
+  position:relative;
+}
+
+.burst-text {
+  position: absolute;
+  left: 50%; 
+  z-index: -1;
+}
+
+.legend {
+  position: absolute;
+  top: 520px;
+  left: -210px;
+}
+
+/*.legend p {
+  font-size: 14px;
+}*/
+
+#flightTime {
+  color: #00B0FF;
+}
+
+#bar {
+   text-align: center;
+   float:left;
+}
+
+#bar * {
+  color: white;
+}
+
+#bar text {
+  fill: white;
+}
+
+#bar line {
+  visibility: hidden;
+}
+
+#bar path {
+  stroke: #444;
+}
+
+#bar .bar {
+  cursor: pointer;
+}
+
+#bar .group {
+  cursor: pointer
+}
+
+
+#mostFlights {
+  clear: both;
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+
+h3 {
+  text-align: center;
+  padding-top: 50px;
+  font-size: 28px; 
+  color: #fff;
+  font-weight: normal;
+  margin-bottom: 0px;
+}
+
+.row-flex {
+  display: flex;
+  padding: 0px 100px 100px;
+}
+
+/*#mostFlights p {
+  font-size: 14px;
+  line-height: 1.5;
+}*/
+
+#mostFlights .hours {
+  font-weight: bold;
+}
+
+#mostFlights p.big-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  margin-bottom: 0px;
+}
+
+.num-bar {
+  height: 10px;
+  display:block;
+  margin: 10px 10px 10px 0px;
+}
+
+.col-5 {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  width: calc(100% - 20px);
+}
+
+#roll-call {
+  padding: 0px 100px 100px;  
+}
+
+#roll-call div.col-5 {
+  float: left;
+  max-width: calc(10% - 20px);
+  height: 730px; /* TODO: fix LAZY hack */
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+}
+
+#roll-call ul {
+  padding: 0px;
+  line-height: 1.5;
+  margin-top: 3px;
+}
+
+#roll-call li {
+  list-style-type: none;
+}
+
+hr {
+   margin: 0 auto;
+   max-width: 80%;
+   border: solid 0.25px #444;
+   margin-top: 50px;
+   margin-bottom: 60px;
+}
+
+.notes {
+  clear: both;
+  font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+  -webkit-column-count: 3; /* Chrome, Safari, Opera */
+  -moz-column-count: 3; /* Firefox */
+  column-count: 3;
+  -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+  -moz-column-gap: 40px; /* Firefox */
+  column-gap: 40px;
+  padding: 50px 100px 100px;
+}

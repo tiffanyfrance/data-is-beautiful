@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700i|Roboto" rel="stylesheet">
+<link rel="stylesheet" href="main.css">
+<body>
+  <div class="viz">
+    <div class="burst">
+      <div class="burst-text">
+        <h1>Spacing out<br />
+          <div>
+            NASA astronaut data from 1959-2009<br />
+          </div>
+        </h1>
+        <div class="legend">
+         <p>
+           Total hours of space flight: <span id="flightTime"></span>
+         </p>
+         <img src="legend.svg" alt="">
+        </div>
+      </div>
+
+      <div id="burst" style="text-align: center;">
+        <svg width="1180" height="1100"></svg>
+      </div> 
+    </div>
+
+    <div id="bar">
+      <svg width="260" height="1100"></svg>
+    </div>
+  </div>
+
+
+  <div id="mostFlights">
+    <h3>Astronauts with most flight time hours</h3>
+
+    <div class="row-flex">
+      <div class="col-5">
+        <p class="big-number">1st</p>
+        <p id="a-0">
+          Name: <span class="name"></span> <span class="military"><br />
+          Hours flown: <span class="hours"></span><br />
+          <span class="num-bar bar-1"></span>
+          Selection year: <span class="year"></span><br />
+          Gender: <span class="gender"></span><br />
+          DOB: <span class="dob"></span><br />
+          Selection group: #<span class="group"></span><br />
+          Missions flown: <span class="missions"></span><br />
+          Status: <span class="status"></span>
+        </p>
+      </div>
+      <div class="col-5">
+        <p class="big-number">2nd</p>
+        <p id="a-1">
+          Name: <span class="name"></span> <span class="military"><br />
+          Hours flown: <span class="hours"></span><br />
+          <span class="num-bar bar-2"></span>
+          Selection year: <span class="year"></span><br />
+          Gender: <span class="gender"></span><br />
+          DOB: <span class="dob"></span><br />
+          Selection group: #<span class="group"></span><br />
+          Missions flown: <span class="missions"></span><br />
+          Status: <span class="status"></span>
+        </p>
+      </div>
+      <div class="col-5">
+        <p class="big-number">3rd</p>
+        <p id="a-2">
+          Name: <span class="name"></span> <span class="military"><br />
+          Hours flown: <span class="hours"></span><br />
+          <span class="num-bar bar-3"></span>
+          Selection year: <span class="year"></span><br />
+          Gender: <span class="gender"></span><br />
+          DOB: <span class="dob"></span><br />
+          Selection group: #<span class="group"></span><br />
+          Missions flown: <span class="missions"></span><br />
+          Status: <span class="status"></span>
+        </p>
+      </div>
+      <div class="col-5">
+        <p class="big-number">4th</p>
+        <p id="a-3">
+          Name: <span class="name"></span> <span class="military"><br />
+          Hours flown: <span class="hours"></span><br />
+          <span class="num-bar bar-4"></span>
+          Selection year: <span class="year"></span><br />
+          Gender: <span class="gender"></span><br />
+          DOB: <span class="dob"></span><br />
+          Selection group: #<span class="group"></span><br />
+          Missions flown: <span class="missions"></span><br />
+          Status: <span class="status"></span>
+        </p>
+      </div>
+      <div class="col-5">
+        <p class="big-number">5th</p>
+        <p id="a-4">
+          Name: <span class="name"></span> <span class="military"><br />
+          Hours flown: <span class="hours"></span><br />
+          <span class="num-bar bar-5"></span>
+          Selection year: <span class="year"></span><br />
+          Gender: <span class="gender"></span><br />
+          DOB: <span class="dob"></span><br />
+          Selection group: #<span class="group"></span><br />
+          Missions flown: <span class="missions"></span><br />
+          Status: <span class="status"></span>
+        </p>
+      </div>
+      <div class="col-5">
+        <p class="big-number">6th</p>
+        <p id="a-5">
+          Name: <span class="name"></span> <span class="military"><br />
+          Hours flown: <span class="hours"></span><br />
+          <span class="num-bar bar-6"></span>
+          Selection year: <span class="year"></span><br />
+          Gender: <span class="gender"></span><br />
+          DOB: <span class="dob"></span><br />
+          Selection group: #<span class="group"></span><br />
+          Missions flown: <span class="missions"></span><br />
+          Status: <span class="status"></span>
+        </p>
+      </div>
+    </div>
+  </div>
+
+<!--   <div id="roll-call">
+    <h3>Roll call</h3>
+  </div> -->
+
+  <hr>
+  <div class="notes" id="notes">
+    <p><b>Notes on Prototyping and Process</b></p>
+    <p>
+      This visualization was built for entry to the <a href="https://www.reddit.com/r/dataisbeautiful/">r/data-is-beautiful</a> November 2018 challenge. All design/code is an original creation from the author, <a href="https://bl.ocks.org/tiffylou">Tiffany France</a>. The data was provided by the reddit channel and is available from <a href="https://docs.google.com/spreadsheets/d/1kG9Jwknb6siBk0nm8lW40ltkJQuXPekc8zXikXp-rdg/edit?hl=en_US&hl=en_US#gid=0">this google spreadsheet</a>.
+    </p>
+    <p>
+      <b>Process:</b> When creating this visualization I began by reviewing the data provided in google spreadsheets. I looked at the column headers and the data in each row to familiarize myself with the content. I spent a couple of hours brainstorming and sketching ideas for a potenitally interesting hypothesis. 
+    </p>
+    <p>
+      Because of the space theme, I was interested in displaying the data in a circle format, mimicking the shape of planets, stars, moons, and other celestial bodies. Circle formats are best when used as a clock or for months of the year. In this case, I used a circle to indicate years. I also explored the idea of using a x/y graph, which is the traditional method for plotting change over time (either with bars or a line), however I chose to stick with the circle, perfering the visual impact of the visualization to the potential decrease of time in user comprehension, intending that the visualization would be captivating enough to offset that loss. 
+    </p>
+    <p>
+      The circles are placed on the svg using a combination of PI, sine, and cosine to figure out the angles. While D3 provides some methods for laying out circles, none of the examples sufficiently fit my needs for this visualization. Therefore the math was created outside of the library using vanilla javascript.
+    </p>
+    <p>
+      One of the greatest unforseen difficulties was the number of circles representing each astronaut and fitting them onto a circle on the page. When placed, the 335 entries were very tight in the space provided. This caused the radius of the main circle to be larger than initially planned in order to fit the data.
+    </p>
+    <p>
+      Additionally, the units of measurements [250,100,50,10,1,0] were sized visually, as opposed to proportionally, in order to adequately see the smaller sizes when laid out on the svg.
+    </p>
+    <p>
+      The most significant change was to rethink the bar chart which now sits horizontally on the page. Originally that was one of three charts below the burst visualization. The three charts were: [1] Former astronaut flight time (for the purpose of understanding how many hours an astronaut can expect to fly during their career), [2] Astronaut with highest flight time, [3] Number of astronauts selected during each "Selection Year".
+    </p>
+    <p>
+      The number of astronauts selected during each "Selection Year" lead to a number of questions once the bar chart was built. For instance, why are astronauts hired in bunches? Why are they selected on seemingly random years? What is the correlation between the "Selection Years"? Why are the numbers hired different for each year? Though I could not tackle all of these questions without a separate source, I decided more information could be gleamed by adding another view to this page.
+    </p>
+    <p>
+      I initially laid out the bar graph as a traditional vertical bar chart. I had an irrisitable urge to click on the bars and see some kind of action with the burst visualization above. The urge was so strong that I decided to convert the bar chart to a horizontal bar chart, float it beside the burst chart, and add a mouseover that would correspond to the applicable year pie segment in the burst chart. This is the type of iteration that comes from building a visualization and then testing it. I find it is nearly impossible to build a solid visual experience based on sketching in Illustrator or Sketch. One must use the visualization to know if it is successful. One must use the visualization to know how it can be improved.
+    </p>
+    <p>
+      A few of TODOs, if I find some free time (jokes!), would be: <span style="text-decoration: line-through;">[1] on('click') to function like the mouseover when interacting between the two charts. Ideally, clicking one of the bars would "freeze" the burst state so that you could interact with the selection (view the tooltip information).</span> [2] Responsive web design/mobile considerations. Currently this page is meant to render only on a large desktop screen (min-width: 1440px). [3] Complete the other prototyped charts which may give further insight to this data set <span style="text-decoration: line-through;">[4] Add labels around the circle for each group.</span> [5] Code cleanup and refactoring. [6] Share insights as a bl.ock or on observable.
+    </p>
+    <p>
+      I set a strict 8-hour maximum for this project. There were many things that I wanted to include, but either because of time restrictions or difficulty, those items were abandoned. A side effect of this time limit was that the idea was simplified to fit into the 8 hour limit, which had the effect of making the visualization very different than the original sketches/ideas. In the end I was happy with the concessions because, as I often find, the simplier the visualization, the more effective the message.
+    </p>
+    <p>
+      <b>About the author:</b> Tiffany France is a software engineer and graphic designer specializing in data visualization. Her preferred language is Javascript, with D3.js being the ideal tool for visualizing data. Interested in collaborations? Please reach out on <a href="https://github.com/tiffylou/">github</a>.
+    </p>
+  </div>
+
+  <div id="tooltip" style="opacity: 0;">
+    <p>Name: <span id="name">Captain Awesome</span></p>
+    <p>Selection year: <span id="year">1959</span></p>
+    <p>Group: <span id="group">0</span></p>
+    <p>Flight hours: <span id="hours">100</span></p>
+    <p>Current status: <span id="status"></span></p>
+  </div>
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="main.js"></script>
+</body>

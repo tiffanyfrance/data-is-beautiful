@@ -15,33 +15,33 @@ Czechoslovakia,Marie Bernatkova,10/22/1857,5/4/1969,111,194,W,F,Czechoslovakia
 England (UK),Ada Roe,2/6/1858,1/11/1970,111,339,W,F,UK
 Spain,Josefa Salas Mateo,7/14/1860,2/27/1973,112,228,W,F,Spain
 England (UK),Alice Stevenson,7/10/1861,8/18/1973,112,39,W,F,UK
-N. Ireland (UK),Elizabeth Watkins[2],3/10/1863,10/31/1973,110,235,W,F,UK
+N. Ireland (UK),Elizabeth Watkins,3/10/1863,10/31/1973,110,235,W,F,UK
 Japan,Mito Umeta,3/27/1863,5/31/1975,112,65,O,F,Japan
 Japan,Niwa Kawamoto,8/5/1863,11/16/1976,113,103,O,F,Japan
-U.S. (MO),Sophia De Muth [3],6/30/1866,12/2/1977,111,155,W,F,USA
+U.S. (MO),Sophia De Muth,6/30/1866,12/2/1977,111,155,W,F,USA
 France,Marie-Virginie Duhem,8/2/1866,4/25/1978,111,266,W,F,France
 U.S. (IL),Fannie Thomas,4/14/1867,1/22/1981,113,283,W,F,USA
 France,Augustine Teissier,1/2/1869,3/8/1981,112,65,W,F,France
 U.S. (NH),Nellie Spencer,8/24/1869,11/13/1982,113,81,W,F,USA
 U.S. (MO),Emma Wilson,5/12/1870,10/13/1983,113,154,W,F,USA
-U.S. (VA),Mathew Beard[4],7/9/1870,2/16/1985,114,222,B,M,USA
+U.S. (VA),Mathew Beard,7/9/1870,2/16/1985,114,222,B,M,USA
 Germany (now Poland) [5],Augusta Holtz,8/3/1871,10/21/1986,115,79,W,F,USA
 U.S. (CA),Mary McKinney,5/30/1873,2/2/1987,113,248,W,F,USA
 England (UK),Anna Eliza Williams,6/2/1873,12/27/1987,114,208,W,F,UK
 U.S. (PA),Florence Knapp,10/10/1873,1/11/1988,114,93,W,F,USA
-France,Jeanne Calment [6],2/21/1875,8/4/1997,122,164,W,F,France
+France,Jeanne Calment,2/21/1875,8/4/1997,122,164,W,F,France
 Canada (Que),Marie-Louise Meilleur,8/29/1880,4/16/1998,117,230,W,F,Canada
 U.S. (PA),Sarah Knauss,9/24/1880,12/30/1999,119,97,W,F,USA
 England (UK),Eva Morris,11/8/1885,11/2/2000,114,360,W,F,UK
 France,Marie Bremont,4/25/1886,6/6/2001,115,42,W,F,France
 U.S. (MI),Maud Farris-Luse,1/21/1887,3/18/2002,115,56,W,F,USA
-England (UK),Grace Clawson [7],11/15/1887,5/28/2002,114,194,W,F,USA
-Cape Verde (Portugal)[8],Adelina Domingues,2/19/1888,8/21/2002,114,183,W,F,USA
+England (UK),Grace Clawson,11/15/1887,5/28/2002,114,194,W,F,USA
+Cape Verde (Portugal),Adelina Domingues,2/19/1888,8/21/2002,114,183,W,F,USA
 U.S. (NY),Mae Harrington,1/20/1889,12/29/2002,113,343,W,F,USA
 Japan,Yukichi Chuganji,3/23/1889,9/28/2003,114,189,O,M,Japan
 Japan,Mitoyo Kawate,5/15/1889,11/13/2003,114,182,O,F,Japan
-Puerto Rico,Ramona Trinidad Iglesias-Jordan[9],8/31/1889,5/29/2004,114,272,W,F,Puerto Rico
-Ecuador,Maria Esther de Capovilla[10],9/14/1889,8/27/2006,116,347,W,F,Ecuador
+Puerto Rico,Ramona Trinidad Iglesias-Jordan,8/31/1889,5/29/2004,114,272,W,F,Puerto Rico
+Ecuador,Maria Esther de Capovilla,9/14/1889,8/27/2006,116,347,W,F,Ecuador
 U.S. (TN),Elizabeth Bolden,8/15/1890,12/11/2006,116,118,B,F,USA
 Puerto Rico,Emiliano Mercado Del Toro,8/21/1891,1/24/2007,115,156,H,M,Puerto Rico
 U.S. (NC),Emma Tillman,11/22/1892,1/28/2007,114,67,B,F,USA
@@ -51,7 +51,7 @@ Portugal,Maria de Jesus,9/10/1893,1/2/2009,115,114,W,F,Portugal
 U.S. (GA),Gertrude Baines,4/6/1894,9/11/2009,115,158,B,F,USA
 Japan,Kama Chinen,5/10/1895,5/2/2010,114,357,O,F,Japan
 France,Eugenie Blanchard,2/16/1896,11/4/2010,114,261,W,F,France
-Brazil,Maria Gomes Valentim [11],7/9/1896,6/21/2011,114,347,W,F,Brazil
+Brazil,Maria Gomes Valentim,7/9/1896,6/21/2011,114,347,W,F,Brazil
 U.S. (TN),Besse Cooper,8/26/1896,12/4/2012,116,100,W,F,USA
 Italy,Dina Manfredini,4/4/1897,12/17/2012,115,257,W,F,USA
 Japan,Jiroemon Kimura,4/19/1897,6/12/2013,116,54,O,M,Japan
@@ -63,4 +63,3 @@ Italy,Emma Morano,11/29/1899,4/15/2017,117,137,W,F,Italy
 British West Indies (now Jamaica),Violet Brown,3/10/1900,9/15/2017,117,189,B,F,Jamaica
 Japan,Nabi Tajima,8/4/1900,4/21/2018,117,260,EA,F,Japan
 Japan,Chiyo Miyako,5/2/1901,7/22/2018,117,81,EA,F,Japan
-Japan,Kane Tanaka,1/2/1903,1/13/2019,115,214,EA,F,Japan

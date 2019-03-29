@@ -8,7 +8,7 @@ body {
 }
 
 h1 {
-  color: #999;
+  color: #ddd;
   font-weight: normal;
   font-size: 16px;
   text-transform: uppercase;
@@ -19,7 +19,7 @@ h1 span {
 }
 
 h1 span a, h1 span a:visited {
-  color: #999;
+  color: #ddd;
   text-decoration: none;
 }
 
@@ -30,7 +30,7 @@ h1 span a:hover {
 text {
   fill: #ddd;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .domain {

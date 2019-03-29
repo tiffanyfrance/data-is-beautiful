@@ -1,0 +1,336 @@
+Astronaut,Selection Year, Group, # Flights,Status,Military or civilian,Gender,Date of birth,Missions flown,Cumulative hours of space flight time
+"Carpenter, M. Scott",1959,1,1,Former,Military,Male,5/1/1925,Mercury 7,4
+"Cooper, L. Gordon, Jr.",1959,1,2,Deceased,Military,Male,3/6/1927,Mercury 9 and Gemini 5,225
+"Glenn, John H., Jr.",1959,1,2,Former,Military,Male,7/18/1921,Mercury 6 and STS-95,217
+"Grissom, Virgil I.",1959,1,2,Deceased,Military,Male,4/3/1926,Mercury 4 and Gemini 3,5
+"Schirra, Walter M., Jr.",1959,1,3,Deceased,Military,Male,3/12/1923,"Mercury 8, Gemini 6 and Apollo 7",295
+"Shepard, Alan B., Jr.",1959,1,2,Deceased,Military,Male,11/18/1923,Mercury 3 and Apollo 14,216
+"Slayton, Donald K.",1959,1,1,Deceased,Civilian,Male,3/1/1924,Apollo-Soyuz Test Project,217
+"Armstrong, Neil A.",1962,2,2,Former,Civilian,Male,8/5/1930,Gemini 8 and Apollo 11,205
+"Borman, Frank",1962,2,2,Former,Military,Male,3/14/1928,Gemini 7 and Apollo 8,477
+"Conrad, Charles, Jr.",1962,2,4,Deceased,Military,Male,5/2/1930,"Gemini 5, Gemini 11, Apollo 12 and Skylab 2",1179
+"Lovell, James A., Jr.",1962,2,4,Former,Military,Male,3/25/1928,"Gemini 7, Gemini 12, Apollo 8 and Apollo 13",715
+"McDivitt, James A.",1962,2,2,Former,Military,Male,6/10/1929,Gemini 4 and Apollo 9,338
+"See, Elliot M., Jr.",1962,2,0,Deceased,Civilian,Male,7/23/1927,,0
+"Stafford, Thomas P.",1962,2,4,Former,Military,Male,9/17/1930,"Gemini 6, Gemini 9, Apollo 10 and Apollo-Soyuz Test Project",507
+"White, Edward H., II",1962,2,1,Deceased,Military,Male,11/14/1930,Gemini 4,97
+"Young, John W.",1962,2,6,Former,Military,Male,9/24/1930,"Gemini 3, Gemini 10, Apollo 10, Apollo 16, STS-1 and STS-9",835
+"Williams, Clifton C., Jr.",1963,3,0,Deceased,Military,Male,9/26/1932,,0
+"Aldrin, Buzz",1963,3,2,Former,Military,Male,1/20/1930,Gemini 12 and Apollo 11,289
+"Anders, William A.",1963,3,1,Former,Civilian,Male,10/17/1933,Apollo 8,147
+"Bassett, Charles A., II",1963,3,0,Deceased,Military,Male,12/30/1931,,0
+"Bean, Alan L.",1963,3,2,Former,Military,Male,3/15/1932,Apollo 12 and Skylab 3,1671
+"Cernan, Eugene A.",1963,3,3,Former,Military,Male,3/14/1934,"Gemini 9, Apollo 10 and Apollo 17",566
+"Chaffee, Roger B.",1963,3,0,Deceased,Military,Male,2/15/1935,,0
+"Collins, Michael",1963,3,2,Former,Civilian,Male,10/31/1930,Gemini 10 and Apollo 11,266
+"Cunningham, Walter",1963,3,1,Former,Civilian,Male,3/16/1932,Apollo 7,263
+"Eisele, Donn F.",1963,3,1,Deceased,Military,Male,5/23/1930,Apollo 7,260
+"Freeman, Theodore C.",1963,3,0,Deceased,Military,Male,2/18/1930,,0
+"Gordon, Richard F., Jr.",1963,3,2,Former,Military,Male,10/5/1929,Gemini 11 and Apollo 12,315
+"Schweickart, Russell L.",1963,3,1,Former,Civilian,Male,10/25/1935,Apollo 9,241
+"Scott, David R.",1963,3,3,Former,Military,Male,6/6/1932,"Gemini 8, Apollo 9 and Apollo 15",546
+"Garriott, Owen K.",1965,4,2,Former,Civilian,Male,11/22/1930,Skylab 3 and STS-9,1674
+"Gibson, Edward G.",1965,4,1,Former,Civilian,Male,11/8/1936,Skylab 4,2017
+"Graveline, Duane E.",1965,4,0,Former,Civilian,Male,3/2/1931,,0
+"Kerwin, Joseph P.",1965,4,1,Former,Military,Male,2/19/1932,Skylab 2,672
+"Michel, F. Curtis",1965,4,0,Former,Civilian,Male,6/5/1934,,0
+"Schmitt, Harrison H.",1965,4,1,Former,Civilian,Male,7/3/1935,Apollo 17,301
+"Worden, Alfred M.",1966,5,1,Former,Military,Male,2/7/1932,Apollo 15,295
+"Brand, Vance D.",1966,5,4,Former,Civilian,Male,5/9/1931,"Apollo-Soyuz Test Project, STS-5, STS 41-B and STS-35",746
+"Bull, John S.",1966,5,0,Deceased,Civilian,Male,9/25/1934,,0
+"Carr, Gerald P.",1966,5,1,Former,Military,Male,8/22/1932,Skylab 4,2017
+"Duke, Charles M., Jr.",1966,5,1,Former,Military,Male,10/3/1935,Apollo 16,265
+"Engle, Joe H.",1966,5,2,Former,Military,Male,8/26/1932,STS-2 and STS 51-I,224
+"Evans, Ronald E.",1966,5,1,Deceased,Military,Male,11/10/1933,Apollo 17,301
+"Givens, Edward G., Jr.",1966,5,0,Deceased,Military,Male,1/5/1930,,0
+"Haise, Fred W., Jr.",1966,5,1,Former,Civilian,Male,11/14/1933,Apollo 13,142
+"Irwin, James B.",1966,5,1,Deceased,Military,Male,3/17/1930,Apollo 15,295
+"Lind, Don L.",1966,5,1,Former,Civilian,Male,5/18/1930,STS 51-B,168
+"Lousma, Jack R.",1966,5,2,Former,Military,Male,2/29/1936,Skylab 3 and STS-3,1619
+"Mattingly, Thomas K., II",1966,5,3,Former,Military,Male,3/17/1936,"Apollo 16, STS-4 and STS 51-C",504
+"McCandless, Bruce, II",1966,5,2,Former,Military,Male,6/8/1937,STS 41-B and STS-31,312
+"Mitchell, Edgar D.",1966,5,1,Former,Military,Male,9/17/1930,Apollo 14,216
+"Pogue, William R.",1966,5,1,Former,Military,Male,1/23/1930,Skylab 4,2017
+"Roosa, Stuart A.",1966,5,1,Deceased,Military,Male,8/16/1933,Apollo 14,216
+"Swigert, John L., Jr.",1966,5,1,Deceased,Civilian,Male,8/30/1931,Apollo 13,142
+"Weitz, Paul J.",1966,5,2,Former,Military,Male,6/25/1932,Skylab 2 and STS-6,793
+"Allen, Joseph P.",1967,6,2,Former,Civilian,Male,6/27/1937,ST-5 and STS 51-A,313
+"Chapman, Philip K.",1967,6,0,Former,Civilian,Male,3/5/1935,,0
+"England, Anthony W.",1967,6,1,Former,Civilian,Male,5/15/1942,STS 51-F,190
+"Henize, Karl G.",1967,6,1,Deceased,Civilian,Male,10/17/1926,STS 51-F,188
+"Holmquest, Donald L.",1967,6,0,Former,Civilian,Male,4/7/1939,,0
+"Lenoir, William B.",1967,6,1,Former,Civilian,Male,3/14/1939,STS-5,122
+"Llewellyn, John A.",1967,6,0,Former,Civilian,Male,4/22/1933,,0
+"Musgrave, Story",1967,6,6,Former,Civilian,Male,8/19/1935,"STS-6, STS 51-F, STS-33, STS-44, STS-61 and STS-80",1281
+"O'Leary, Brian T.",1967,6,0,Former,Civilian,Male,1/27/1940,,0
+"Parker, Robert A. R.",1967,6,2,Former,Civilian,Male,12/14/1936,STS-9 and STS-35,462
+"Thornton, William E.",1967,6,2,Former,Civilian,Male,4/14/1929,STS-8 and STS 51-B,313
+"Bobko, Karol J.",1969,7,3,Former,Military,Male,12/23/1937,"STS-6, STS 51-D and STS-51-J",386
+"Crippen, Robert L.",1969,7,4,Former,Military,Male,9/11/1937,"STS-1, STS-7, STS 41-C and STS 41-G",565
+"Fullerton, Charles G.",1969,7,2,Former,Military,Male,10/11/1936,STS-3 and STS 51-F,382
+"Hartsfield, Henry W., Jr.",1969,7,3,Former,Military,Male,11/21/1933,"STS-4, STS 41-D and STS 61-A",482
+"Overmyer, Robert F.",1969,7,2,Deceased,Military,Male,7/14/1936,STS-5 and STS 51-B,290
+"Peterson, Donald H.",1969,7,1,Former,Military,Male,10/22/1933,STS-6,120
+"Truly, Richard H.",1969,7,2,Former,Military,Male,11/12/1937,STS-2 and STS-8,199
+"Williams, Donald E.",1978,8,2,Former,Military,Male,2/13/1942,STS 51-D and STS-34,287
+"Bluford, Guion S., Jr.",1978,8,4,Former,Military,Male,11/22/1942,"STS-8, STS 61-A, STS-39 and STS-53",688
+"Brandenstein, Daniel C.",1978,8,4,Former,Military,Male,1/17/1943,"STS-8, STS 51-G, STS-32 and STS-49",789
+"Buchli, James F.",1978,8,4,Former,Military,Male,6/20/1945,"STS 51-C, STS 61-A, STS-29 and STS-48",490
+"Coats, Michael L.",1978,8,3,Former,Military,Male,1/16/1946,"STS 41-D, STS-29 and STS-39",463
+"Covey, Richard O.",1978,8,4,Former,Military,Male,8/1/1946,"STS 51-l, STS-26, STS-38 and STS-61",645
+"Creighton, John O.",1978,8,3,Former,Military,Male,4/28/1943,"STS 51-G, STS-36 and STS-48",404
+"Fabian, John M.",1978,8,2,Former,Military,Male,1/28/1939,STS-7 and STS 51-G,316
+"Fisher, Anna L.",1978,8,1,Current,Civilian,Female,8/24/1949,STS 51-A,191
+"Gardner, Dale A.",1978,8,2,Former,Military,Male,11/8/1948,STS-8 and STS 51-A,336
+"Gibson, Robert L.",1978,8,5,Former,Military,Male,10/30/1946,"STS 41-B, STS 61-C, STS-27, STS-47 and STS-71",868
+"Gregory, Frederick D.",1978,8,3,Former,Military,Male,1/7/1941,"STS 51-B, STS-33 and STS-44",455
+"Griggs, S. David",1978,8,1,Deceased,Civilian,Male,9/7/1939,STS 51-D,167
+"Hart, Terry J.",1978,8,1,Former,Civilian,Male,10/27/1946,STS 41-C,167
+"Hauck, Frederick H.",1978,8,3,Former,Military,Male,4/11/1941,"STS-7, STS 51-A and STS-26",436
+"Hawley, Steven A.",1978,8,5,Former,Civilian,Male,12/12/1951,"STS 41-D, STS 61-C, STS-31, STS-82 and STS-93",770
+"Hoffman, Jeffrey A.",1978,8,5,Former,Civilian,Male,11/2/1944,"STS 51-D, STS-35, STS-46, STS-61 and STS-75",1211
+"Lucid, Shannon W.",1978,8,5,Management,Civilian,Female,1/14/1943,"STS 51-G, STS-34, STS-43, STS-58, STS-76/Mir and Mir/STS-79",5354
+"McBride, Jon A.",1978,8,1,Former,Military,Male,8/14/1943,STS 41-G,197
+"McNair, Ronald E.",1978,8,1,Deceased,Civilian,Male,10/21/1950,STS 41-B,191
+"Mullane, Richard M.",1978,8,3,Former,Military,Male,9/10/1945,"STS 41-D, STS-27 and STS-36",356
+"Nagel, Steven R.",1978,8,4,Management,Military,Male,10/27/1946,"STS 51-G, STS 61-A, STS-37 and STS-55",723
+"Nelson, George D.",1978,8,3,Former,Civilian,Male,7/13/1950,"STS 41-C, STS 61-C and STS-26",411
+"Onizuka, Ellison S.",1978,8,1,Deceased,Military,Male,6/24/1946,STS 51-C,73
+"Resnik, Judith A.",1978,8,1,Deceased,Civilian,Female,4/5/1949,STS 41-D,144
+"Ride, Sally K.",1978,8,2,Former,Civilian,Female,5/26/1951,STS-7 and STS 41-G,343
+"Scobee, Francis R.",1978,8,1,Deceased,Military,Male,5/19/1939,STS 41-C,168
+"Seddon, Margaret Rhea",1978,8,3,Former,Civilian,Female,11/8/1947,"STS 51-D, STS-40 and STS-58",722
+"Shaw, Brewster H., Jr.",1978,8,3,Former,Military,Male,5/16/1945,"STS-9, STS 61-B and STS-28",533
+"Shriver, Loren J.",1978,8,3,Former,Military,Male,9/23/1944,"STS 51-C, STS-31 and STS-46",386
+"Stewart, Robert L.",1978,8,2,Former,Military,Male,8/13/1942,STS 41-B and STS 51-J,289
+"Sullivan, Kathryn D.",1978,8,3,Former,Civilian,Female,10/3/1951,"STS 41-G, STS-31 and STS-45",532
+"Thagard, Norman E.",1978,8,5,Former,Civilian,Male,7/3/1943,"STS-7, STS 51-B, STS-30, STS-42 and Mir/STS-71",3360
+"Van Hoften, James D. A.",1978,8,2,Former,Civilian,Male,6/11/1944,STS 41-C and STS 51-I,338
+"Walker, David M.",1978,8,4,Deceased,Military,Male,5/20/1944,"STS 51-A, STS-30, STS-53 and STS-69",724
+"Bagian, James P.",1980,9,2,Former,Civilian,Male,2/22/1952,STS-29 and STS-40,337
+"Blaha, John E.",1980,9,5,Former,Military,Male,8/26/1942,"STS-29, STS-33, STS-43, STS-58, STS-79/Mir and Mir/STS-81",3864
+"Bolden, Charles F., Jr.",1980,9,4,Former,Military,Male,8/19/1946,"STS-61C, STS-31, STS-45 and STS-60",680
+"Bridges, Roy D., Jr.",1980,9,1,Former,Military,Male,7/19/1943,STS 51-F,190
+"Chang-Diaz, Franklin R.",1980,9,7,Former,Civilian,Male,4/5/1950,"STS 61-C, STS-34, STS-46, STS-60, STS-75, STS-91 and STS-111",1601
+"Cleave, Mary L.",1980,9,2,Former,Civilian,Female,2/5/1947,STS 61-B and STS-30,240
+"Dunbar, Bonnie J.",1980,9,5,Former,Civilian,Female,3/3/1949,"STS 61-A, STS-32, STS-50, STS-71 and STS-89",1208
+"Fisher, William F.",1980,9,1,Former,Civilian,Male,4/1/1946,STS 51-I,170
+"Gardner, Guy S.",1980,9,2,Former,Military,Male,1/6/1948,STS-27 and STS-35,320
+"Grabe, Ronald J.",1980,9,4,Former,Military,Male,6/13/1945,"STS 51-J, STS-30, STS-42 and STS-57",627
+"Hilmers, David C.",1980,9,4,Former,Military,Male,1/28/1950,"ST 51-J, STS-26, STS-36 and STS-42",494
+"Leestma, David C.",1980,9,3,Management,Military,Male,5/6/1949,"STS 41-G, STS-28 and STS-45",532
+"Lounge, John M.",1980,9,3,Former,Civilian,Male,6/28/1946,"STS 51-I, STS-26 and STS-35",482
+"O'Connor, Bryan D.",1980,9,2,Management,Military,Male,9/6/1946,STS 61-B and STS-40,386
+"Richards, Richard N.",1980,9,4,Former,Military,Male,8/24/1946,"STS-28, STS-41, STS-50 and STS-64",813
+"Ross, Jerry L.",1980,9,7,Management,Military,Male,1/20/1948,"ST 61-B, ST-27, ST-37, STS-55, STS-74, STS-88 and STS-110",1393
+"Smith, Michael J.",1980,9,0,Deceased,Military,Male,4/30/1945,,0
+"Spring, Sherwood C.",1980,9,1,Former,Military,Male,9/23/1944,STS 61-B,165
+"Springer, Robert C.",1980,9,2,Former,Military,Male,5/21/1942,STS-29 and STS-38,237
+"Adamson, James C.",1984,10,2,Former,Military,Male,3/3/1946,STS-28 and STS-43,334
+"Baker, Ellen S.",1984,10,3,Management,Civilian,Female,4/27/1953,"STS-34, STS-50 and STS-71",686
+"Brown, Mark N.",1984,10,2,Former,Military,Male,11/18/1951,STS 28 and STS-48,249
+"Cameron, Kenneth D.",1984,10,3,Former,Military,Male,11/29/1949,"STS-37, STS-56 and STS-74",561
+"Carter, Manley Lanier, Jr.",1984,10,1,Deceased,Military,Male,8/15/1947,STS-33,120
+"Casper, John H.",1984,10,4,Management,Military,Male,7/9/1943,"STS-36, STS-54, STS-62 and STS-77",825
+"Culbertson, Frank L., Jr.",1984,10,3,Former,Military,Male,5/15/1949,"STS-38, STS-51 and STS-105/Exp 3/STS-108",146
+"Gutierrez, Sidney M.",1984,10,2,Former,Military,Male,6/27/1951,STS-40 and STS-59,488
+"Hammond, L. Blaine, Jr.",1984,10,2,Former,Military,Male,1/16/1952,STS-39 and STS-64,462
+"Ivins, Marsha S.",1984,10,5,Former,Civilian,Female,4/15/1951,"STS-32, STS-46, STS-62, STS-81 and STS-98",1318
+"Lee, Mark C.",1984,10,4,Former,Military,Male,8/14/1952,"STS-30, STS-47, STS-64 and STS-82",789
+"Low, G. David",1984,10,3,Former,Civilian,Male,2/19/1956,"STS-32, STS-43 and STS-57",714
+"McCulley, Michael J.",1984,10,1,Former,Military,Male,8/4/1943,STS-34,119
+"Shepherd, William M.",1984,10,4,Former,Military,Male,7/26/1949,"STS-37, STS-41, STS-52 and Exp 1/STS-102",3816
+"Thornton, Kathryn C.",1984,10,4,Former,Civilian,Female,8/17/1952,"STS-33, STS-49, STS-61 and STS-73",975
+"Veach, Charles Lacy",1984,10,2,Deceased,Civilian,Male,9/18/1944,STS-39 and STS-52,436
+"Wetherbee, James D.",1984,10,6,Former,Military,Male,11/27/1952,"STS-32, STS-52, STS-63, STS-86, STS-102 and STS-113",1592
+"Apt, Jerome",1985,11,4,Former,Civilian,Male,4/28/1949,"STS-37, STS-47, STS-59 and STS-79",847
+"Baker, Michael A.",1985,11,4,Management,Military,Male,10/27/1953,"STS-43, STS-52, STS-68 and STS-81",965
+"Cabana, Robert D.",1985,11,4,Management,Military,Male,1/23/1949,"STS-41, STS-53, STS-65 and STS-88",1010
+"Duffy, Brian",1985,11,4,Former,Military,Male,6/20/1953,"STS-45, STS-57, STS-72 and STS-92",976
+"Gemar, Charles D.",1985,11,3,Former,Military,Male,8/4/1955,"STS-38, STS-48 and STS-62",581
+"Godwin, Linda M.",1985,11,4,Former,Civilian,Female,7/2/1952,"STS-37, STS-59, STS-76 and STS-108",912
+"Henricks, Terence T.",1985,11,4,Former,Military,Male,7/5/1952,"STS-44, STS-55, STS-70 and STS-78",1026
+"Hieb, Richard J.",1985,11,3,Former,Civilian,Male,9/21/1955,"STS-39, STS-49 and STS-65",766
+"Jernigan, Tamara E.",1985,11,5,Former,Civilian,Female,5/7/1959,"STS-40, STS-52, STS-67, STS-80 and STS-98",1512
+"Meade, Carl J.",1985,11,3,Former,Military,Male,11/16/1950,"STS-38, STS-50 and STS-64",712
+"Oswald, Stephen S.",1985,11,3,Former,Civilian,Male,6/30/1951,"STS-42, STS-56 and STS-67",814
+"Thorne, Stephen D.",1985,11,0,Deceased,Military,Male,2/11/1953,,0
+"Thuot, Pierre J.",1985,11,3,Former,Military,Male,5/19/1955,"STS-36, STS-49 and STS-62",654
+"Akers, Thomas D.",1987,12,4,Former,Military,Male,5/20/1951,"STS-41, STS-49, STS-61 and STS-79",814
+"Allen, Andrew M.",1987,12,3,Former,Military,Male,8/4/1955,"STS-46, STS-62 and STS-75",904
+"Bowersox, Kenneth D.",1987,12,5,Former,Military,Male,11/14/1956,"STS-50, STS-61, STS-73, STS-82 and STS-113/Exp. 6",5304
+"Brown, Curtis L., Jr.",1987,12,6,Former,Military,Male,3/11/1956,"STS-47, STS-66, STS-77, STS-85, STS-95 and STS-103",1381
+"Chilton, Kevin P.",1987,12,3,Former,Military,Male,3/11/1954,"STS-49, STS-59 and STS-76",704
+"Davis, N. Jan",1987,12,3,Former,Civilian,Female,11/1/1953,"STS-47, STS-60 and STS-85",673
+"Foale, C. Michael",1987,12,6,Current,Civilian,Male,1/6/1957,"STS-45, STS-56, STS-63, STS-84/Mir, Mir/STS-86, STS-103 and Expedition 8",8976
+"Harbaugh, Gregory J.",1987,12,4,Former,Civilian,Male,4/15/1956,"STS-39, STS-54, STS-71 and STS-82",817
+"Jemison, Mae C.",1987,12,1,Former,Civilian,Female,10/17/1956,STS-47,190
+"McMonagle, Donald R.",1987,12,3,Former,Military,Male,5/14/1952,"STS-39, STS-54 and STS-66",605
+"Melnick, Bruce E.",1987,12,2,Former,Military,Male,12/5/1949,STS-41 and STS-49,311
+"Readdy, William F.",1987,12,3,Former,Civilian,Male,1/24/1952,"STS-42, STS-51 and STS-79",672
+"Reightler, Kenneth S., Jr.",1987,12,2,Former,Military,Male,3/24/1951,STS-48 and STS-60,327
+"Runco, Mario, Jr.",1987,12,3,Management,Military,Male,1/26/1952,"STS-44, STS-54 and STS-77",551
+"Voss, James S.",1987,12,5,Former,Military,Male,3/3/1949,"STS-44, STS-53, STS-69, STS-101 and Exp 2",4848
+"Wilcutt, Terrence W.",1990,13,4,Current,Military,Male,10/31/1949,"STS-68, STS-79, STS-89 and STS-106",1007
+"Wisoff, Peter J. K.",1990,13,4,Former,Civilian,Male,8/16/1958,"STS-57, STS-68, STS-81 and STS-92",1063
+"Wolf, David A.",1990,13,3,Current,Civilian,Male,8/23/1956,"STS-58, NASA-MIR 6 and STS-112",3432
+"Bursch, Daniel W.",1990,13,4,Former,Military,Male,7/25/1957,"STS-51, STS-68, STS-77, STS-108/Exp 4/STS-111",5448
+"Chiao, Leroy",1990,13,4,Former,Civilian,Male,8/28/1960,"STS-65, STS-72, Exp 10 and STS-92",5503
+"Clifford, Michael R.",1990,13,3,Former,Military,Male,10/13/1952,"STS-53, STS-59 and STS-76",665
+"Cockrell, Kenneth D.",1990,13,5,Management,Civilian,Male,4/9/1950,"STS-56, STS-69, STS-80, STS-98 and STS-111",1560
+"Collins, Eileen M.",1990,13,4,Former,Military,Female,11/19/1959,"STS-63, STS-84, STS-114 and STS-93",872
+"Currie, Nancy J.",1990,13,4,Management,Military,Female,12/29/1958,"STS-57, STS-70, STS-88 and STS-109",999
+"Gregory, William G.",1990,13,1,Former,Military,Male,5/14/1957,STS-67,399
+"Halsell, James D., Jr.",1990,13,5,Former,Military,Male,9/29/1956,"STS-65, STS-74, STS-83, STS-94 and STS-101",1250
+"Harris, Bernard A., Jr.",1990,13,2,Former,Civilian,Male,6/26/1956,STS-55 and STS-63,438
+"Helms, Susan J.",1990,13,5,Former,Military,Female,2/26/1958,"STS-54, STS-64, STS-78, STS-101 and STS-102/Exp 2/STS-105",5064
+"Jones, Thomas D.",1990,13,4,Former,Civilian,Male,1/22/1955,"STS-59, STS-68, STS-80 and STS-98",1272
+"McArthur, William S., Jr.",1990,13,4,Current,Military,Male,7/26/1951,"STS-58, STS-74, Exp 12 and STS-92",5398
+"Newman, James H.",1990,13,4,Former,Civilian,Male,10/16/1956,"STS-51, STS-69, STS-88 and STS- 109",1032
+"Ochoa, Ellen",1990,13,4,Management,Civilian,Female,5/10/1958,"STS-56, STS-66, STS-96 and STS-110",978
+"Precourt, Charles J., Jr.",1990,13,4,Former,Military,Male,6/29/1955,"STS-55, STS-71, STS-84 and STS-91",932
+"Searfoss, Richard A.",1990,13,3,Former,Military,Male,6/5/1956,"STS-58, STS-76 and STS-90",938
+"Sega, Ronald M.",1990,13,2,Former,Civilian,Male,12/4/1952,STS-60 and STS-76,420
+"Thomas, Donald A.",1990,13,4,Management,Civilian,Male,5/6/1955,"STS-65, STS-70, STS-83 and STS-94",1040
+"Voss, Janice E.",1990,13,5,Management,Civilian,Female,10/8/1956,"STS-57, STS-63, STS-83, STS-94 and STS-99",1176
+"Walz, Carl E.",1990,13,4,Former,Military,Male,9/6/1955,"STS-51, STS-65, STS-79 and STS-108/Exp 4/STS-111",5544
+"Barry, Daniel T.",1992,14,3,Former,Civilian,Male,12/30/1953,"STS-72, STS-96 and STS-105",734
+"Brady, Charles E., Jr.",1992,14,1,Deceased,Military,Male,8/12/1951,STS-78,405
+"Coleman, Catherine G.",1992,14,2,Current,Military,Female,12/14/1960,STS-73 and STS-93,500
+"Gernhardt, Michael L.",1992,14,4,Current,Civilian,Male,5/4/1956,"STS-69, STS-83, STS-94 and STS-104",1032
+"Grunsfeld, John M.",1992,14,5,Former,Civilian,Male,10/10/1958,"STS-67, STS-81, STS-103, STS-125 and STS-109",1392
+"Horowitz, Scott J.",1992,14,4,Former,Military,Male,3/24/1957,"STS-75, STS-82, STS-101 and STS-105",1138
+"Jett, Brent W.",1992,14,4,Current,Military,Male,10/5/1958,"STS-72, STS-81, STS-97 and STS-115",960
+Kregel Kevin R.,1992,14,4,Former,Civilian,Male,9/16/1956,"STS-70, STS-78, STS-87 and STS-99",1265
+"Lawrence, Wendy B.",1992,14,4,Former,Military,Female,7/2/1959,"STS-67, STS-86, STS-91 and STS-114",1225
+"Linenger, Jerry M.",1992,14,2,Former,Military,Male,1/16/1955,STS-64 and STS-81,3435
+"Linnehan, Richard M.",1992,14,4,Current,Civilian,Male,9/19/1957,"STS-78, STS-90, STS-109 and STS-123",1392
+"Lopez-Alegria, Michael E.",1992,14,4,Management,Military,Male,5/30/1958,"STS-73, STS-92 and STS-113 and Exp 14",6168
+"Parazynski, Scott E.",1992,14,4,Former,Civilian,Male,7/28/1961,"STS-66, STS-86, STS-95, STS-100 and STS-120",1318
+"Rominger, Kent V.",1992,14,5,Former,Military,Male,8/7/1956,"STS-73, STS-80, STS-85, STS-96 and STS-100",1608
+"Scott, Winston E.",1992,14,2,Former,Military,Male,8/6/1950,STS-72 and STS-87,590
+"Smith, Steven L.",1992,14,4,Management,Civilian,Male,12/30/1958,"STS-68, STS-82, STS-103 and STS-110",959
+"Tanner, Joseph R.",1992,14,4,Former,Civilian,Male,1/21/1950,"STS-66, STS-82, STS-97 and STS-115",1069
+"Thomas, Andrew S. W.",1992,14,4,Current,Civilian,Male,12/18/1951,"STS-77, STS-89, STS-102 and STS-114",4248
+"Weber, Mary E.",1992,14,2,Former,Civilian,Female,8/24/1962,STS-70 and STS-101,450
+"Altman, Scott D.",1995,15,4,Former,Military,Male,8/15/1959,"STS-90, STS-106, STS-109 and STS-125",1224
+"Anderson, Michael P.",1995,15,2,Deceased,Military,Male,12/25/1959,STS-89 and STS-107,593
+"Ashby, Jeffrey S.",1995,15,3,Former,Military,Male,6/1/1954,"STS-93, STS-100 and STS-112",660
+"Bloomfield, Michael J.",1995,15,3,Former,Military,Male,3/16/1959,"STS-86, STS-97 and STS-110",753
+"Chawla, Kalpana",1995,15,2,Deceased,Civilian,Female,6/1/1961,STS-87 and STS-107,758
+"Curbeam, Robert L., Jr.",1995,15,3,Former,Military,Male,3/5/1962,"STS-85, STS-98 and STS-116",901
+"Edwards, Joe F., Jr.",1995,15,1,Former,Military,Male,2/3/1958,STS-89,211
+"Gorie, Dominic L.",1995,15,4,Former,Military,Male,5/2/1957,"STS-91, STS-99, STS-123 and STS-108",128
+"Hire, Kathryn P.",1995,15,2,Current,Military,Female,8/26/1959,STS-90 and STS-130,711
+"Husband, Rick D.",1995,15,2,Deceased,Military,Male,7/12/1957,STS-96 and STS-107,617
+"Kavandi, Janet L.",1995,15,3,Current,Civilian,Female,7/17/1959,"STS-91, STS-99 and STS-104",792
+"Kilrain, Susan L.",1995,15,2,Former,Military,Female,10/24/1961,STS-83 and STS-94,471
+"Lindsey, Steven W.",1995,15,5,Current,Military,Male,8/24/1960,"STS-87, STS-95 and STS-104, STS-121 and STS-133",1510
+"Lu, Edward T.",1995,15,3,Former,Civilian,Male,7/1/1963,"STS-84, STS-106, Expedition 7 and Soyuz TMA-2",4944
+"Melroy, Pamela A.",1995,15,3,Former,Military,Female,9/17/1961,"STS-92, STS-112 and STS-120",924
+"Noriega, Carlos I.",1995,15,2,Current,Military,Male,10/8/1959,STS-84 and STS-97,481
+"Reilly, James F.",1995,15,3,Former,Civilian,Male,3/18/1954,"STS-89, STS-104 and STS-117",853
+"Robinson, Stephen K.",1995,15,4,Current,Civilian,Male,10/26/1955,"STS-85, STS-95, STS-114 and STS-130",1156
+"Sturckow, Frederick W.",1995,15,4,Current,Military,Male,8/11/1961,"STS-88, STS-105, STS-117 and STS-128",1200
+"Whitson, Peggy A.",1996,16,2,Management,Civilian,Female,2/9/1960,STS-111/Exp 5/STS-113 and Soyuz TMA-11,9048
+"Williams, Jeffrey N.",1996,16,3,Current,Military,Male,1/18/1958,"STS-101, Exp 13 and Soyuz TMA-16",8688
+"Wilson, Stephanie D.",1996,16,3,Current,Civilian,Female,9/27/1966,"STS-121, STS-120 and STS-131",1008
+"Brown, David M.",1996,16,1,Deceased,Military,Male,4/16/1956,STS-107,382
+"Burbank, Daniel C.",1996,16,1,Current,Military,Male,7/27/1961,STS-106 and STS-115,552
+"Cagle, Yvonne D.",1996,16,0,Current,Military,Female,4/24/1959,,0
+"Caldeiro, Fernando (Frank)",1996,16,0,Deceased,Civilian,Male,6/12/1958,,0
+"Camarda, Charles J.",1996,16,1,Current,Civilian,Male,5/8/1952,STS-114,333
+"Carey, Duane G.",1996,16,1,Former,Military,Male,4/30/1957,STS-109,240
+"Clark, Laurel B.",1996,16,1,Deceased,Military,Female,3/10/1961,STS-107,382
+"Fincke, E. Michael",1996,16,3,Current,Military,Male,3/14/1967,"Exp 9, Exp 18, STS-134",9159
+"Forrester, Patrick G.",1996,16,3,Current,Military,Male,3/31/1957,"STS-105, STS-117 and STS-128",950
+"Frick, Stephen N.",1996,16,2,Current,Military,Male,9/30/1961,STS-110 and STS-122,565
+"Herrington, John B.",1996,16,1,Former,Military,Male,9/14/1958,STS-113,330
+"Higginbotham, Joan E.",1996,16,1,Former,Civilian,Female,8/3/1964,STS-116,308
+"Hobaugh, Charles O.",1996,16,3,Current,Military,Male,11/5/1961,"STS-104, STS-118 and ST-129",876
+"Kelly, James M.",1996,16,2,Current,Military,Male,5/14/1964,STS-102 and STS-114,641
+"Kelly, Mark E.",1996,16,3,Current,Military,Male,2/21/1964,"STS-108, STS-121 and STS-124",912
+"Kelly, Scott J.",1996,16,3,Current,Military,Male,2/21/1964,"STS-103, STS-118 and Soyuz TMA-M",4320
+"Lockhart, Paul S.",1996,16,2,Former,Military,Male,4/28/1956,STS-111 and STS-113,624
+"Loria, Christopher J.",1996,16,0,Former,Military,Male,7/9/1960,,0
+"Magnus, Sandra H.",1996,16,2,Current,Civilian,Female,10/30/1964,STS-112 and STS-126, 
+"Massimino, Michael J.",1996,16,2,Current,Civilian,Male,8/19/1962,STS-109 and STS-125,571
+"Mastracchio, Richard A.",1996,16,3,Current,Civilian,Male,2/11/1960,"STS-106, STS-118 and STS-131",960
+"McCool, William C.",1996,16,1,Deceased,Military,Male,9/23/1961,STS-107,382
+"Morin, Lee M.",1996,16,1,Management,Military,Male,9/9/1952,STS-110,259
+"Nowak, Lisa M.",1996,16,1,Former,Military,Female,5/10/1963,STS-121,306
+"Pettit, Donald R.",1996,16,2,Current,Civilian,Male,4/20/1955,STS-113 and STS-126,4224
+"Phillips, John L.",1996,16,3,Current,Civilian,Male,4/15/1951,"STS-100, Soyuz TMA-6 and STS-119",4872
+"Polansky, Mark L.",1996,16,3,Current,Civilian,Male,6/2/1956,"STS-98, ST-116 and STS-127",993
+"Richards, Paul W.",1996,16,1,Former,Civilian,Male,5/20/1964,STS-102,307
+"Sellers, Piers J.",1996,16,3,Current,Civilian,Male,4/11/1955,"STS-112, STS-121 and STS-132",839
+"Stefanyshyn-Piper, Heidemarie M.",1996,16,2,Former,Military,Female,2/7/1963,STS-115 and STS-126,648
+"Tani, Daniel M.",1996,16,2,Current,Civilian,Male,2/1/1961,STS-108 and STS-120/ Exp 16/ STS-122,318
+"Walheim, Rex J.",1996,16,2,Current,Military,Male,10/10/1962,STS-110 and STS-122,565
+"Williams, Sunita L.",1998,17,1,Current,Military,Female,9/19/1965,STS-116,4680
+"Woodward, Neil W., III",1998,17,0,Former,Military,Male,7/26/1962,,0
+"Anderson, Clayton C.",1998,17,2,Current,Civilian,Male,2/23/1959,STS-117 and STS-131,4046
+"Archambault, Lee J.",1998,17,2,Current,Military,Male,8/25/1960,STS-117 and STS-119,648
+"Caldwell, Tracy E.",1998,17,2,Current,Civilian,Female,8/14/1969,STS-118 and Soyuz TMA-18,4529
+"Chamitoff, Gregory E.",1998,17,3,Current,Civilian,Male,8/6/1962,"STS -124, Exp 17 and Exp 18", 
+"Creamer, Timothy J.",1998,17,1,Current,Military,Male,11/15/1959,Soyuz TMA-17,3912
+"Ferguson, Christopher J.",1998,17,2,Current,Military,Male,9/1/1961,STS-115 and STS-126,672
+"Foreman, Michael J.",1998,17,2,Current,Military,Male,3/29/1957,STS-123 and STS-129,637
+"Fossum, Michael E.",1998,17,2,Current,Civilian,Male,12/19/1957,STS-121 and STS-124,636
+"Ham, Kenneth T.",1998,17,2,Current,Military,Male,12/12/1964,STS-124 and STS-132,612
+"Johnson, Gregory C.",1998,17,1,Management,Civilian,Male,7/30/1954,STS-125,309
+"Johnson, Gregory H.",1998,17,1,Current,Military,Male,5/12/1962,STS-123,378
+"Love, Stanley G.",1998,17,1,Current,Civilian,Male,6/8/1965,STS-122,306
+"Melvin, Leland D.",1998,17,2,Management,Civilian,Male,2/15/1964,STS-122 and STS-129,565
+"Morgan, Barbara R.",1998,17,1,Former,Civilian,Female,11/28/1951,STS-118,305
+"Oefelein, William A.",1998,17,1,Former,Military,Male,3/29/1965,STS-116,308
+"Olivas, John D.",1998,17,2,Former,Civilian,Male,5/25/1966,STS-117 and STS-128,668
+"Patrick, Nicholas J. M.",1998,17,2,Current,Civilian,Male,3/22/1964,STS-116 and STS-130,638
+"Poindexter, Alan G.",1998,17,2,Former,Military,Male,11/5/1961,STS-122 and STS-131,669
+"Reisman, Garrett E.",1998,17,2,Former,Civilian,Male,2/10/1968,STS-123 and STS-132,2473
+"Robertson, Patricia Hilliard",1998,17,0,Deceased,Civilian,Female,3/12/1963,,0
+"Swanson, Steven R.",1998,17,2,Current,Civilian,Male,12/3/1960,STS-117 and STS-119,643
+"Wheelock, Douglas H.",1998,17,2,Current,Military,Male,5/5/1960,STS-120 and Exp 25,4272
+"Zamka, George D.",1998,17,2,Current,Military,Male,6/29/1962,STS-120 and STS-130,692
+"Wilmore, Barry E.",2000,18,1,Current,Military,Male,12/29/1962,STS-129,259
+"Antonelli, Dominic A.",2000,18,2,Current,Military,Male,8/23/1967,STS-119  and STS-132,579
+"Barratt, Michael R.",2000,18,2,Current,Civilian,Male,4/16/1959,"Soyuz TMA-14, STS-133",5085
+"Behnken, Robert L.",2000,18,2,Current,Military,Male,7/28/1970,STS-123 and STS-130,708
+"Boe, Eric A.",2000,18,0,Current,Military,Male,10/1/1964,STS-126 and STS-133,672
+"Bowen, Stephen G.",2000,18,3,Current,Military,Male,2/13/1964,"STS-126, STS-132 and STS-133",970
+"Drew, Alvin B.",2000,18,2,Current,Military,Male,11/5/1962,STS-118 and STS-133,612
+"Feustel, Andrew J.",2000,18,2,Current,Civilian,Male,8/25/1965,STS-125 and STS-134,687
+"Ford, Kevin A.",2000,18,1,Current,Military,Male,7/7/1960,STS-128,333
+"Garan, Ronald J., Jr.",2000,18,0,Current,Military,Male,10/20/1961,STS-124,330
+"Good, Michael T.",2000,18,2,Current,Military,Male,10/13/1962,STS-125 and STS-132,600
+"Hurley, Douglas G.",2000,18,1,Current,Military,Male,10/21/1966,STS-127,376
+"Kopra, Timothy L.",2000,18,1,Current,Military,Male,4/9/1963,STS-127,1464
+"McArthur, K. Megan",2000,18,1,Current,Civilian,Female,8/30/1971,STS-125,309
+"Nyberg, Karen L.",2000,18,1,Current,Civilian,Female,10/7/1969,STS-124,330
+"Stott, Nicole P.",2000,18,2,Current,Civilian,Female,11/19/1962,STS-128 and STS-133,2491
+"Virts, Terry W., Jr.",2000,18,1,Current,Military,Male,12/1/1967,STS-130,330
+"Acaba, Joseph M.",2004,19,1,Current,Civilian,Male,5/17/1967,STS-119,307
+"Arnold, Richard R., II",2004,19,0,Current,Civilian,Male,11/26/1963,STS-119,307
+"Bresnik, Randolph J.",2004,19,1,Current,Military,Male,9/11/1967,STS-129,259
+"Cassidy, Christopher J.",2004,19,1,Candidate,Military,Male,1/4/1970,STS-127,376
+"Dutton, James P.",2004,19,0,Candidate,Military,Male,11/20/1968,STS-131,362
+"Hernandez, Jose M.",2004,19,1,Former,Civilian,Male,8/7/1962,STS-128,332
+"Kimbrough, Robert S.",2004,19,1,Current,Military,Male,6/4/1967,STS-126,380
+"Marshburn, Thomas H.",2004,19,1,Current,Military,Male,8/29/1960,STS-127,376
+"Metcalf-Lindenburger, Dorothy M.",2004,19,1,Current,Civilian,Female,5/2/1975,STS-131,362
+"Satcher, Robert L.",2004,19,1,Current,Civilian,Male,9/22/1965,STS-129,259
+"Walker, Shannon",2004,19,,Current,Civilian,Female,6/4/1965,, 
+"Aunon, Serena M.",2009,20,0,Current,Civilian,Female,4/9/1976,,0
+"Epps, Jeanette J.",2009,20,0,Candidate,Civilian,Female,11/2/1970,,0
+"Fischer, Jack D.",2009,20,0,Candidate,Military,Male,1/23/1974,,0
+"Hansen, Jeremy",2009,20,0,Candidate,,Male,1/27/1976,,0
+"Hopkins, Michael S.",2009,20,0,Candidate,Military,Male,12/28/1968,,0
+"Kanai, Norishige",2009,20,0,Candidate,Civilian,Male,1976,,0
+"Lindgren, Kjell N.",2009,20,0,Candidate,Military,Male,1/23/1973,,0
+"Onishi, Tayuka",2009,20,0,Candidate,Civilian,Male,1975,,0
+"Rubins, Kathleen",2009,20,0,Candidate,Civilian,Female,10/14/1978,,0
+"Saint-Jacques, David",2009,20,0,Candidate,Civilian,Male,1/6/1970,,0
+"Tingle, Scott D.",2009,20,0,Candidate,Military,Male,7/19/1965,,0
+"Vande Hei, Mark T.",2009,20,0,Candidate,Military,Male,11/10/1966,,0
+"Wiseman, Gregory R.",2009,20,0,Candidate,Civilian,Male,11/11/1975,,0
+"Yui, Kimiya",2009,20,0,Candidate,,Male,1970,,
