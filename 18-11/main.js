@@ -124,7 +124,7 @@ function buildBurst(data, yearCount) {
   let svg = d3.select('#burst svg'),
     width = +svg.attr('width'),
     height = +svg.attr('height')
-    baseRadius = 280;
+    baseRadius = 330;
 
   base = svg.append('g')
     .attr('class','base-group')
@@ -269,7 +269,7 @@ function buildGroupLabel(groupLabel, textKey, startAngle, radius) {
 function buildDonut(yearCount) {
 
   let thickness = 10,
-      radius = 250;
+      radius = 300;
 
   let arc = d3.arc()
     // .startAngle(-1 * Math.PI / 2)
@@ -315,21 +315,8 @@ function buildDonut(yearCount) {
           showGroup(selectedGroup.data);
         }
     });
-  //   .on("mouseover", function(d) {
-  //     d3.select(this)     
-  //       .style("cursor", "pointer")
-  //       .style("fill", 'red')
-  //       .style('fill-opacity', '0.3');
 
-  //     buildCenterStuff(d.data);
-  //     buildDollars(d.data.year);
-  //   })
-  //   .on("mouseout", function(d) {
-  //     d3.select(this)
-  //       .style("cursor", "none")  
-  //       .style('fill-opacity', '0');
-  //   })
-  //   .each(function(d, i) { this._current = i; });
+  // base.style('transform', 'rotate(90deg)');
 }
 
 function buildBar(data, years) {
