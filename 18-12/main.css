@@ -17,7 +17,19 @@ h1 {
   color: #333;
   margin-bottom: 25px;
   margin-top: 0px;
+
+
+  width: 100%;
+  text-align: center;
+  font-family: georgia;
+  font-size: 35px;
+  font-weight: 300;
+  color: #333;
+  /* color: #444; */
+  margin-top: 20px;
 }
+
+
 
 a {
   color: #369;
@@ -34,13 +46,17 @@ a {
 .container.zoom {
   /*width: 90%;*/
   /*padding-top: 170px;*/
-  zoom: 0.7;
+  /*zoom: 0.7;*/
+}
+
+.container span:first-of-type {
+  margin-left: 310px;
 }
 
 svg {
-  padding: 10px;
-  font-size: 14px;
+  font-size: 10px;
   cursor: pointer;
+  padding: 5px 3px 2px;
 }
 
 .col a.median {
@@ -58,11 +74,17 @@ svg {
   font-size: 14px;
 }
 
-body.show-median .median-selected {
-  /*border: solid 1px lightgrey;*/
+.median-circle {
+  display: none;
+}
+
+/*body.show-median .median-selected {
   background-color: #F3EFC0;
-/*  background-color: khaki;*/
   border-radius: 3px;
+}*/
+
+body.show-median .median-selected .median-circle {
+  display: block;
 }
 
 .median-selected:nth-child(2) {

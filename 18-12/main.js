@@ -87,9 +87,10 @@ d3.csv('data.csv', (data) => {
 });
 
 function createCircle(elem, count, syear, eyear) {
-  let width = 80;
-  let height = 110;
-  let radius = 40;
+  let divider = 0.7;
+  let width = 80 * divider;
+  let height = 110 * divider;
+  let radius = 40 * divider;
   // let width = Math.max(80, (count/2.25) + 80);
   // let height = Math.max(90, (count/2.5) + 90 + 10);
   // let radius = Math.max(40, (count/2.25));
@@ -113,14 +114,34 @@ function createCircle(elem, count, syear, eyear) {
       .attr('y1', 0)
       .attr('x2', x)
       .attr('y2', y)
-      .attr('stroke-width', 0.25)
+      .attr('stroke-width', 0.3)
       .attr('stroke', '#336699');
   }
+
+  let medianCircle = center.append('g')
+    .attr('class', 'median-circle');
+
+  medianCircle.append('circle')
+  .attr('cx', 0)
+  .attr('cy', 0)
+  .attr('r', 28)
+  .attr('fill', 'none')
+  .attr('stroke', 'white')
+  .attr('stroke-width', 6);
+
+  medianCircle.append('circle')
+  .attr('cx', 0)
+  .attr('cy', 0)
+  .attr('r', 28)
+  .attr('fill', 'none')
+  .attr('stroke', 'orangered')
+  .attr('stroke-dasharray', 3)
+  .attr('stroke-width', 2);
 
   center.append('circle')
   .attr('cx', 0)
   .attr('cy', 0)
-  .attr('r', 15)
+  .attr('r', (15 * divider))
   .attr('class', 'count')
   .attr('fill', 'rgba(255, 255, 255, 1)');
 
@@ -172,9 +193,14 @@ function selectMedian() {
 }
 
 function addButtons() {
+  // $('.filters').append(`
+  //   <div class="col" style="min-width: 195px;">
+  //   <p><a href="#" class="zoomin">zoom in</a></p>
+  //   <p><a href="#" class="median">show median</a><span class="info">&#9432</span></p>
+  //   </div>`);
+
   $('.filters').append(`
     <div class="col" style="min-width: 195px;">
-    <p><a href="#" class="zoomin">zoom in</a></p>
     <p><a href="#" class="median">show median</a><span class="info">&#9432</span></p>
     </div>`);
 

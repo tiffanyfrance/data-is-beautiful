@@ -68,9 +68,38 @@ d3.csv('nasa.csv', function(d) {
     gender: d['Gender'],
     dob: d['Date of birth'],
     missions: d['Missions flown'],
+    color: colors[+d[' Group'] - 1]
   }
 }, function(error, data) {
   
+  let midIndex = data.findIndex(d => d.year === '1990');
+
+  for(let i = 0; i < 10; i++) {
+    data.splice(midIndex, 0, {
+      hours: 0,
+      group: 20,
+      name: '',
+      year: '8888',
+      status: '',
+      gender: '',
+      dob: '',
+      missions: '',
+      color: '#000',
+    });
+
+    data.push({
+      hours: 0,
+      group: 21,
+      name: '',
+      year: '9999',
+      status: '',
+      gender: '',
+      dob: '',
+      missions: '',
+      color: '#000',
+    });
+  }
+
   let yearCount = [],
       sumAstronuats = 0,
       totalAstronauts = data.length;
@@ -79,7 +108,8 @@ d3.csv('nasa.csv', function(d) {
 
   for (let i = 0; i < years.length; i++) {
     let numAstByYear = 0,
-        hours = 0;
+        hours = 0,
+        color;
 
     let $ul = $('<ul></ul>');
     
@@ -88,6 +118,7 @@ d3.csv('nasa.csv', function(d) {
           numAstByYear++;
           hours += data[j].hours;
           totalHours += data[j].hours;
+          color = data[j].color;
           
           $ul.append(`<li>${data[j].name}</li>`);
         }
@@ -96,7 +127,7 @@ d3.csv('nasa.csv', function(d) {
     yearCount.push({
       year: +years[i],
       count: numAstByYear,
-      color: colors[i],
+      color,
       hours: hours,
       angle: ((sumAstronuats + (numAstByYear / 2)) / totalAstronauts) * 2 * Math.PI
     });
@@ -116,6 +147,7 @@ d3.csv('nasa.csv', function(d) {
 
   buildRank(data, yearCount);
 
+  hideGroup();
 });
 
 
@@ -197,7 +229,7 @@ function buildBurst(data, yearCount) {
       return Math.sin(d.angle) * d.dist;
     })
     .attr('r', (d) => d.radius)
-    .attr('fill', (d) => (d.hours > 0) ? colors[d.group] : '#333')
+    .attr('fill', (d, i) => (d.hours > 0) ? d.color : '#333')
     .attr('stroke', (d) => colors[d.group])
     .attr('stroke-width', 1)
     .on('mouseover', function(d) {
@@ -293,7 +325,7 @@ function buildDonut(yearCount) {
     .append('g')
     .append('path')
     .attr('d', arc)
-    .style('fill', (d, i) => colors[i])
+    .style('fill', (d, i) => yearCount[i].color)
     .style('fill-opacity', '1')
     .attr('class', (d) => `group group-${d.data.year}`)
     .on('click', function(d) {
@@ -429,6 +461,8 @@ function showGroup(d) {
 
 function hideGroup(d) {
   $('.group').show();
+  $('.group-8888').hide();
+  $('.group-9999').hide();
   $('#flightTime').text(totalHours.toLocaleString() + ' hrs');
 }
 
