@@ -5,12 +5,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Deaths by Vehicle</title>
+  <title>Deaths by Vehicle - a visualization by Tiffany France</title>
+  <meta name="description" content="Deaths by Vehicle">
+  <meta name="author" content="Tiffany France">
+  <meta name="og:title" property="og:title" content="Deaths by Vehicle - a visualization by Tiffany France">
+  <meta property="og:description" content="Comparing deaths across multiple forms of transportation, using three metrics." />
+  <meta property="og:image" content="FILL THIS OUT" />
+  <meta name="robots" content="index, follow">
+  <link href="URL" rel="canonical">
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <style>
     @import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
 
     * {
       font-family: 'Lato', sans-serif;
+    }
+
+    h1 {
+      font-size: 18px;
+    }
+
+    .col {
+      width: 50%;
+      /* box-sizing: border-box;
+      padding: 0px;
+      margin: 0px; */
+      float: left;
+    }
+
+    span {
+      display: inline-block;
+      width: 30%;
+      text-align: center;
+    }
+
+    .svg-triangle {
+      width: 20px;
     }
     
   </style>
@@ -19,21 +51,44 @@
 <body>
 
   <div class="container">
-    <div class="col" id="viz"></div>
+    <div class="col" id="viz">
+      &nbsp;
+    </div>
     <div class="col">
       <div class="header row">
-        Number of Deaths per Billion
+        <h1>Number of Deaths per Billion</h1>
+        <div class="legend">
+          <span>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-triangle" viewBox="0 0 100 100">
+              <path d="M 50,5 95,97.5 5,97.5 z"></path>
+            </svg>
+          </span>
+          <span>
+            <svg class="svg-triangle" viewBox="0 0 100 100">
+              <path d="M 50,5 95,97.5 5,97.5 z"></path>
+            </svg>
+          </span>
+          <span>
+            <svg class="svg-triangle" viewBox="0 0 100 100">
+              <path d="M 50,5 95,97.5 5,97.5 z"></path>
+            </svg>
+          </span>
+        </div>
       </div>
       <div class="row">
         <div class="left">
+          <p>  
             There are three main ways in which risk of fatality of a certain mode of travel can be measured: Deaths per billion typical journeys taken, deaths per billion hours traveled, or deaths per billion kilometers traveled. The following table displays these statistics for the United Kingdom 1990–2000.
+          </p>
         </div>
         <div class="right"></div>
       </div>
       <div class="row">
         <div class="left"></div>
         <div class="right">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempora id sit vitae, voluptate, minima quia veniam inventore eum explicabo incidunt corporis. Non consequatur minima modi animi nam labore pariatur!
+          </p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempora id sit vitae, voluptate, minima quia veniam inventore eum explicabo incidunt corporis. Non consequatur minima modi animi nam labore pariatur!
+          </p>
         </div>
       </div>
     </div>
