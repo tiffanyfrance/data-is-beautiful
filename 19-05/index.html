@@ -17,28 +17,67 @@
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Nunito:300&display=swap');
 
     * {
-      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-family: 'Futura', 'Nunito', sans-serif;
+      color: #222;
+    }
+
+    .container {
+      margin: 0 auto;
+      width: 1280px;
+    }
+
+    /* clearfix */
+    .container::after {
+      content: "";
+      clear: both;
+      display: table;
     }
 
     h1 {
-      font-size: 18px;
+      font-size: 28px;
     }
 
     .col {
       width: 50%;
-      /* box-sizing: border-box;
-      padding: 0px;
-      margin: 0px; */
       float: left;
+    }
+
+    .legend {
+      max-width: 385px;
     }
 
     span {
       display: inline-block;
       width: 30%;
       text-align: center;
+    }
+
+    p {
+      font-size: 12px;
+      font-weight: 100;
+    }
+
+    .left {
+      float: left;
+      width: 50%;
+      margin-top: 20vh;
+    }
+
+    .right {
+      float: right;
+      width: 50%;
+      margin-top: 35vh;
+    }
+
+    @media (max-width: 1100px) {
+      .col {
+        width: 100%;
+        float: none;
+      }
     }
 
     .svg-triangle {
@@ -53,25 +92,29 @@
   <div class="container">
     <div class="col" id="viz">
       &nbsp;
+      <svg></svg>
     </div>
     <div class="col">
       <div class="header row">
         <h1>Number of Deaths per Billion</h1>
         <div class="legend">
           <span>
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-triangle" viewBox="0 0 100 100">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-triangle" viewBox="0 0 100 100" fill="#A5CDC9">
               <path d="M 50,5 95,97.5 5,97.5 z"></path>
-            </svg>
+            </svg> 
+            Trips
           </span>
           <span>
-            <svg class="svg-triangle" viewBox="0 0 100 100">
+            <svg class="svg-triangle" viewBox="0 0 100 100" fill="#E2C168">
               <path d="M 50,5 95,97.5 5,97.5 z"></path>
             </svg>
+            Hours
           </span>
           <span>
-            <svg class="svg-triangle" viewBox="0 0 100 100">
+            <svg class="svg-triangle" viewBox="0 0 100 100" fill="#DB655C">
               <path d="M 50,5 95,97.5 5,97.5 z"></path>
             </svg>
+            Kilometers
           </span>
         </div>
       </div>
@@ -81,12 +124,8 @@
             There are three main ways in which risk of fatality of a certain mode of travel can be measured: Deaths per billion typical journeys taken, deaths per billion hours traveled, or deaths per billion kilometers traveled. The following table displays these statistics for the United Kingdom 1990–2000.
           </p>
         </div>
-        <div class="right"></div>
-      </div>
-      <div class="row">
-        <div class="left"></div>
         <div class="right">
-          </p>
+          <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempora id sit vitae, voluptate, minima quia veniam inventore eum explicabo incidunt corporis. Non consequatur minima modi animi nam labore pariatur!
           </p>
         </div>
