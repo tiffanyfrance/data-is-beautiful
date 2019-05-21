@@ -22,7 +22,7 @@
     * {
       font-weight: 300;
       font-family: 'Futura', 'Nunito', sans-serif;
-      color: #222;
+      color: #333;
     }
 
     .container {
@@ -35,6 +35,10 @@
       content: "";
       clear: both;
       display: table;
+    }
+
+    .header {
+      padding-top: 50px;
     }
 
     h1 {
@@ -50,38 +54,70 @@
       max-width: 385px;
     }
 
-    span {
+    .legend span {
       display: inline-block;
       width: 30%;
-      text-align: center;
+      /* text-align: center; */
     }
 
     p {
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 100;
+      text-align: justify;
     }
 
     .left {
       float: left;
-      width: 50%;
-      margin-top: 20vh;
-    }
-
-    .right {
-      float: right;
-      width: 50%;
-      margin-top: 35vh;
+      width: 385px;
+      margin-top: 55px;
     }
 
     @media (max-width: 1100px) {
+      .container {
+        text-align: center;
+        max-width: 100%;
+      }
+
       .col {
         width: 100%;
         float: none;
+      }
+
+      .legend {
+        margin: 0 auto;
+      }
+
+      .left {
+        float: none;
+        margin: 0 auto;
+        margin-top: 50px;
+        width: 70%;
+      }
+
+      #viz {
+        margin: 50px 0px;
       }
     }
 
     .svg-triangle {
       width: 20px;
+    }
+
+    img {
+      max-height: 50px;
+    }
+
+    #tooltip {
+      position: absolute;
+      background: #fff;
+      padding: 2px 10px;
+      border-radius: 3px;
+      width: 180px;
+    }
+
+    #tooltip p {
+      font-size: 10px;
+      color: #333;
     }
     
   </style>
@@ -91,7 +127,6 @@
 
   <div class="container">
     <div class="col" id="viz">
-      &nbsp;
       <svg></svg>
     </div>
     <div class="col">
@@ -99,13 +134,13 @@
         <h1>Number of Deaths per Billion</h1>
         <div class="legend">
           <span>
-            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-triangle" viewBox="0 0 100 100" fill="#A5CDC9">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="svg-triangle" viewBox="0 0 100 100" fill="#E2C168">
               <path d="M 50,5 95,97.5 5,97.5 z"></path>
             </svg> 
             Trips
           </span>
           <span>
-            <svg class="svg-triangle" viewBox="0 0 100 100" fill="#E2C168">
+            <svg class="svg-triangle" viewBox="0 0 100 100" fill="#A5CDC9">
               <path d="M 50,5 95,97.5 5,97.5 z"></path>
             </svg>
             Hours
@@ -121,16 +156,25 @@
       <div class="row">
         <div class="left">
           <p>  
-            There are three main ways in which risk of fatality of a certain mode of travel can be measured: Deaths per billion typical journeys taken, deaths per billion hours traveled, or deaths per billion kilometers traveled. The following table displays these statistics for the United Kingdom 1990–2000.
+            There are three main ways in which risk of fatality of a certain mode of travel can be measured: Deaths per billion typical journeys taken, deaths per billion hours traveled, or deaths per billion kilometers traveled. This chart visualizes these statistics for the United Kingdom from 1990–2000.
           </p>
-        </div>
-        <div class="right">
           <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim tempora id sit vitae, voluptate, minima quia veniam inventore eum explicabo incidunt corporis. Non consequatur minima modi animi nam labore pariatur!
+            The graph is laid out using a log scale which results in downplaying the high casuality rate for motorcycle drivers, and was choosen because without it, the rest of the data would not be comparable. 
+          </p>
+          <p>
+            Data source can be found <a href="https://en.wikipedia.org/wiki/Aviation_safety#Transport_comparisons">on wikipedia</a>. The original source also includes Paragliding, Skydiving, and Space Shuttle, which were too rare or insignificant to be included in this analysis.
+          </p>
+          <p>
+            For questions and comments, <a href="http://tiffanyfrance.com">please reach out</a>. I will be publishing a block with the code shortly.
           </p>
         </div>
       </div>
     </div>
+  </div>
+
+  <div id="tooltip" style="opacity: 0;">
+      <p>Type: <span id="type"></span></p>
+      <p><span id="amount"></span> deaths per billion <span id="key"></span></p>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>

@@ -1,10 +1,10 @@
 Type,Journeys,Hours,km
-Bus,4.3,11.1,0.4
-Rail,20,30,0.6
-Van,20,60,1.2
-Car,40,130,3.1
-Foot,40,220,54.2
-Water,90,50,2.6
-Air,117,30.8,0.05
-Pedal cycle,170,550,44.6
-Motorcycle,1640,4840,108.9
+bus,4.3,11.1,0.4
+rail,20,30,0.6
+van,20,60,1.2
+car,40,130,3.1
+foot,40,220,54.2
+water,90,50,2.6
+air,117,30.8,0.05
+pedal cycle,170,550,44.6
+motorcycle,1640,4840,108.9
