@@ -15,17 +15,60 @@ d3.csv('data.csv', d => {
   d.Hours = +d.Hours;
   d.km = +d.km;
   d.total = d.Journeys + d.Hours + d.km;
+  d.originalTotal = d.total;
   d.total = Math.log(d.total);
+
+  d.segments = [
+    {
+      color: '#A5CDC9',
+      amount: d.Journeys
+    },
+    {
+      color: '#E2C168',
+      amount: d.Hours
+    },
+    {
+      color: '#DB655C',
+      amount: d.km
+    }
+  ];
+
+  d.segments.sort((a, b) => a.amount - b.amount);
+
+  for (let i = d.segments.length - 1; i >= 0; i--) {
+    let total = 0;
+
+    for (let j = 0; j <= i; j++) {
+      total += d.segments[j].amount;
+    }
+
+    d.segments[i].percent = total / d.originalTotal;
+  }
+
+  d.segments.reverse();
+
   return d;
 })
   .then(data => {
     console.log(data);
 
     data.sort((a, b) => b.total - a.total);
-    // data = data.slice(2);
 
     let maxTotal = d3.max(data, d => d.total);
-    console.log(maxTotal);
+
+    let arcData = [];
+
+    for (let i = 0; i < data.length; i++) {
+      let totalRadius = (data[i].total / maxTotal) * maxRadius;
+
+      for (let d of data[i].segments) {
+        d.innerRadius = 0;
+        d.outerRadius = d.percent * totalRadius;
+        d.startAngle = startAngle + (i * angle);
+        d.endAngle = startAngle + ((i + 1) * angle);
+        arcData.push(d);
+      }
+    }
 
     const svg = d3.select('#viz svg')
       .attr('width', fullWidth)
@@ -38,17 +81,9 @@ d3.csv('data.csv', d => {
       .attr('transform', `translate(${width},${height * 0.25})`);
 
     g.selectAll('path')
-      .data(data)
+      .data(arcData)
       .enter().append('path')
-      .attr('fill', '#ccc')
+      .attr('fill', d => d.color)
       .attr('stroke', 'white')
-      .attr('d', (d, i) => {
-        console.log(d, i);
-        return arc({
-          innerRadius: 0,
-          outerRadius: (d.total / maxTotal) * maxRadius,
-          startAngle: startAngle + (i * angle),
-          endAngle: startAngle + ((i + 1) * angle)
-        });
-      })
+      .attr('d', d => arc(d))
   });
