@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	h1 {
+		margin: 40px auto 100px;
+		text-align: center;
+		font-size: 45px;
+		font-family: Georgia, 'Times New Roman', Times, serif;
+		font-weight: normal;
+	}
+
+	.flex-container {
+		max-width: 1400px;
+		min-width: 1400px; /* update later for responsive */
+		width: 90%;
+		margin: 0 auto;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.col {
+		flex: 1 0 340px; /* explanation below */
+		margin: 5px;
+		height: 175px;
+		background-color: white;
+	}
+
+	.line {
+		fill: none;
+		stroke: #fc5c5c;
+		stroke-width: 1.5px;
+	}
+
+	.creature {
+		text-transform: uppercase;
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		font-size: 12px;
+	}
+</style>
+
+<body>
+	<h1>Do heart rate and size effect longevity?</h1>
+	<div class="flex-container" id="viz"></div>
+	<div id="heartbeats"></div>
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="main.js"></script>
+</body>
