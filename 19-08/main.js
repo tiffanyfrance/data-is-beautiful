@@ -1,8 +1,8 @@
 let f = d3.format(',');
 
 d3.csv('data.csv')
-  .then(function(data) {
-    for(var i = 0; i < data.length; i++) {
+  .then(function (data) {
+    for (var i = 0; i < data.length; i++) {
       let d = data[i];
 
       buildUnits(d);
@@ -12,8 +12,8 @@ d3.csv('data.csv')
       .append('div')
       .attr('class', 'col legend');
   })
-  .catch(function(error){
-     console.log('There\'s an error');   
+  .catch(function (error) {
+    console.log('There\'s an error');
   })
 
 function buildUnits(d) {
@@ -21,20 +21,20 @@ function buildUnits(d) {
   let unit = d3.select('#viz')
     .append('div')
     .attr('class', `col ${d.ImageName}`);
-  
+
   let margin = { top: 60, right: 30, bottom: 20, left: 70 },
     width = 340 - margin.left - margin.right, //TODO get size on resize
     height = 225 - margin.top - margin.bottom;
-  
+
   let svg = unit.append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
     .append('g')
     .attr('transform',
       'translate(' + margin.left + ',' + margin.top + ')');
-  
+
   buildMass(svg, d.Mass);
-  
+
   svg.append('foreignObject')
     .attr('x', 0)
     .attr('y', 5)
@@ -45,22 +45,22 @@ function buildUnits(d) {
     .attr('src', `images/${d.ImageName}.png`)
     .attr('height', 20)
     .attr('width', 20);
-  
+
   svg.append('text')
     .text(d.Creature)
     .attr('x', 30)
     .attr('y', 20)
     .style('font-family', 'Georgia')
     .style('font-size', '18px');
-  
+
   svg.append('text')
     .text(`${f(d.Mass)} lbs`)
     .attr('x', 0)
     .attr('y', 50)
     .style('font-family', '"Source Sans Pro", sans-serif')
     .style('font-size', '12px');
-  
-  buildHR(svg, d.BPM, d.Creature, d.Mass);
+
+  buildHR(svg, d.BPM, d.ImageName);
   buildLongevity(svg, d.Longevity);
 }
 
@@ -68,7 +68,7 @@ function buildMass(svg, mass) {
   let margin = { top: 60, right: 30, bottom: 0, left: 0 },
     width = 340 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
-  
+
   svg.append('circle')
     .attr('cx', (d) => {
       if (mass < 1500) {
@@ -98,7 +98,7 @@ function buildMass(svg, mass) {
     .attr('fill', '#eee');
 }
 
-function buildHR(svg, bpm) {
+function buildHR(svg, bpm, className) {
   let margin = { top: 60, right: 30, bottom: 0, left: 0 },
     width = 240 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
@@ -112,9 +112,9 @@ function buildHR(svg, bpm) {
 
   const halfWidth = 0.007;
   /* Count is the number of beats that fill up the visible width. */
-  let count = Math.ceil(bpm / 10);
+  let count = Math.ceil(bpm / 15);
   /* Delta is the distance between each beat. */
-  let delta = 1 / (Math.floor(bpm / 10) + 1);
+  let delta = 1 / (Math.floor(bpm / 15) + 1);
 
   for (let i = 0; i < count; i++) {
     let centerX = delta * (i + 1);
@@ -150,8 +150,10 @@ function buildHR(svg, bpm) {
     });
   }
 
+  let lastX = delta * (count + 1);
+
   data.push({
-    x: delta * (count + 1),
+    x: lastX,
     y: 0.4
   });
 
@@ -168,24 +170,37 @@ function buildHR(svg, bpm) {
 
   svg.append('path')
     .data([data])
-    .attr('class', 'line')
+    .attr('class', `line ${className}`)
     .attr('d', valueline)
-    .attr('transform',
-      'translate(' + margin.left + ',' + margin.top + ')');
+    .style('transform', `translate(${margin.left}px, ${margin.top}px)`);
 
+  svg.append('path')
+    .data([data])
+    .attr('class', `line ${className}`)
+    .attr('d', valueline)
+    .style('transform', `translate(${margin.left + (width * lastX)}px, ${margin.top}px)`);
+
+  //TODO remove when masking is done
   svg.append('rect')
-      .attr('x', margin.left + width)
-      .attr('y', margin.top)
-      .attr('width', 200)
-      .attr('height', height)
-      .attr('fill', 'white');
-  
+    .attr('x', margin.left + width)
+    .attr('y', margin.top)
+    .attr('width', 200)
+    .attr('height', height)
+    .attr('fill', 'white');
+
   svg.append('text')
     .text(`${bpm} bpm`)
     .attr('x', 225)
     .attr('y', 80)
     .style('font-family', '"Source Sans Pro", sans-serif')
     .style('font-size', '12px');
+
+  anime({
+    targets: `path.${className}`,
+    translateX: `-=${width * lastX}px`,
+    duration: 4000,
+    easing: 'linear'
+  });
 }
 
 function buildLongevity(svg, longevity) {
@@ -197,23 +212,22 @@ function buildLongevity(svg, longevity) {
     .attr('class', 'longevity')
     .attr('width', width)
     .attr('height', height);
-  
+
   let linearScale = d3.scaleLinear()
-    .domain([0,80]) //largest longevity value
+    .domain([0, 80]) //largest longevity value
     .range([0, width])
-  
+
   rect = g.append('rect')
     .attr('x', 0)
     .attr('y', 100)
     .attr('width', d => linearScale(longevity))
     .attr('height', 10)
     .attr('fill', 'red');
-  
+
   svg.append('text')
     .text(`${longevity} yrs`)
     .attr('x', d => linearScale(longevity) + 15)
     .attr('y', 110)
     .style('font-family', '"Source Sans Pro", sans-serif')
     .style('font-size', '12px');
-  
 }
