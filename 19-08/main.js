@@ -26,10 +26,21 @@ function buildUnits(d) {
     width = 340 - margin.left - margin.right, //TODO get size on resize
     height = 225 - margin.top - margin.bottom;
 
-  let svg = unit.append('svg')
+  let svgRoot = unit.append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
-    .append('g')
+  
+  let mask = svgRoot
+    .append('defs')
+    .append('clipPath')
+    .attr('id', `mask-${d.ImageName}`)
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', margin.top)
+    .attr('width', 220)
+    .attr('height', 90);
+
+  let svg = svgRoot.append('g')
     .attr('transform',
       'translate(' + margin.left + ',' + margin.top + ')');
 
@@ -169,25 +180,21 @@ function buildHR(svg, bpm, className) {
   x.domain([0, 1]);
   y.domain([0, 1]);
 
-  svg.append('path')
+  let hrGroup = svg.append('g')
+    .attr('class', 'hr-group')
+    .attr('clip-path', `url(#mask-${className})`);
+
+  hrGroup.append('path')
     .data([data])
     .attr('class', `line ${className}`)
     .attr('d', valueline)
     .style('transform', `translate(${margin.left}px, ${margin.top}px)`);
 
-  svg.append('path')
+  hrGroup.append('path')
     .data([data])
     .attr('class', `line ${className}`)
     .attr('d', valueline)
     .style('transform', `translate(${margin.left + (width * lastX)}px, ${margin.top}px)`);
-
-  //TODO remove when masking is done
-  svg.append('rect')
-    .attr('x', margin.left + width)
-    .attr('y', margin.top)
-    .attr('width', 200)
-    .attr('height', height)
-    .attr('fill', 'white');
 
   svg.append('text')
     .text(`${bpm} bpm`)
