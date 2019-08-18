@@ -110,7 +110,7 @@ function buildMass(svg, mass) {
 }
 
 function buildHR(svg, bpm, className) {
-  let margin = { top: 60, right: 30, bottom: 0, left: 0 },
+  let margin = { top: 50, right: 30, bottom: 0, left: 0 },
     width = 240 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
 
@@ -122,9 +122,10 @@ function buildHR(svg, bpm, className) {
   ];
 
   const zoom = 20;
+  const scale = 2;
   const innerDelta = 0.01;
   /* Count is the number of beats that fill up the visible width. */
-  let count = Math.ceil(bpm / zoom);
+  let count = Math.ceil(bpm / zoom) * scale;
   /* Delta is the distance between each beat. */
   let delta = 1 / (Math.floor(bpm / zoom) + 1);
 
@@ -190,8 +191,8 @@ function buildHR(svg, bpm, className) {
     .attr('d', valueline)
     .style('transform', `translate(${margin.left}px, ${margin.top}px)`);
 
-  let foo = margin.left + (width * lastX);
-  let bar = margin.left - (width * lastX);
+  let animStartX = margin.left + (width * lastX);
+  let animEndX = margin.left - (width * lastX);
 
   hrGroup.append('path')
     .data([data])
@@ -202,7 +203,7 @@ function buildHR(svg, bpm, className) {
   svg.append('text')
     .text(`${bpm} bpm`)
     .attr('x', 225)
-    .attr('y', 80)
+    .attr('y', 77)
     .style('font-family', '"Source Sans Pro", sans-serif')
     .style('font-size', '12px');
 
@@ -210,13 +211,13 @@ function buildHR(svg, bpm, className) {
     easing: 'linear',
     targets: `path.${className}-1`,
     translateX: `-=${width * lastX}px`,
-    duration: 60000 / zoom,
+    duration: (60000 * scale) / zoom,
     complete: function (anim) {
       anime({
         easing: 'linear',
         targets: `path.${className}-1`,
-        translateX: [`${foo}px`, `${bar}px`],
-        duration: 120000 / zoom,
+        translateX: [`${animStartX}px`, `${animEndX}px`],
+        duration: (120000 * scale) / zoom,
         loop: true
       });
     }
@@ -225,14 +226,14 @@ function buildHR(svg, bpm, className) {
   anime({
     easing: 'linear',
     targets: `path.${className}-2`,
-    translateX: [`${foo}px`, `${bar}px`],
-    duration: 120000 / zoom,
+    translateX: [`${animStartX}px`, `${animEndX}px`],
+    duration: (120000 * scale) / zoom,
     loop: true
   });
 }
 
 function buildLongevity(svg, longevity) {
-  let margin = { top: 60, right: 30, bottom: 0, left: 0 },
+  let margin = { top: 90, right: 30, bottom: 0, left: 0 },
     width = 240 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
 
@@ -247,15 +248,15 @@ function buildLongevity(svg, longevity) {
 
   rect = g.append('rect')
     .attr('x', 0)
-    .attr('y', 100)
-    .attr('width', d => linearScale(longevity))
+    .attr('y', margin.top)
+    .attr('width', linearScale(longevity))
     .attr('height', 10)
     .attr('fill', 'red');
 
   svg.append('text')
     .text(`${longevity} yrs`)
-    .attr('x', d => linearScale(longevity) + 15)
-    .attr('y', 110)
+    .attr('x', linearScale(longevity) + 15)
+    .attr('y', margin.top + 10)
     .style('font-family', '"Source Sans Pro", sans-serif')
     .style('font-size', '12px');
 }
