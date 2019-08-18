@@ -110,47 +110,48 @@ function buildHR(svg, bpm, className) {
     }
   ];
 
-  const halfWidth = 0.007;
+  const zoom = 20;
+  const innerDelta = 0.01;
   /* Count is the number of beats that fill up the visible width. */
-  let count = Math.ceil(bpm / 15);
+  let count = Math.ceil(bpm / zoom);
   /* Delta is the distance between each beat. */
-  let delta = 1 / (Math.floor(bpm / 15) + 1);
+  let delta = 1 / (Math.floor(bpm / zoom) + 1);
 
   for (let i = 0; i < count; i++) {
-    let centerX = delta * (i + 1);
+    let startX = delta * (i + 0);
 
     data.push({
-      x: centerX - (halfWidth * 2),
+      x: startX - (innerDelta * 0),
       y: 0.4
     });
 
     data.push({
-      x: centerX - halfWidth,
+      x: startX + (innerDelta * 1),
       y: 0.6
     });
 
     data.push({
-      x: centerX,
+      x: startX + (innerDelta * 2),
       y: 0.4
     });
 
     data.push({
-      x: centerX + halfWidth,
+      x: startX + (innerDelta * 3),
       y: 0.8
     });
 
     data.push({
-      x: centerX + (halfWidth * 2),
+      x: startX + (innerDelta * 4),
       y: 0.2
     });
 
     data.push({
-      x: centerX + (halfWidth * 3),
+      x: startX + (innerDelta * 5),
       y: 0.4
     });
   }
 
-  let lastX = delta * (count + 1);
+  let lastX = delta * count;
 
   data.push({
     x: lastX,
@@ -198,7 +199,7 @@ function buildHR(svg, bpm, className) {
   anime({
     targets: `path.${className}`,
     translateX: `-=${width * lastX}px`,
-    duration: 4000,
+    duration: 60000 / zoom,
     easing: 'linear'
   });
 }
