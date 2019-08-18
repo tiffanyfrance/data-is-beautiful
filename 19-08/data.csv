@@ -1,16 +1,16 @@
-Creature,Mass,BPM,Longevity
-Hamster,60,450,3
-Rabbit,1000,205,9
-Small dog,2000,100,10
-Medium dog,5000,90,15
-Cat,2000,150,15
-Chicken,1500,275,15
-Monkey,5000,190,15
-Large dog,8000,75,17
-Giraffe,900000,65,20
-Cow,800000,65,22
-Pig,150000,70,25
-Horse,1200000,44,40
-Human,90000,60,70
-Elephant,5000000,30,70
-Large whale,120000000,20,80
+Creature,Mass,BPM,Longevity,ImageName
+Hamster,60,450,3,hamster
+Rabbit,1000,205,9,rabbit
+Chicken,1500,275,15,chicken
+Small dog,2000,100,10,small-dog
+Cat,2000,150,15,cat
+Medium dog,5000,90,15,medium-dog
+Monkey,5000,190,15,monkey
+Large dog,8000,75,17,large-dog
+Human,90000,60,70,human
+Pig,150000,70,25,pig
+Cow,800000,65,22,cow
+Giraffe,900000,65,20,giraffe
+Horse,1200000,44,40,horse
+Elephant,5000000,30,70,elephant
+Large whale,120000000,20,80,whale

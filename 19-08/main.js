@@ -1,3 +1,5 @@
+let f = d3.format(',');
+
 d3.csv('data.csv')
   .then(function(data) {
     for(var i = 0; i < data.length; i++) {
@@ -11,14 +13,61 @@ d3.csv('data.csv')
       .attr('class', 'col legend');
   })
   .catch(function(error){
-     // handle error   
+     console.log('There\'s an error');   
   })
 
+function buildUnits(d) {
 
-function buildChart(bpm, creature, mass) {
-  let margin = { top: 0, right: 10, bottom: 0, left: 100 },
-    width = 1400 - margin.left - margin.right,
-    height = 50 - margin.top - margin.bottom;
+  let unit = d3.select('#viz')
+    .append('div')
+    .attr('class', `col ${d.ImageName}`);
+  
+  let margin = { top: 0, right: 30, bottom: 0, left: 0 },
+    width = 300 - margin.left - margin.right, //TODO get size on resize
+    height = 175 - margin.top - margin.bottom;
+  
+  let svg = unit.append('svg')
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom)
+    .append('g');
+    // .attr('transform',
+    //   'translate(' + margin.left + ',' + margin.top + ')');
+  
+  svg.append('foreignObject')
+    .attr('x', 0)
+    .attr('y', 5)
+    .attr('width', 20)
+    .attr('height', 20)
+    .append('xhtml:div')
+    .append('img')
+    .attr('src', `${d.ImageName}.png`)
+    .attr('height', 20)
+    .attr('width', 20);
+  
+  svg.append('text')
+    .text(d.Creature)
+    .attr('x', 30)
+    .attr('y', 20)
+    .style('font-family', 'Georgia')
+    .style('font-size', '18px');
+  
+  svg.append('text')
+    .text(`${f(d.Mass)} lbs`)
+    .attr('x', 0)
+    .attr('y', 50)
+    .style('font-family', '"Source Sans Pro", sans-serif')
+    .style('font-size', '12px');
+  
+  buildHR(svg, d.BPM, d.Creature, d.Mass);
+
+  buildLongevity(svg, d.Longevity);
+}
+
+
+function buildHR(svg, bpm, creature, mass) {
+  let margin = { top: 60, right: 30, bottom: 0, left: 0 },
+    width = 270 - margin.left - margin.right,
+    height = 90 - margin.top - margin.bottom;
 
   let data = [
     {
@@ -27,7 +76,7 @@ function buildChart(bpm, creature, mass) {
     }
   ];
 
-  const halfWidth = 0.00175;
+  const halfWidth = 0.007;
   let count = Math.ceil(bpm / 10);
   let delta = 1 / (Math.floor(bpm / 10) + 1);
 
@@ -70,8 +119,6 @@ function buildChart(bpm, creature, mass) {
     y: 0.4
   });
 
-  console.log(data)
-
   let x = d3.scaleTime().range([0, width]);
   let y = d3.scaleLinear().range([height, 0]);
 
@@ -79,54 +126,50 @@ function buildChart(bpm, creature, mass) {
     .x(d => x(d.x))
     .y(d => y(d.y));
 
-  let svg = d3.select("#heartbeats").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-      "translate(" + margin.left + "," + margin.top + ")");
-  
-  svg.append('text')
-    .text(creature)
-    .attr('class', 'creature')
-    .attr('x', -(margin.left))
-    .attr('y', (height * .7));
-
   x.domain([0, 1]);
   y.domain([0, 1]);
 
-  svg.append("path")
+  svg.append('path')
     .data([data])
-    .attr("class", "line")
-    .attr("d", valueline);
-    
-}
-
-function buildUnits(d) {
-
-  let unit = d3.select('#viz')
-    .append('div')
-    .attr('class', 'col');
-  
-  let margin = { top: 0, right: 10, bottom: 0, left: 10 },
-    width = 340 - margin.left - margin.right, //TODO get size on resize
-    height = 175 - margin.top - margin.bottom;
-  
-  let svg = unit.append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-      "translate(" + margin.left + "," + margin.top + ")");
+    .attr('class', 'line')
+    .attr('d', valueline)
+    .attr('transform',
+      'translate(' + margin.left + ',' + margin.top + ')');
   
   svg.append('text')
-    .text(d.Creature)
-    .attr('x', 0)
-    .attr('y', 20)
-    .style('font-family', 'Georgia')
-    .style('font-size', '22px');
+    .text(`${bpm} bpm`)
+    .attr('x', 250)
+    .attr('y', 80)
+    .style('font-family', '"Source Sans Pro", sans-serif')
+    .style('font-size', '12px');
+}
+
+function buildLongevity(svg, longevity) {
+  let margin = { top: 60, right: 30, bottom: 0, left: 0 },
+    width = 270 - margin.left - margin.right,
+    height = 90 - margin.top - margin.bottom;
+
+  let g = svg.append('g')
+    .attr('class', 'longevity')
+    .attr('width', width)
+    .attr('height', height);
   
-  buildChart(svg, d.BPM, d.Creature, d.Mass);
-
-
+  let linearScale = d3.scaleLinear()
+    .domain([0,80]) //largest longevity value
+    .range([0, width])
+  
+  rect = g.append('rect')
+    .attr('x', 0)
+    .attr('y', 100)
+    .attr('width', d => linearScale(longevity))
+    .attr('height', 10)
+    .attr('fill', 'red');
+  
+  svg.append('text')
+    .text(`${longevity} years`)
+    .attr('x', d => linearScale(longevity) + 10)
+    .attr('y', 110)
+    .style('font-family', '"Source Sans Pro", sans-serif')
+    .style('font-size', '12px');
+  
 }
