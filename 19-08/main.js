@@ -22,16 +22,16 @@ function buildUnits(d) {
     .append('div')
     .attr('class', `col ${d.ImageName}`);
   
-  let margin = { top: 0, right: 30, bottom: 0, left: 0 },
-    width = 320 - margin.left - margin.right, //TODO get size on resize
-    height = 175 - margin.top - margin.bottom;
+  let margin = { top: 60, right: 30, bottom: 20, left: 70 },
+    width = 340 - margin.left - margin.right, //TODO get size on resize
+    height = 225 - margin.top - margin.bottom;
   
   let svg = unit.append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
-    .append('g');
-    // .attr('transform',
-    //   'translate(' + margin.left + ',' + margin.top + ')');
+    .append('g')
+    .attr('transform',
+      'translate(' + margin.left + ',' + margin.top + ')');
   
   buildMass(svg, d.Mass);
   
@@ -66,19 +66,25 @@ function buildUnits(d) {
 
 function buildMass(svg, mass) {
   let margin = { top: 60, right: 30, bottom: 0, left: 0 },
-    width = 320 - margin.left - margin.right,
+    width = 340 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
   
   svg.append('circle')
-    .attr('cx', 30)
+    .attr('cx', (d) => {
+      if (mass < 1500) {
+        return 5;
+      } else if (mass >= 1500 && mass < 5000) {
+        return 15;
+      } else {
+        return 30;
+      }
+    })
     .attr('cy', 45)
     .attr('r', (d) => {
       if (mass < 1500) {
         return 10;
-      } else if (mass >= 1500 && mass < 3000) {
+      } else if (mass >= 1500 && mass < 5000) {
         return 20;
-      } else if (mass >= 3000 && mass < 5000) {
-        return 30;
       } else if (mass >= 5000 && mass < 10000) {
         return 40;
       } else if (mass >= 10000 && mass < 200000) {
@@ -92,9 +98,9 @@ function buildMass(svg, mass) {
     .attr('fill', '#eee');
 }
 
-function buildHR(svg, bpm, creature, mass) {
+function buildHR(svg, bpm) {
   let margin = { top: 60, right: 30, bottom: 0, left: 0 },
-    width = 270 - margin.left - margin.right,
+    width = 240 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
 
   let data = [
@@ -166,7 +172,7 @@ function buildHR(svg, bpm, creature, mass) {
   
   svg.append('text')
     .text(`${bpm} bpm`)
-    .attr('x', 250)
+    .attr('x', 225)
     .attr('y', 80)
     .style('font-family', '"Source Sans Pro", sans-serif')
     .style('font-size', '12px');
@@ -174,7 +180,7 @@ function buildHR(svg, bpm, creature, mass) {
 
 function buildLongevity(svg, longevity) {
   let margin = { top: 60, right: 30, bottom: 0, left: 0 },
-    width = 270 - margin.left - margin.right,
+    width = 250 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
 
   let g = svg.append('g')
@@ -194,8 +200,8 @@ function buildLongevity(svg, longevity) {
     .attr('fill', 'red');
   
   svg.append('text')
-    .text(`${longevity} years`)
-    .attr('x', d => linearScale(longevity) + 10)
+    .text(`${longevity} yrs`)
+    .attr('x', d => linearScale(longevity) + 5)
     .attr('y', 110)
     .style('font-family', '"Source Sans Pro", sans-serif')
     .style('font-size', '12px');
