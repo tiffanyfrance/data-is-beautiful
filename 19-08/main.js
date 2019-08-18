@@ -1,4 +1,4 @@
-let f = d3.format(',');
+let f = d3.format(',.2n');
 
 d3.csv('data.csv')
   .then(function (data) {
@@ -29,7 +29,7 @@ function buildUnits(d) {
   let svgRoot = unit.append('svg')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom)
-  
+
   let mask = svgRoot
     .append('defs')
     .append('clipPath')
@@ -65,7 +65,7 @@ function buildUnits(d) {
     .style('font-size', '18px');
 
   svg.append('text')
-    .text(`${f(d.Mass)} lbs`)
+    .text(`${f(d.Mass / 453.592)} lbs`)
     .attr('x', 0)
     .attr('y', 50)
     .style('font-family', '"Source Sans Pro", sans-serif')
@@ -186,15 +186,18 @@ function buildHR(svg, bpm, className) {
 
   hrGroup.append('path')
     .data([data])
-    .attr('class', `line ${className}`)
+    .attr('class', `line ${className}-1`)
     .attr('d', valueline)
     .style('transform', `translate(${margin.left}px, ${margin.top}px)`);
 
+  let foo = margin.left + (width * lastX);
+  let bar = margin.left - (width * lastX);
+
   hrGroup.append('path')
     .data([data])
-    .attr('class', `line ${className}`)
+    .attr('class', `line ${className}-2`)
     .attr('d', valueline)
-    .style('transform', `translate(${margin.left + (width * lastX)}px, ${margin.top}px)`);
+    .style('transform', `translate(${margin.left}px, ${margin.top}px)`);
 
   svg.append('text')
     .text(`${bpm} bpm`)
@@ -204,10 +207,27 @@ function buildHR(svg, bpm, className) {
     .style('font-size', '12px');
 
   anime({
-    targets: `path.${className}`,
+    easing: 'linear',
+    targets: `path.${className}-1`,
     translateX: `-=${width * lastX}px`,
     duration: 60000 / zoom,
-    easing: 'linear'
+    complete: function (anim) {
+      anime({
+        easing: 'linear',
+        targets: `path.${className}-1`,
+        translateX: [`${foo}px`, `${bar}px`],
+        duration: 120000 / zoom,
+        loop: true
+      });
+    }
+  });
+
+  anime({
+    easing: 'linear',
+    targets: `path.${className}-2`,
+    translateX: [`${foo}px`, `${bar}px`],
+    duration: 120000 / zoom,
+    loop: true
   });
 }
 
