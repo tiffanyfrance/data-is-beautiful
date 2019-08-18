@@ -42,7 +42,7 @@ function buildUnits(d) {
     .attr('height', 20)
     .append('xhtml:div')
     .append('img')
-    .attr('src', `${d.ImageName}.png`)
+    .attr('src', `images/${d.ImageName}.png`)
     .attr('height', 20)
     .attr('width', 20);
   
@@ -158,7 +158,8 @@ function buildHR(svg, bpm) {
 
   let valueline = d3.line()
     .x(d => x(d.x))
-    .y(d => y(d.y));
+    .y(d => y(d.y))
+    .curve(d3.curveMonotoneX);
 
   x.domain([0, 1]);
   y.domain([0, 1]);
