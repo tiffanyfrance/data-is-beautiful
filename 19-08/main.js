@@ -111,7 +111,9 @@ function buildHR(svg, bpm) {
   ];
 
   const halfWidth = 0.007;
+  /* Count is the number of beats that fill up the visible width. */
   let count = Math.ceil(bpm / 10);
+  /* Delta is the distance between each beat. */
   let delta = 1 / (Math.floor(bpm / 10) + 1);
 
   for (let i = 0; i < count; i++) {
@@ -170,6 +172,13 @@ function buildHR(svg, bpm) {
     .attr('d', valueline)
     .attr('transform',
       'translate(' + margin.left + ',' + margin.top + ')');
+
+  svg.append('rect')
+      .attr('x', margin.left + width)
+      .attr('y', margin.top)
+      .attr('width', 200)
+      .attr('height', height)
+      .attr('fill', 'white');
   
   svg.append('text')
     .text(`${bpm} bpm`)
@@ -181,7 +190,7 @@ function buildHR(svg, bpm) {
 
 function buildLongevity(svg, longevity) {
   let margin = { top: 60, right: 30, bottom: 0, left: 0 },
-    width = 250 - margin.left - margin.right,
+    width = 240 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
 
   let g = svg.append('g')
@@ -202,7 +211,7 @@ function buildLongevity(svg, longevity) {
   
   svg.append('text')
     .text(`${longevity} yrs`)
-    .attr('x', d => linearScale(longevity) + 5)
+    .attr('x', d => linearScale(longevity) + 15)
     .attr('y', 110)
     .style('font-family', '"Source Sans Pro", sans-serif')
     .style('font-size', '12px');
