@@ -23,7 +23,7 @@ function buildUnits(d) {
     .attr('class', `col ${d.ImageName}`);
   
   let margin = { top: 0, right: 30, bottom: 0, left: 0 },
-    width = 300 - margin.left - margin.right, //TODO get size on resize
+    width = 320 - margin.left - margin.right, //TODO get size on resize
     height = 175 - margin.top - margin.bottom;
   
   let svg = unit.append('svg')
@@ -32,6 +32,8 @@ function buildUnits(d) {
     .append('g');
     // .attr('transform',
     //   'translate(' + margin.left + ',' + margin.top + ')');
+  
+  buildMass(svg, d.Mass);
   
   svg.append('foreignObject')
     .attr('x', 0)
@@ -59,10 +61,36 @@ function buildUnits(d) {
     .style('font-size', '12px');
   
   buildHR(svg, d.BPM, d.Creature, d.Mass);
-
   buildLongevity(svg, d.Longevity);
 }
 
+function buildMass(svg, mass) {
+  let margin = { top: 60, right: 30, bottom: 0, left: 0 },
+    width = 320 - margin.left - margin.right,
+    height = 90 - margin.top - margin.bottom;
+  
+  svg.append('circle')
+    .attr('cx', 30)
+    .attr('cy', 45)
+    .attr('r', (d) => {
+      if (mass < 1500) {
+        return 10;
+      } else if (mass >= 1500 && mass < 3000) {
+        return 20;
+      } else if (mass >= 3000 && mass < 5000) {
+        return 30;
+      } else if (mass >= 5000 && mass < 10000) {
+        return 40;
+      } else if (mass >= 10000 && mass < 200000) {
+        return 60;
+      } else if (mass >= 200000 && mass < 5000000) {
+        return 80;
+      } else {
+        return 100;
+      }
+    })
+    .attr('fill', '#eee');
+}
 
 function buildHR(svg, bpm, creature, mass) {
   let margin = { top: 60, right: 30, bottom: 0, left: 0 },

@@ -11,12 +11,26 @@
 		color: #333;
 	}
 
-	h1 {
-		margin: 40px auto 100px;
+	.header {
+		margin: 40px auto 80px;
 		text-align: center;
+	}
+
+	h1 {
+		margin: 20px 0;
 		font-size: 45px;
 		font-family: Georgia, 'Times New Roman', Times, serif;
 		font-weight: normal;
+	}
+
+	h2 {
+		font-size: 12px;
+    font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 400;
+	}
+
+	.header a:hover {
+		color: #000;
 	}
 
 	.flex-container {
@@ -29,8 +43,8 @@
 	}
 
 	.col {
-		flex: 1 0 300px; /* explanation below */
-		margin: 10px;
+		flex: 1 0 320px; /* explanation below */
+		margin: 5px;
 		height: 175px;
 		background-color: white;
 	}
@@ -52,10 +66,22 @@
     margin-left: 3px;
 	}
 
+	.cow img, .elephant img, .hamster img {
+    height: 15px;
+		margin-top: 2px;
+	}
+
 </style>
 
 <body>
-	<h1>Do heart rate and size effect longevity?</h1>
+	<div class="header">
+		<h1>Do heart rate and size effect longevity?</h1>
+		<h2>
+			<a href="">DATA</a> | 
+			<a href="">AUTHOR: TIFFANY FRANCE</a> | 
+			<a href="">CODE</a>
+		</h2>
+	</div>
 	<div class="flex-container" id="viz"></div>
 	<div id="heartbeats"></div>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
