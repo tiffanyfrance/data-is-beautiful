@@ -2,6 +2,8 @@ let f = d3.format(',.1f');
 
 d3.csv('data.csv')
   .then(function (data) {
+    data.reverse();
+    
     for (var i = 0; i < data.length; i++) {
       let d = data[i];
 
