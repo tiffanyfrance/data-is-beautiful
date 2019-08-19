@@ -1,4 +1,4 @@
-let f = d3.format(',.2n');
+let f = d3.format(',.1f');
 
 d3.csv('data.csv')
   .then(function (data) {
@@ -8,9 +8,32 @@ d3.csv('data.csv')
       buildUnits(d);
     }
 
+    let str = `<div class="left" style="height: 60px;">
+              <svg><circle r="20" cy="20" cx="20" fill="#eee"></circle></svg>
+              </div>
+              <div class="right">
+              Representatioanl Mass <br />
+              (x-small, small, med, large, x-large) <br />
+              (pounds)
+              </div>
+              <div class="left" style="height: 40px;">
+              <img src="images/bpm.png">
+              </div>
+              <div class="right" style="padding-top: 5px;">
+              Heart Rate (bpm)
+              </div>
+              <div class="left">
+              <svg><rect width="40" x="0" y="3" height="10px" fill="red"></rect></svg>
+              </div>
+              <div class="right">
+              Longevity (years)
+              </div>`;
+
     d3.select('#viz')
       .append('div')
-      .attr('class', 'col legend');
+      .attr('class', 'col legend')
+      .html(str);
+    
   })
   .catch(function (error) {
     console.log('There\'s an error');
@@ -233,7 +256,7 @@ function buildHR(svg, bpm, className) {
 }
 
 function buildLongevity(svg, longevity) {
-  let margin = { top: 90, right: 30, bottom: 0, left: 0 },
+  let margin = { top: 95, right: 30, bottom: 0, left: 0 },
     width = 240 - margin.left - margin.right,
     height = 90 - margin.top - margin.bottom;
 

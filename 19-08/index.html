@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
+<title>Does heart rate and size affect longevity?</title>
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400&display=swap" rel="stylesheet">
 <style>
 	body {
 		margin: 0;
 		padding: 0;
+		zoom: .9;
 	}
 
 	* {
@@ -34,7 +36,7 @@
 	}
 
 	.flex-container {
-		max-width: 1400px;
+		/* max-width: 1400px; */
 		width: 90%;
 		margin: 0 auto;
 		display: flex;
@@ -56,7 +58,7 @@
 
 	.creature {
 		text-transform: uppercase;
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		font-family: 'Source Sans Pro', sans-serif;
 		font-size: 12px;
 	}
 
@@ -70,15 +72,43 @@
 		margin-top: 2px;
 	}
 
+	.legend {
+		box-sizing: border-box;
+		padding: 5px; 
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 12px;
+		padding-top: 50px;
+		padding-left: 40px;
+	}
+
+	.legend img {
+		max-width: 20px;
+	}
+
+	.legend div {
+		display: inline-block;
+	}
+
+	.legend .left {
+		float: left;
+		width: 50px;
+		clear: both;
+	}
+
+	.legend .right {
+		float: left;
+		width: calc(100% - 50px);
+	}
+
 </style>
 
 <body>
 	<div class="header">
-		<h1>Do heart rate and size effect longevity?</h1>
+		<h1>Does heart rate and size affect longevity?</h1>
 		<h2>
-			<a href="https://github.com/zonination/datasets/blob/master/file.csv">DATA</a> | 
-			<a href="http://tiffanyfrance.com">AUTHOR: TIFFANY FRANCE</a> | 
-			<a href="https://github.com/tiffylou/data-is-beautiful/tree/master/19-08">CODE</a>
+			<a target="_blank" href="https://github.com/zonination/datasets/blob/master/file.csv">DATA</a> | 
+			<a target="_blank" href="http://tiffanyfrance.com">AUTHOR: TIFFANY FRANCE</a> | 
+			<a target="_blank" href="https://github.com/tiffylou/data-is-beautiful/tree/master/19-08">CODE</a>
 		</h2>
 	</div>
 	<div class="flex-container" id="viz"></div>
